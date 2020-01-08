@@ -33,6 +33,10 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'org.springframework.security:spring-security-test'
+    //기본적으로 springboot에서 제공하는 톰캣은 jsp를 실행할 수 없어서 추가
+    compile("org.apache.tomcat.embed:tomcat-embed-jasper")
+    //jstl 사용을 위한 라이브러리 추가
+    compile('javax.servlet:jstl')
 }
 
 test {
