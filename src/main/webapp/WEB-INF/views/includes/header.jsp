@@ -12,9 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>FC Bayern Korea</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Free HTML5 Template by FREEHTML5.CO"/>
-    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive"/>
-    <meta name="author" content="FREEHTML5.CO"/>
 
     <link rel="shortcut icon" href="images/favicon.ico">
 
@@ -39,6 +36,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.css">
 
     <%--Flag--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.min.css">
@@ -48,7 +46,6 @@
 <body>
 <div id="fh5co-wrapper">
     <div id="fh5co-page">
-
         <header id="fh5co-header-section" class="sticky-banner">
             <div class="container">
                 <div class="nav-header">
@@ -57,16 +54,23 @@
                     <!-- START #fh5co-menu-wrap -->
                     <nav id="fh5co-menu-wrap" role="navigation">
                         <ul class="sf-menu" id="fh5co-primary-menu">
-                            <li class="active"><a href="/index">Home</a></li>
-                            <li><a href="#">Club</a></li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">FootBall</a></li>
+                            <li id="index" class="active"><a href="#"><spring:message code="Home"/></a></li>
                             <li>
-                                <a href="#" class="fh5co-sub-ddown">Community</a>
+                                <a href="#" class="fh5co-sub-ddown"><spring:message code="Club"/></a>
                                 <ul class="fh5co-sub-menu">
-                                    <li><a href="#">FreeBoard</a></li>
-                                    <li><a href="#">Multi</a></li>
-                                    <li><a href="#">Notice</a></li>
+                                    <li id="team"><a href="#"><spring:message code="Team"/></a></li>
+                                    <li id="player"><a href="#"><spring:message code="Player"/></a></li>
+                                    <li><a href="#"><spring:message code="Title"/></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><spring:message code="News"/></a></li>
+                            <li><a href="#"><spring:message code="FootBall"/></a></li>
+                            <li>
+                                <a href="#" class="fh5co-sub-ddown"><spring:message code="Community"/></a>
+                                <ul class="fh5co-sub-menu">
+                                    <li><a href="#"><spring:message code="FreeBoard"/></a></li>
+                                    <li><a href="#"><spring:message code="MultiMedia"/></a></li>
+                                    <li><a href="#"><spring:message code="Notice"/></a></li>
                                 </ul>
                             </li>
                             <li><a href="#"><i class="material-icons">
@@ -78,13 +82,13 @@
                                 </a>
                                 <ul class="fh5co-sub-menu">
                                     <li>                                        <a id="ko" class="dropdown-item set-language">
-                                        <i class="flag-icon flag-icon-kr mr-2"></i> 한글
+                                        <i class="flag-icon flag-icon-kr mr-2"></i> <spring:message code="ko"/>
                                     </a></li>
                                     <li><a id="en" class="dropdown-item set-language">
-                                        <i class="flag-icon flag-icon-us mr-2"></i> 영어
+                                        <i class="flag-icon flag-icon-us mr-2"></i> <spring:message code="en"/>
                                     </a></li>
                                     <li><a id="de" class="dropdown-item set-language">
-                                        <i class="flag-icon flag-icon-de mr-2"></i> 독일어
+                                        <i class="flag-icon flag-icon-de mr-2"></i> <spring:message code="de"/>
                                     </a></li>
                                 </ul>
                             </li>
@@ -96,3 +100,4 @@
         </header>
 
         <!-- end:header-top -->
+        <div class="content">

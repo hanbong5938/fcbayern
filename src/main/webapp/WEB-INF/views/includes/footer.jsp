@@ -1,68 +1,55 @@
+    </div>
 <footer>
     <div id="footer">
         <div class="container">
             <div class="row row-bottom-padded-md">
                 <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3>About Travel</h3>
+                    <h3>About FCB</h3>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                         there live the blind texts.</p>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3>Top Flights Routes</h3>
+                    <h3><spring:message code="Club"/></h3>
                     <ul>
-                        <li><a href="#">Manila flights</a></li>
-                        <li><a href="#">Dubai flights</a></li>
-                        <li><a href="#">Bangkok flights</a></li>
-                        <li><a href="#">Tokyo Flight</a></li>
-                        <li><a href="#">New York Flights</a></li>
+                        <li><a href="#"><spring:message code="Team"/></a></li>
+                        <li><a href="#"><spring:message code="Player"/></a></li>
+                        <li><a href="#"><spring:message code="Title"/></a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3>Top Hotels</h3>
+                    <h3><spring:message code="News"/></h3>
                     <ul>
-                        <li><a href="#">Boracay Hotel</a></li>
-                        <li><a href="#">Dubai Hotel</a></li>
-                        <li><a href="#">Singapore Hotel</a></li>
-                        <li><a href="#">Manila Hotel</a></li>
+                        <li><a href="#"><spring:message code="News"/></a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3>Interest</h3>
+                    <h3><spring:message code="FootBall"/></h3>
                     <ul>
-                        <li><a href="#">Beaches</a></li>
-                        <li><a href="#">Family Travel</a></li>
-                        <li><a href="#">Budget Travel</a></li>
-                        <li><a href="#">Food &amp; Drink</a></li>
-                        <li><a href="#">Honeymoon and Romance</a></li>
+                        <li><a href="#"><spring:message code="FootBall"/></a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3>Best Places</h3>
+                    <h3><spring:message code="Community"/></h3>
                     <ul>
-                        <li><a href="#">Boracay Beach</a></li>
-                        <li><a href="#">Dubai</a></li>
-                        <li><a href="#">Singapore</a></li>
-                        <li><a href="#">Hongkong</a></li>
+                        <li><a href="#"><spring:message code="FreeBoard"/></a></li>
+                        <li><a href="#"><spring:message code="MultiMedia"/></a></li>
+                        <li><a href="#"><spring:message code="Notice"/></a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3>Affordable</h3>
+                    <h3><spring:message code="IconShop"/></h3>
                     <ul>
-                        <li><a href="#">Food &amp; Drink</a></li>
-                        <li><a href="#">Fare Flights</a></li>
+                        <li><a href="#"><spring:message code="IconShop"/></a></li>
+                        <li><a href="#"><spring:message code="IconStorage"/></a></li>
                     </ul>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
                     <p class="fh5co-social-icons">
-                        <a href="#"><i class="icon-twitter2"></i></a>
-                        <a href="#"><i class="icon-facebook2"></i></a>
-                        <a href="#"><i class="icon-instagram"></i></a>
-                        <a href="#"><i class="icon-dribbble2"></i></a>
-                        <a href="#"><i class="icon-youtube"></i></a>
+                        <a href="https://github.com/uru1217/fcbayern"><i class="icon-github"></i></a>
                     </p>
-                    Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+                    by <i class="fa fa-love"></i><a href="">FCB Korea</a>
                 </div>
             </div>
         </div>
@@ -108,6 +95,9 @@
 
 <!-- Main JS -->
 <script src="plugin/main.js"></script>
+
+<%--Footer--%>
+<script src="js/includes/footer.js"></script>
 
 </body>
 </html>
