@@ -21,6 +21,10 @@
     font-family: doHyeon;
 }
 
+.text-gray {
+    color: #6e7882;
+}
+
 .item-titles {
     list-style: none;
 }
@@ -47,14 +51,15 @@
     height: auto;
 }
 
-.mt-3 {
-    margin-top: 3%;
+.img-widthAuto {
+    width: auto;
+    height: 100%;
 }
 
-.mt-5 {
-    margin-top: 5%;
+.mt-10{
+    margin-top: 10%;
 }
 
-.mr-3 {
-    margin-right: 3%;
+.text-sm{
+    font-size: small;
 }

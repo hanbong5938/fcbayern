@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="css/cs-skin-border.css">
     <%--Material Icon--%>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <%--dataTables--%>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/custom.css">
@@ -60,17 +62,17 @@
                                 <ul class="fh5co-sub-menu">
                                     <li id="team"><a href="#"><spring:message code="Team"/></a></li>
                                     <li id="player"><a href="#"><spring:message code="Player"/></a></li>
-                                    <li><a href="#"><spring:message code="Title"/></a></li>
+                                    <li id="honours"><a href="#"><spring:message code="Honours"/></a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><spring:message code="News"/></a></li>
-                            <li><a href="#"><spring:message code="FootBall"/></a></li>
+                            <li id="news"><a href="#"><spring:message code="News"/></a></li>
+                            <li id="football"><a href="#"><spring:message code="FootBall"/></a></li>
                             <li>
                                 <a href="#" class="fh5co-sub-ddown"><spring:message code="Community"/></a>
                                 <ul class="fh5co-sub-menu">
-                                    <li><a href="#"><spring:message code="FreeBoard"/></a></li>
-                                    <li><a href="#"><spring:message code="MultiMedia"/></a></li>
-                                    <li><a href="#"><spring:message code="Notice"/></a></li>
+                                    <li id="freeBoard"><a href="#"><spring:message code="FreeBoard"/></a></li>
+                                    <li id="multiMedia"><a href="#"><spring:message code="MultiMedia"/></a></li>
+                                    <li id="notice"><a href="#"><spring:message code="Notice"/></a></li>
                                 </ul>
                             </li>
                             <li><a href="#"><i class="material-icons">
@@ -81,7 +83,7 @@
                                     <i class="flag-icon flag-icon-kr mr-2"></i>
                                 </a>
                                 <ul class="fh5co-sub-menu">
-                                    <li>                                        <a id="ko" class="dropdown-item set-language">
+                                    <li><a id="ko" class="dropdown-item set-language">
                                         <i class="flag-icon flag-icon-kr mr-2"></i> <spring:message code="ko"/>
                                     </a></li>
                                     <li><a id="en" class="dropdown-item set-language">

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<div class="container">
+<div class="container mt-10">
     <div class="container-custom">
         <h1 class="headline"><spring:message code="FirstTeam"/></h1>
         <div class="img-wrapper">
-            <img src="images/player/firstTeam.webp"
-                 style="width: 100%; height: auto;" alt="" title="">
+            <img class="img-heightAuto" src="images/player/firstTeam.webp"
+                 alt="" title="">
             <div class="col-xs-12">
                 <p class="img-description">
                     <span class="title bold"><spring:message code="BR"/></span>
@@ -53,7 +53,7 @@
                             <div>
                                 <span class="text-primary">Manuel Neuer</span></div>
                             <div>
-                            <span>27/03/1986</span>
+                                <span>27/03/1986</span>
                             </div>
                         </div>
 
@@ -96,3 +96,5 @@
 
     </div>
 </div>
+
+<script src="js/club/player.js"></script>

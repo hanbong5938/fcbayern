@@ -1,4 +1,4 @@
-    </div>
+</div>
 <footer>
     <div id="footer">
         <div class="container">
@@ -13,7 +13,7 @@
                     <ul>
                         <li><a href="#"><spring:message code="Team"/></a></li>
                         <li><a href="#"><spring:message code="Player"/></a></li>
-                        <li><a href="#"><spring:message code="Title"/></a></li>
+                        <li><a href="#"><spring:message code="Honours"/></a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
@@ -44,8 +44,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
                     <p class="fh5co-social-icons">
                         <a href="https://github.com/uru1217/fcbayern"><i class="icon-github"></i></a>
                     </p>
@@ -95,6 +95,10 @@
 
 <!-- Main JS -->
 <script src="plugin/main.js"></script>
+
+<%--DataTables.min.js--%>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
 <%--Footer--%>
 <script src="js/includes/footer.js"></script>

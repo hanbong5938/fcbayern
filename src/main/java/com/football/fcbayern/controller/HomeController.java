@@ -11,4 +11,35 @@ public class HomeController {
         return "/index";
     }
 
+    @GetMapping("/team")
+    public String team() {
+        return "/club/team";
+    }
+
+    @GetMapping("/player")
+    public String player() {
+        return "/club/player";
+    }
+
+    @GetMapping("/honours")
+    public String honours() {
+        return "/club/honours";
+    }
+
+    @GetMapping("/news")
+    public String news() {
+        return "/news/news";
+    }
+
+    @GetMapping("/football")
+    public String football() {
+        return "/football/football";
+    }
+
+    @GetMapping("/freeBoard")
+    public String freeBoard() {
+        return "/community/freeBoard";
+    }
+
+
 }
