@@ -63,45 +63,58 @@
 </div>
 <!-- END fh5co-wrapper -->
 
-<!-- Modernizr JS -->
-<script src="plugin/modernizr-2.6.2.min.js"></script>
+<!-- Modernizr JS 브라우저 판별-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 <!-- FOR IE9 below -->
+<%--ie에서도 사용가능하도록--%>
 <!--[if lt IE 9]>
-<script src="plugin/respond.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <!-- jQuery -->
 <script src="plugin/jquery.min.js"></script>
-<!-- jQuery Easing -->
-<script src="plugin/jquery.easing.1.3.js"></script>
+<%--<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>--%>
+<!-- jQuery Easing 움직임 효과 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<%--Proper--%>
+<script src="https://unpkg.com/@popperjs/core@2.0.0-rc.2"></script>
 <!-- Bootstrap -->
-<script src="plugin/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 <!-- Waypoints -->
-<script src="plugin/jquery.waypoints.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 <script src="plugin/sticky.js"></script>
-
 <!-- Stellar -->
-<script src="plugin/jquery.stellar.min.js"></script>
-<!-- Superfish -->
-<script src="plugin/hoverIntent.js"></script>
-<script src="plugin/superfish.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.stellar@0.6.2/jquery.stellar.min.js"></script>
+<!-- Superfish 메뉴구성 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.hoverintent/1.10.1/jquery.hoverIntent.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.10/js/superfish.min.js"></script>
 <!-- Magnific Popup -->
-<script src="plugin/jquery.magnific-popup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 <script src="plugin/magnific-popup-options.js"></script>
 <!-- Date Picker -->
-<script src="plugin/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <!-- CS Select -->
-<script src="plugin/classie.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/classie/1.0.1/classie.min.js"></script>
 <script src="plugin/selectFx.js"></script>
-
+<%--summernote --%>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-bs4.min.js"></script>
+<!-- include summernote-ko-KR -->
+<%--<script src="lang/summernote-ko-KR.js"></script>--%>
 <!-- Main JS -->
 <script src="plugin/main.js"></script>
 
-<%--DataTables.min.js--%>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<%--dataTable 현재 사용 X--%>
+<%--&lt;%&ndash;DataTables.min.js&ndash;%&gt;--%>
+<%--<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>--%>
+<%--<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>--%>
 
 <%--Footer--%>
 <script src="js/includes/footer.js"></script>
+
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 
 <div class="container mt-10">
     <div class="container-custom">
-        <h1 class="headline"><spring:message code="FootBall"/></h1>
+        <h1 class="headline"><spring:message code="FreeBoard"/></h1>
         <div class="col-lg-12">
 
             <div class="card-body">
@@ -60,7 +60,7 @@
                         <input class="">
                         <button class="">검색</button>
                     </label>
-                    <a class="float-right regBtn" style="clear: both">등록</a>
+                    <a id="regBtn" class="float-right regBtn" style="clear: both">등록</a>
                 </div>
 
 
@@ -69,4 +69,4 @@
         </div>
     </div>
 
-    <script src="js/football/football.js"></script>
+    <script src="js/community/freeBoard.js"></script>

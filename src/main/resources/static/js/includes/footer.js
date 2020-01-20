@@ -27,10 +27,12 @@ $('#freeBoard').click(function () {
     // $(".content").load("/team?lang=" + getCookie('APPLICATION_LOCALE'));
     $(".content").load("/freeBoard");
 });
+
 $('#multiMedia').click(function () {
     // $(".content").load("/team?lang=" + getCookie('APPLICATION_LOCALE'));
     $(".content").load("/multiMedia");
 });
+
 $('#notice').click(function () {
     // $(".content").load("/team?lang=" + getCookie('APPLICATION_LOCALE'));
     $(".content").load("/notice");

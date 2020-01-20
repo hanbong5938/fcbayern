@@ -41,5 +41,20 @@ public class HomeController {
         return "/community/freeBoard";
     }
 
+    @GetMapping("/multiMedia")
+    public String multiMedia() {
+        return "/community/multiMedia";
+    }
+
+    @GetMapping("/notice")
+    public String notice() {
+        return "/community/notice";
+    }
+
+    @GetMapping("/write")
+    public String writer() {
+        return "/write/write";
+    }
+
 
 }

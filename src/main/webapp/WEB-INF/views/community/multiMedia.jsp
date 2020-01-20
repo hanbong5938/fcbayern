@@ -3,7 +3,7 @@
 
 <div class="container mt-10">
     <div class="container-custom">
-        <h1 class="headline"><spring:message code="FootBall"/></h1>
+        <h1 class="headline"><spring:message code="MultiMedia"/></h1>
         <div class="col-lg-12">
 
             <div class="card-body">
@@ -69,4 +69,4 @@
         </div>
     </div>
 
-    <script src="js/football/football.js"></script>
+    <script src="js/community/multiMedia.js"></script>
