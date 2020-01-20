@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<div class="container mt-10">
+<div class="container">
     <div class="container-custom">
         <h1 class="headline"><spring:message code="News"/></h1>
         <div class="col-lg-12 mt-5">

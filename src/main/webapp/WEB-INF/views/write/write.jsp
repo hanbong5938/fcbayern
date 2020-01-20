@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 
-<div class="container mt-10">
+<div class="container">
     <div class="container-custom">
         <div class="col-lg-12">
 
@@ -15,7 +15,7 @@
                             <option>멀티미디어</option>
                             <option>축구</option>
                         </select>
-                        <span>공지 사항</span>
+                        <span class="ml-2">공지 사항</span>
                         <select class="ml-2">
                             <option>공지사항</option>
                         </select>
@@ -23,7 +23,7 @@
                 </div>
                 <div>
                     <label>
-                        <span>제&nbsp;&nbsp;&nbsp;&nbsp;목</span><input class="ml-2" value="게시글 제목을 입력하세">
+                        <span>제&nbsp;&nbsp;&nbsp;&nbsp;목</span><input class="ml-2" placeholder="게시글 제목을 입력하세요">
                     </label>
                 </div>
                 <div id="summernote">
