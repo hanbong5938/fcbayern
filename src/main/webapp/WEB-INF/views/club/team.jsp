@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<div class="container mt-10">
+<div class="container">
     <div class="container-custom">
         <div class="img-wrapper">
             <img class="img-heightAuto" src="images/team/team_bg.webp" alt="" title="Allianz Arena">
