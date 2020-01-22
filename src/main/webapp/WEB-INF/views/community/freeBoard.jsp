@@ -55,7 +55,7 @@
                     </ul>
                 </div>
 
-                <div class="mb-5">
+                <div class="mb-10">
                     <label class="float-right">
                         <input class="">
                         <button class="">검색</button>

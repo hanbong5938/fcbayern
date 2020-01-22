@@ -94,6 +94,7 @@
             <h1 class="bold profile-category">MASCOTS</h1>
         </div>
 
+        <button id="profileReg" class="btn-info">등록</button>
     </div>
 </div>
 

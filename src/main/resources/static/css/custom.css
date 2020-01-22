@@ -26,7 +26,7 @@ body {
     overflow-x: hidden;
 }
 
-.navbar-fix{
+.navbar-fix {
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -279,3 +279,22 @@ body {
     color: #fff !important;
 }
 
+.drag-over {
+    background-color: #ff0;
+}
+
+.thumb {
+    width: 200px;
+    padding: 5px;
+    float: left;
+}
+
+.thumb > img {
+    width: 100%;
+}
+
+.thumb > .close {
+    position: absolute;
+    background-color: red;
+    cursor: pointer;
+}

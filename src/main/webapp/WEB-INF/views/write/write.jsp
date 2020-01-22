@@ -23,7 +23,7 @@
                 </div>
                 <div>
                     <label>
-                        <span>제&nbsp;&nbsp;&nbsp;&nbsp;목</span><input class="ml-2" placeholder="게시글 제목을 입력하세요">
+                        <span>제&nbsp;&nbsp;&nbsp;목</span><input class="ml-2" placeholder="게시글 제목을 입력하세요">
                     </label>
                 </div>
                 <div id="summernote">
