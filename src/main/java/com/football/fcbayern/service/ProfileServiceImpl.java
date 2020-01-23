@@ -1,6 +1,7 @@
 package com.football.fcbayern.service;
 
 import com.football.fcbayern.mapper.ProfileMapper;
+import com.football.fcbayern.model.ProfileAttachModel;
 import com.football.fcbayern.util.AwsS3Util;
 import com.football.fcbayern.util.UploadFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +19,13 @@ public class ProfileServiceImpl implements ProfileService {
 
     private ProfileMapper profileMapper;
 
-
-//    @Autowired
-//    public void setProfileMapper(ProfileMapper profileMapper) {
-//        this.profileMapper = profileMapper;
-//    }
+    @Autowired
+    public void setProfileMapper(ProfileMapper profileMapper) {
+        this.profileMapper = profileMapper;
+    }
 
     @Override
-    public void insertImg(MultipartFile[] multipartFiles) throws Exception {
-
+    public void insertImg(ProfileAttachModel profileAttachModel) {
+        profileMapper.insertImg(profileAttachModel);
     }
 }

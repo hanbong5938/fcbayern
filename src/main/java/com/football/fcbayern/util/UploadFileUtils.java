@@ -32,7 +32,7 @@ public class UploadFileUtils {
 
         String yearPath = File.separator + calendar.get(Calendar.YEAR);
 
-        String monthPath = yearPath + File.separator + new DecimalFormat("00").format(calendar.get(Calendar.MONTH));
+        String monthPath = yearPath + File.separator + new DecimalFormat("00").format(calendar.get(Calendar.MONTH) + 1);
 
         String datePath = monthPath + File.separator + new DecimalFormat("00").format(calendar.get(Calendar.DATE));
 

@@ -6,7 +6,7 @@
 
     <insert id="insertImg">
         insert into profileAttach (uuid, uploadPath, fileNm, state, profileNo)
-        VALUES (#{uuid}, #{uploadPath}, fileNm, 1, #{profileNo})
+        VALUES (#{uuid}, #{uploadPath}, #{fileNm}, 1, #{profileNo})
     </insert>
 
 </mapper>

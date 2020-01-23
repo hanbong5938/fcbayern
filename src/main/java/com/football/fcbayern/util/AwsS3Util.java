@@ -18,8 +18,8 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 public class AwsS3Util {
-    private static final String accessKye = " AKIAXPAVTY6Z777M4LN3";
-    private static final String secretKey = " AKIAXPAVTY6Z777M4LN3";
+    private static final String accessKye = " AKIAXPAVTY6Z3Q6K4PEJ";
+    private static final String secretKey = " 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";
 
     private AmazonS3 amazonS3;
 

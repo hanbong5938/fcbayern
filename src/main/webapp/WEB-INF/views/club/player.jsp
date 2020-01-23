@@ -97,5 +97,5 @@
         <button id="profileReg" class="btn-info">등록</button>
     </div>
 </div>
-
+<img id="profileImg" class="img-fluid"	src="/profile/getImg?fileName=66299ae7-1409-4048-81e9-77365de0e549_Neuer.webp&directory=profileAttach/2020/01/23/">
 <script src="js/club/player.js"></script>

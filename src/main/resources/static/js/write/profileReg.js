@@ -2,21 +2,6 @@ const drop = $("#drop");
 let uploadFiles = [];
 
 const albumBucketName = "woolution";
-const bucketRegion = "ap-northeast-2";
-const IdentityPoolId = "ap-northeast-2:7d89e448-6302-41cf-9d79-340cb4dd58fd";
-
-AWS.config.update({
-    region: bucketRegion,
-    credentials: new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: IdentityPoolId
-    })
-});
-
-const s3 = new AWS.S3({
-    apiVersion: "2006-03-01",
-    params: {Bucket: albumBucketName}
-});
-
 
 function preview(file, idx) {
     const reader = new FileReader();
@@ -85,27 +70,3 @@ $("#thumbnails").click(".close", (e) => {
 
     $target.parent().remove(); //섬네일 삭제
 });
-
-function addPhoto(albumName) {
-    var files = document.getElementById('photoupload').files;
-    if (!files.length) {
-        return alert('Please choose a file to upload first.');
-    }
-    var file = files[0];
-    var fileName = file.name;
-    var albumPhotosKey = encodeURIComponent(albumName) + '//';
-
-    var photoKey = albumPhotosKey + fileName;
-    s3.upload({
-        Key: photoKey,
-        Body: file,
-        ACL: 'public-read'
-    }, function (err, data) {
-        if (err) {
-            console.log(err)
-            return alert('There was an error uploading your photo: ', err.message);
-        }
-        alert('Successfully uploaded photo.');
-        viewAlbum(albumName);
-    });
-}
