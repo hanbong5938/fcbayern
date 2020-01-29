@@ -1,11 +1,12 @@
 package com.football.fcbayern.service;
 
-import com.football.fcbayern.model.ProfileAttachModel;
-import org.springframework.web.multipart.MultipartFile;
+import com.football.fcbayern.model.ProfileCategoryModel;
+import com.football.fcbayern.model.ProfileModel;
 
-import java.io.IOException;
+import java.util.List;
 
 public interface ProfileService {
-    void insertImg(ProfileAttachModel profileAttachModel);
+    int insert(ProfileModel profileModel);
 
+    List<ProfileCategoryModel> category();
 }

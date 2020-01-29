@@ -6,10 +6,18 @@
     <div class="container-custom">
         <div class="col-lg-12">
 
-            <input placeholder="카테고리">
-            <input placeholder="이름">
-            <input placeholder="등번호">
-            <input placeholder="생일">
+            <label>
+                <select id="category"></select>
+            </label>
+            <label>
+                <input id="profileNm" placeholder="이름">
+            </label>
+            <label>
+                <input id="backNo" placeholder="등번호">
+            </label>
+            <label>
+                <input id="birthDate" placeholder="생일">
+            </label>
 
             <input type="button" id="btnSubmit" value="업로드"/>
             <div id="drop" style="border:1px solid black; width:800px; height:300px; padding:3px">

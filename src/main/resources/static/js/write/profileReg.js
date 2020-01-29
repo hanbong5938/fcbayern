@@ -1,15 +1,13 @@
 const drop = $("#drop");
 let uploadFiles = [];
 
-const albumBucketName = "woolution";
-
 function preview(file, idx) {
     const reader = new FileReader();
     reader.onload = ((f, idx) => {
         return (e) => {
             const div = '<div class ="thumb">' +
                 '<div class="close" data-idx="' + idx + '">X</div>' +
-                '<img src="' + e.target.result + '"title="' + escape(f.name) + '"/>' +
+                '<img src="' + e.target.result + '" title="' + escape(f.name) + '" alt=""/>' +
                 '</div>';
             $("#thumbnails").append(div);
         };
@@ -17,6 +15,50 @@ function preview(file, idx) {
     reader.readAsDataURL(file);
 }
 
+//promise 사용위해 이미지 삽입시
+function insertImg(formData) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: '/profileAttach/insertImg',
+            processData: false,
+            contentType: false,
+            data: formData,
+            type: 'POST',
+            success: (result) => {
+                //uuid 와 folderPath 분리하기 위해
+                const path = result.split("/");
+                let temp = "";
+                for (let i = 0; i < path.length - 1; i++) {
+                    temp += path[i] + "/";
+                }
+
+                const profile = {
+                    uploadPath: temp,
+                    uuid: path[path.length - 1]
+                };
+
+                console.log(profile);
+                resolve(profile);
+            }
+        })
+    })
+}
+
+function profileCategory() {
+    $.ajax({
+        type: 'GET',
+        url: '/profile/category',
+        dataType: "JSON",
+        success: ((data) => {
+            alert(data);
+            for (let i = 0; i < data.length; i++) {
+                $('#category').append('<option value="' + data[i].profileCategoryNo + '">' + data[i].categoryNm + '</option>');
+            }
+        })
+    })
+}
+
+profileCategory();
 
 $(drop).on("dragenter", (e) => { //드래그 요소가 들어왔을떄
     $(this).addClass('drag-over');
@@ -41,26 +83,41 @@ $(drop).on("dragenter", (e) => { //드래그 요소가 들어왔을떄
 
 $("#btnSubmit").click(() => {
     const formData = new FormData();
-
     $.each(uploadFiles, (i, file) => {
         if (file.upload !== 'disable') { //삭제하지 않은 이미지만 업로드 항목으로 추가
             formData.append('uploadFile', file);
         }
     });
 
-    for (const pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-    }
+    const data = {
+        profileCategoryNo: $('#profileCategoryNo').val(),
+        profileNm: $('#profileNm').val(),
+        backNo: $('#backNo').val(),
+        birthDate: $('#birthDate').val()
+    };
+
     $.ajax({
-        url: '/profile/insertImg',
-        processData: false,
-        contentType: false,
-        data: formData,
+        url: '/profile/insertInfo',
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
         type: 'POST',
         success: () => {
-            alert("성공");
+            insertImg(formData).then(
+                function insertAttachInfo(profile) {
+                    $.ajax({
+                        url: '/profileAttach/insertAttachInfo',
+                        data: JSON.stringify(profile),
+                        contentType: "application/json; charset=utf-8",
+                        type: 'POST',
+                        success: (profile) => {
+                            console.log(profile);
+                            alert("성공" + profile);
+                        }
+                    })
+                }
+            )
         }
-    })
+    });
 });
 
 $("#thumbnails").click(".close", (e) => {

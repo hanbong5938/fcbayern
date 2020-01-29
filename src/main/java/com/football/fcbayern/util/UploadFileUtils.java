@@ -8,14 +8,13 @@ import java.util.UUID;
 public class UploadFileUtils {
 
     public static String uploadFile(String uploadPath, String originalName, byte[] bytes) throws Exception{
+
         AwsS3Util awsS3Util = new AwsS3Util();
         String bucketName = "woolution";
 
         UUID uuid = UUID.randomUUID();
 
         String saveName = "/"+uuid.toString()+"_"+originalName;
-
-        System.out.println("업로드 경로 : "+ uploadPath);
 
         String savedPath = calendarPath(uploadPath);
 

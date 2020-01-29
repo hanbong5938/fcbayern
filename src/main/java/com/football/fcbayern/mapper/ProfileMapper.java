@@ -1,10 +1,14 @@
 package com.football.fcbayern.mapper;
 
-import com.football.fcbayern.model.ProfileAttachModel;
-import org.springframework.web.multipart.MultipartFile;
+import com.football.fcbayern.model.ProfileCategoryModel;
+import com.football.fcbayern.model.ProfileModel;
+
+import java.util.List;
 
 public interface ProfileMapper {
 
-    void insertImg(ProfileAttachModel profileAttachModel);
+    int insert(ProfileModel profileModel);
+
+    List<ProfileCategoryModel> category();
 
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.football.fcbayern.mapper.ProfileAttachMapper">
+
+    <insert id="insert">
+        insert into profileAttach (uuid, uploadPath, fileNm, state, profileNo)
+        VALUES (#{uuid}, #{uploadPath}, #{fileNm}, 1, LAST_INSERT_ID())
+    </insert>
+
+    <select id="select">
+        select * from profileAttach
+    </select>
+
+</mapper>

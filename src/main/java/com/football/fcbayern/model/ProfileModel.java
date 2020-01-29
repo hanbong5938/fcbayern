@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class ProfileModel {
     private int profileNo;
     private String profileNm;
-    private int back;
+    private int backNo;
     private Timestamp birthDate;
     private boolean state;
     private Timestamp createDt;
