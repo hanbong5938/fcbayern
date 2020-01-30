@@ -43,59 +43,59 @@
             </div>
         </div>
 
-        <div class="container-custom">
-            <h1 class="bold profile-category">GOALKEEPERS</h1>
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="profile-img text-center">
-                            <img src="images/player/Neuer.webp" alt="">
-                            <div>
-                                <span class="text-primary">Manuel Neuer</span></div>
-                            <div>
-                                <span>27/03/1986</span>
-                            </div>
-                        </div>
+        <div id="profileList">
+<%--            <div class="container-custom">--%>
+<%--                <h1 class="bold profile-category">GOALKEEPERS</h1>--%>
+<%--                <div class="col-lg-12">--%>
+<%--                    <div class="row">--%>
+<%--                        <div class="col-lg-3">--%>
+<%--                            <div class="profile-img text-center">--%>
+<%--                                <img src="images/player/Neuer.webp" alt="">--%>
+<%--                                <div>--%>
+<%--                                    <span class="text-primary">Manuel Neuer</span></div>--%>
+<%--                                <div>--%>
+<%--                                    <span>27/03/1986</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-lg-3">--%>
 
-                    </div>
-                    <div class="col-lg-3">
+<%--                        </div>--%>
+<%--                        <div class="col-lg-3">--%>
 
-                    </div>
-                    <div class="col-lg-3">
+<%--                        </div>--%>
+<%--                        <div class="col-lg-3">--%>
 
-                    </div>
-                    <div class="col-lg-3">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-custom">
-            <h1 class="bold profile-category">DEFENDERS</h1>
-        </div>
-        <div class="container-custom">
-            <h1 class="bold profile-category">MIDFIELDERS</h1>
-        </div>
-        <div class="container-custom">
-            <h1 class="bold profile-category">FORWARDS</h1>
-        </div>
-        <div class="container-custom">
-            <h1 class="bold profile-category">
-                SPORTING DIRECTOR
-            </h1>
-        </div>
-        <div class="container-custom">
-            <h1 class="bold profile-category">COACHES</h1>
-        </div>
-        <div class="container-custom">
-            <h1 class="bold profile-category">FUNCTIONAL</h1>
-        </div>
-        <div class="container-custom">
-            <h1 class="bold profile-category">MASCOTS</h1>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="container-custom">--%>
+<%--                <h1 class="bold profile-category">DEFENDERS</h1>--%>
+<%--            </div>--%>
+<%--            <div class="container-custom">--%>
+<%--                <h1 class="bold profile-category">MIDFIELDERS</h1>--%>
+<%--            </div>--%>
+<%--            <div class="container-custom">--%>
+<%--                <h1 class="bold profile-category">FORWARDS</h1>--%>
+<%--            </div>--%>
+<%--            <div class="container-custom">--%>
+<%--                <h1 class="bold profile-category">--%>
+<%--                    SPORTING DIRECTOR--%>
+<%--                </h1>--%>
+<%--            </div>--%>
+<%--            <div class="container-custom">--%>
+<%--                <h1 class="bold profile-category">COACHES</h1>--%>
+<%--            </div>--%>
+<%--            <div class="container-custom">--%>
+<%--                <h1 class="bold profile-category">FUNCTIONAL</h1>--%>
+<%--            </div>--%>
+<%--            <div class="container-custom">--%>
+<%--                <h1 class="bold profile-category">MASCOTS</h1>--%>
+<%--            </div>--%>
         </div>
 
         <button id="profileReg" class="btn-info">등록</button>
     </div>
 </div>
-<img id="profileImg" class="img-fluid"	src="/profile/getImg?fileName=66299ae7-1409-4048-81e9-77365de0e549_Neuer.webp&directory=profileAttach/2020/01/23/">
 <script src="js/club/player.js"></script>

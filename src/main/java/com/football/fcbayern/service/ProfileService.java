@@ -9,4 +9,6 @@ public interface ProfileService {
     int insert(ProfileModel profileModel);
 
     List<ProfileCategoryModel> category();
+
+    List<ProfileModel> infoList();
 }

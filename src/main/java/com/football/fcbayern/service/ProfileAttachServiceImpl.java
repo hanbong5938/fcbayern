@@ -6,6 +6,8 @@ import com.football.fcbayern.model.ProfileAttachModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProfileAttachServiceImpl implements ProfileAttachService {
 
@@ -19,5 +21,10 @@ public class ProfileAttachServiceImpl implements ProfileAttachService {
     @Override
     public int insert(ProfileAttachModel profileAttachModel) {
        return profileAttachMapper.insert(profileAttachModel);
+    }
+
+    @Override
+    public List<ProfileAttachModel> getAttachList() {
+        return profileAttachMapper.getAttachList();
     }
 }

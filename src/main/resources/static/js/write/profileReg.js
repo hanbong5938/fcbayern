@@ -33,11 +33,10 @@ function insertImg(formData) {
                 }
 
                 const profile = {
-                    uploadPath: temp,
+                    uploadPath: 'profileAttach'+temp,
                     uuid: path[path.length - 1]
                 };
 
-                console.log(profile);
                 resolve(profile);
             }
         })
@@ -57,6 +56,7 @@ function profileCategory() {
         })
     })
 }
+
 
 profileCategory();
 
@@ -90,7 +90,7 @@ $("#btnSubmit").click(() => {
     });
 
     const data = {
-        profileCategoryNo: $('#profileCategoryNo').val(),
+        profileCategoryNo: $('#category option:selected').val(),
         profileNm: $('#profileNm').val(),
         backNo: $('#backNo').val(),
         birthDate: $('#birthDate').val()
@@ -110,8 +110,7 @@ $("#btnSubmit").click(() => {
                         contentType: "application/json; charset=utf-8",
                         type: 'POST',
                         success: (profile) => {
-                            console.log(profile);
-                            alert("성공" + profile);
+                            alert("성공");
                         }
                     })
                 }

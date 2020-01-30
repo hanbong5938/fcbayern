@@ -17,20 +17,15 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 @RequestMapping("/profileAttach")
 @RestController
 public class ProfileAttachController {
 
-    private ProfileService profileService;
     private ProfileAttachService profileAttachService;
     private AwsS3Util awsS3Util = new AwsS3Util();
     private final static String bucketName = "woolution";
-
-    @Autowired
-    public void setProfileService(ProfileService profileService) {
-        this.profileService = profileService;
-    }
 
     @Autowired
     public void setProfileAttachService(ProfileAttachService profileAttachService) {
@@ -54,6 +49,12 @@ public class ProfileAttachController {
                 HttpStatus.CREATED);
 
         return img_path.getBody();
+    }
+
+    @GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ProfileAttachModel>> getAttachList(){
+        System.out.println(profileAttachService.getAttachList());
+        return new ResponseEntity<>(profileAttachService.getAttachList(), HttpStatus.OK);
     }
 
     @GetMapping("/getImg")

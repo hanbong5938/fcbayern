@@ -39,4 +39,10 @@ public class ProfileController {
         return new ResponseEntity<>(profileService.category(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/infoList", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<List<ProfileModel>> infoList(){
+        System.out.println(profileService.infoList());
+        return new ResponseEntity<>(profileService.infoList(), HttpStatus.OK);
+    }
+
 }

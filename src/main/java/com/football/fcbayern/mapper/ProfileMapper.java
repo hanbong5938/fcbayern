@@ -11,4 +11,5 @@ public interface ProfileMapper {
 
     List<ProfileCategoryModel> category();
 
+    List<ProfileModel> infoList();
 }

@@ -6,7 +6,5 @@ import lombok.Data;
 public class ProfileCategoryModel {
     private int profileCategoryNo;
     private String categoryNm;
-
-    private int profileNo;
 }
 

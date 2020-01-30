@@ -37,4 +37,9 @@ public class ProfileServiceImpl implements ProfileService {
     public List<ProfileCategoryModel> category() {
         return profileMapper.category();
     }
+
+    @Override
+    public List<ProfileModel> infoList() {
+        return profileMapper.infoList();
+    }
 }

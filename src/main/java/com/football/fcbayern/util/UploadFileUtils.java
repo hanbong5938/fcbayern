@@ -10,7 +10,7 @@ public class UploadFileUtils {
     public static String uploadFile(String uploadPath, String originalName, byte[] bytes) throws Exception{
 
         AwsS3Util awsS3Util = new AwsS3Util();
-        String bucketName = "woolution";
+        final String bucketName = "woolution";
 
         UUID uuid = UUID.randomUUID();
 

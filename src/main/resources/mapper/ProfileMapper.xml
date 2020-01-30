@@ -5,11 +5,27 @@
 <mapper namespace="com.football.fcbayern.mapper.ProfileMapper">
 
     <insert id="insert">
-    insert into profile (profileNm, backNo, birthDate, state, createDt, updateDt, userNo) VALUES (#{profileNm}, #{backNo}, #{birthDate}, 1, now(), now(), 1)
+        insert into profile (profileNm, backNo, birthDate, state, createDt, updateDt, userNo, profileCategoryNo)
+        VALUES (#{profileNm}, #{backNo}, #{birthDate}, 1, now(), now(), 1, #{profileCategoryNo})
     </insert>
 
     <select id="category" resultType="com.football.fcbayern.model.ProfileCategoryModel">
-        select profileCategoryNo, categoryNm from profileCategory
+        select profileCategoryNo, categoryNm
+        from profileCategory
+    </select>
+
+    <select id="infoList" resultType="com.football.fcbayern.model.ProfileModel">
+        select profileNo,
+               profileNm,
+               backNo,
+               date_format(birthDate, '%Y-%m-%d') as birthDate,
+               state,
+               createDt,
+               updateDt,
+               userNo,
+               profileCategoryNo
+        from profile
+        where state = true
     </select>
 
 </mapper>

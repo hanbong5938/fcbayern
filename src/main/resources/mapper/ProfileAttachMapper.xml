@@ -9,8 +9,14 @@
         VALUES (#{uuid}, #{uploadPath}, #{fileNm}, 1, LAST_INSERT_ID())
     </insert>
 
+    <select id="getAttachList" resultType="com.football.fcbayern.model.ProfileAttachModel">
+        select uuid, uploadPath, fileNm, state, profileNo
+        from profileAttach
+    </select>
+
     <select id="select">
-        select * from profileAttach
+        select *
+        from profileAttach
     </select>
 
 </mapper>

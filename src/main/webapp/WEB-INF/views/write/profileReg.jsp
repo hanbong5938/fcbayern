@@ -10,13 +10,13 @@
                 <select id="category"></select>
             </label>
             <label>
-                <input id="profileNm" placeholder="이름">
+                <input id="profileNm" type="text" placeholder="이름">
             </label>
             <label>
-                <input id="backNo" placeholder="등번호">
+                <input id="backNo" type="number" placeholder="등번호">
             </label>
             <label>
-                <input id="birthDate" placeholder="생일">
+                <input id="birthDate" type="datetime-local" placeholder="생일">
             </label>
 
             <input type="button" id="btnSubmit" value="업로드"/>
