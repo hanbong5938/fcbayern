@@ -63,6 +63,8 @@
 </div>
 <!-- END fh5co-wrapper -->
 
+<%--aws s3--%>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
 <!-- Modernizr JS 브라우저 판별-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 <!-- FOR IE9 below -->
@@ -90,11 +92,6 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-bs4.min.js"></script>
 <!-- include summernote-ko-KR -->
 <%--<script src="lang/summernote-ko-KR.js"></script>--%>
-
-<%--dataTable 현재 사용 X--%>
-<%--&lt;%&ndash;DataTables.min.js&ndash;%&gt;--%>
-<%--<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>--%>
-<%--<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>--%>
 
 
 <%--Footer--%>

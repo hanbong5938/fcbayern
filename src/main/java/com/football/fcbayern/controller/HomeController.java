@@ -56,5 +56,10 @@ public class HomeController {
         return "/write/write";
     }
 
+    @GetMapping("/profileReg")
+    public String playerReg() {
+        return "/write/profileReg";
+    }
+
 
 }
