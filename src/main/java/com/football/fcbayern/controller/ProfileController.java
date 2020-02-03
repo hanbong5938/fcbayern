@@ -28,20 +28,17 @@ public class ProfileController {
 
     @PostMapping(value = "/insertInfo", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
     public ResponseEntity<String> insertInfo(@RequestBody ProfileModel profileModel) {
-        System.out.println(profileModel);
         int count = profileService.insert(profileModel);
         return count == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping(value = "/category", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<ProfileCategoryModel>> category() {
-        System.out.println(profileService.category());
         return new ResponseEntity<>(profileService.category(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/infoList", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<ProfileModel>> infoList(){
-        System.out.println(profileService.infoList());
         return new ResponseEntity<>(profileService.infoList(), HttpStatus.OK);
     }
 

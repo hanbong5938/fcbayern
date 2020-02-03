@@ -6,7 +6,7 @@
 
     <insert id="insert">
         insert into profile (profileNm, backNo, birthDate, state, createDt, updateDt, userNo, profileCategoryNo)
-        VALUES (#{profileNm}, #{backNo}, #{birthDate}, 1, now(), now(), 1, #{profileCategoryNo})
+        VALUES (#{profileNm}, #{backNo}, #{birthDate}, 1, now(), now(), #{userNo}, #{profileCategoryNo})
     </insert>
 
     <select id="category" resultType="com.football.fcbayern.model.ProfileCategoryModel">

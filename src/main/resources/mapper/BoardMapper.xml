@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.football.fcbayern.mapper.BoardMapper">
+
+    <insert id="insertInfo">
+        insert into board (title, content, createDt, updateDt, state, userNo, boardCategoryNo)
+        VALUES (#{title}, #{content}, now(), now(), 0, #{userNo}, #{boardCategoryNo})
+    </insert>
+
+    <select id="category" resultType="com.football.fcbayern.model.BoardCategoryModel">
+        select boardCategoryNo, categoryNm, createDt, updateDt, state, notice
+        from boardCategory;
+    </select>
+
+</mapper>

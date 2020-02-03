@@ -33,7 +33,7 @@ function insertImg(formData) {
                 }
 
                 const profile = {
-                    uploadPath: 'profileAttach'+temp,
+                    uploadPath: 'profileAttach' + temp,
                     uuid: path[path.length - 1]
                 };
 
@@ -43,22 +43,17 @@ function insertImg(formData) {
     })
 }
 
-function profileCategory() {
-    $.ajax({
-        type: 'GET',
-        url: '/profile/category',
-        dataType: "JSON",
-        success: ((data) => {
-            alert(data);
-            for (let i = 0; i < data.length; i++) {
-                $('#category').append('<option value="' + data[i].profileCategoryNo + '">' + data[i].categoryNm + '</option>');
-            }
-        })
+$.ajax({
+    type: 'GET',
+    url: '/profile/category',
+    dataType: "JSON",
+    success: ((data) => {
+        for (let i = 0; i < data.length; i++) {
+            $('#category').append('<option value="' + data[i].profileCategoryNo + '">' + data[i].categoryNm + '</option>');
+        }
     })
-}
+})
 
-
-profileCategory();
 
 $(drop).on("dragenter", (e) => { //드래그 요소가 들어왔을떄
     $(this).addClass('drag-over');
@@ -93,7 +88,8 @@ $("#btnSubmit").click(() => {
         profileCategoryNo: $('#category option:selected').val(),
         profileNm: $('#profileNm').val(),
         backNo: $('#backNo').val(),
-        birthDate: $('#birthDate').val()
+        birthDate: $('#birthDate').val(),
+        userNo: 1 // ToDo 수정예정
     };
 
     $.ajax({

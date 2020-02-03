@@ -16,13 +16,13 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 public class AwsS3Util {
-    private static final String accessKye = " accessKye";
-    private static final String secretKey = " secretKey";
+    private static final String accessKey = "AKIAXPAVTY6ZYLEM3CM4";
+    private static final String secretKey = "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";
 
     private AmazonS3 amazonS3;
 
     public AwsS3Util() {
-        AWSCredentials awsCredentials = new BasicAWSCredentials(accessKye, secretKey);
+        AWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
         ClientConfiguration clientConfiguration = new ClientConfiguration();
         clientConfiguration.setProtocol(Protocol.HTTP);
         this.amazonS3 = new AmazonS3Client(awsCredentials, clientConfiguration) {
