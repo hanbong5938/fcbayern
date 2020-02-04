@@ -1,7 +1,10 @@
 package com.football.fcbayern.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class HomeController {
@@ -36,13 +39,15 @@ public class HomeController {
         return "/football/football";
     }
 
-    @GetMapping("/freeBoard")
-    public String freeBoard() {
+    @PostMapping("/freeBoard")
+    public String freeBoard(int boardCategoryNo, Model model) {
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
         return "/community/freeBoard";
     }
 
-    @GetMapping("/multiMedia")
-    public String multiMedia() {
+    @PostMapping("/multiMedia")
+    public String multiMedia(int boardCategoryNo, Model model) {
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
         return "/community/multiMedia";
     }
 
@@ -51,8 +56,10 @@ public class HomeController {
         return "/community/notice";
     }
 
-    @GetMapping("/write")
-    public String writer() {
+    //load에서 파라미터가 2개 이상들어가면 post로 바뀌기에 post를 통해서 값을 받는다.
+    @PostMapping("/write")
+    public String writer(int boardCategoryNo, Model model) {
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
         return "/write/write";
     }
 

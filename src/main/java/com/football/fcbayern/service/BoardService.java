@@ -10,4 +10,8 @@ public interface BoardService {
     int insertInfo(BoardModel boardModel);
 
     List<BoardCategoryModel> category();
+
+    List<BoardModel> infoList(int boardCategoryNo);
+
+    BoardModel info(int boardNo);
 }

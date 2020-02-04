@@ -10,4 +10,8 @@ public interface BoardMapper {
     int insertInfo(BoardModel boardModel);
 
     List<BoardCategoryModel> category();
+
+    List<BoardModel> infoList(int boardCategoryNo);
+
+    BoardModel info(int boardNo);
 }

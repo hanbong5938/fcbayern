@@ -4,20 +4,18 @@ const getCookie = (name) => {
 };
 
 const cookies = (getCookie("APPLICATION_LOCALE"));
-if (cookies === 'ja') {
+if (cookies === 'de') {
     $('#langIcon').html('<i class="flag-icon flag-icon-de mr-2"></i>');
     $('#de').addClass('active');
 } else if (cookies === 'en') {
     $('#langIcon').html('<i class="flag-icon flag-icon-us mr-2"></i>');
     $('#en').addClass('active');
-
 } else {
     $('#langIcon').html('<i class="flag-icon flag-icon-kr mr-2"></i>');
     $('#ko').addClass('active');
-
 }
 
-$('.set-language').click(() => {
+$('.set-language').click(function () {
     const getLanguage = $(this).closest("a").attr('id');
     window.location.replace("index?lang=" + getLanguage);
 });
@@ -43,11 +41,11 @@ $('#football').click(() => {
 });
 
 $('#freeBoard').click(() => {
-    $(".content").load("/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'));
+    $(".content").load("/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 1});
 });
 
 $('#multiMedia').click(() => {
-    $(".content").load("/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'));
+    $(".content").load("/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 2});
 });
 
 $('#notice').click(() => {

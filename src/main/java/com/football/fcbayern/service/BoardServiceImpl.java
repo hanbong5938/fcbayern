@@ -28,4 +28,14 @@ public class BoardServiceImpl implements BoardService{
         return boardMapper.category();
     }
 
+    @Override
+    public List<BoardModel> infoList(int boardCategoryNo) {
+        return boardMapper.infoList(boardCategoryNo);
+    }
+
+    @Override
+    public BoardModel info(int boardNo) {
+        return boardMapper.info(boardNo);
+    }
+
 }

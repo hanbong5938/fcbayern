@@ -32,5 +32,6 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="boardCategoryNo" value='${boardCategoryNo}'/>
 
     <script src="js/write/write.js"></script>

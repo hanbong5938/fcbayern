@@ -20,9 +20,6 @@ import java.net.URL;
 public class BoardAttachController {
 
     private BoardService boardService;
-    private AwsS3Util awsS3Util  = new AwsS3Util();
-    private final static String bucketName = "woolution";
-
 
     @Autowired
     public void setBoardService(BoardService boardService) {
@@ -31,7 +28,6 @@ public class BoardAttachController {
 
     @PostMapping(value = "/insertImg", produces = "text/plain;charset=UTF-8")
     public String insertImg(MultipartFile uploadFile) throws Exception {
-        System.out.println(uploadFile);
         String uploadPath = "boardAttach";
 
         ResponseEntity<String> img_path = new ResponseEntity<>(
@@ -41,38 +37,5 @@ public class BoardAttachController {
         return img_path.getBody();
     }
 
-    @GetMapping("/getImg")
-    public ResponseEntity<byte[]> getImg(String fileName, String directory) throws Exception {
-        System.out.println(directory);
 
-        InputStream inputStream = null;
-        ResponseEntity<byte[]> responseEntity = null;
-        HttpURLConnection httpURLConnection = null;
-        System.out.println(fileName);
-
-        String inputDirectory = null;
-        inputDirectory = directory;
-        try {
-            HttpHeaders httpHeaders = new HttpHeaders();
-            URL url;
-            try {
-                url = new URL(awsS3Util.getFileURL(bucketName, inputDirectory + fileName));
-                httpURLConnection = (HttpURLConnection) url.openConnection();
-                inputStream = httpURLConnection.getInputStream();
-            } catch (Exception e) {
-//              url = new URL(awsS3Util.getFileURL(bucketName, inputDirectory + fileName));
-//              httpURLConnection = (HttpURLConnection)url.openConnection();
-//              inputStream =  httpURLConnection.getInputStream();
-                e.printStackTrace();
-            }
-            responseEntity = new ResponseEntity<byte[]>(IOUtils.toByteArray(inputStream), httpHeaders, HttpStatus.CREATED);
-        } catch (Exception e) {
-            e.printStackTrace();
-            responseEntity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
-        } finally {
-            assert inputStream != null;
-            inputStream.close();
-        }
-        return responseEntity;
-    }
 }

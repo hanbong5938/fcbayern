@@ -23,8 +23,8 @@ import java.util.List;
 public class ProfileAttachController {
 
     private ProfileAttachService profileAttachService;
-    private AwsS3Util awsS3Util = new AwsS3Util();
-    private final static String bucketName = "woolution";
+//    private AwsS3Util awsS3Util = new AwsS3Util();
+//    private final static String bucketName = "woolution";
 
     @Autowired
     public void setProfileAttachService(ProfileAttachService profileAttachService) {
@@ -50,43 +50,7 @@ public class ProfileAttachController {
 
     @GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ProfileAttachModel>> getAttachList(){
-        System.out.println(profileAttachService.getAttachList());
         return new ResponseEntity<>(profileAttachService.getAttachList(), HttpStatus.OK);
-    }
-
-    @GetMapping("/getImg")
-    public ResponseEntity<byte[]> getImg(String fileName, String directory) throws Exception {
-        System.out.println(directory);
-
-        InputStream inputStream = null;
-        ResponseEntity<byte[]> responseEntity = null;
-        HttpURLConnection httpURLConnection = null;
-        System.out.println(fileName);
-
-        String inputDirectory = null;
-        inputDirectory = directory;
-        try {
-            HttpHeaders httpHeaders = new HttpHeaders();
-            URL url;
-            try {
-                url = new URL(awsS3Util.getFileURL(bucketName, inputDirectory + fileName));
-                httpURLConnection = (HttpURLConnection) url.openConnection();
-                inputStream = httpURLConnection.getInputStream();
-            } catch (Exception e) {
-//              url = new URL(awsS3Util.getFileURL(bucketName, inputDirectory + fileName));
-//              httpURLConnection = (HttpURLConnection)url.openConnection();
-//              inputStream =  httpURLConnection.getInputStream();
-                e.printStackTrace();
-            }
-            responseEntity = new ResponseEntity<byte[]>(IOUtils.toByteArray(inputStream), httpHeaders, HttpStatus.CREATED);
-        } catch (Exception e) {
-            e.printStackTrace();
-            responseEntity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
-        } finally {
-            assert inputStream != null;
-            inputStream.close();
-        }
-        return responseEntity;
     }
 
 }

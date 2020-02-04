@@ -45,7 +45,7 @@ $.ajax({
                                     "                <div class='row'>\n" +
                                     "                    <div class='col-lg-3'>\n" +
                                     "                        <div class='profile-img text-center'>\n" +
-                                    "                            <img src='/profileAttach/getImg?fileName=" + attachFilter[0].uuid + "&directory=" + attachFilter[0].uploadPath + "' alt=''>\n" +
+                                    "                            <img src='/aws/getImg?fileName=" + attachFilter[0].uuid + "&directory=" + attachFilter[0].uploadPath + "' alt=''>\n" +
                                     "                            <div>\n" +
                                     "                                <span class='text-primary'>" + profileFilter[j].profileNm + "</span></div>\n" +
                                     "                            <div>\n" +
