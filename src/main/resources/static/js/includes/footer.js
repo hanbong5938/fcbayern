@@ -22,32 +22,67 @@ $('.set-language').click(function () {
 
 $('#team').click(() => {
     $(".content").load("/team?lang=" + getCookie('APPLICATION_LOCALE'));
+    history.pushState({data: "/team"}, null, "/team?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
 $('#player').click(() => {
     $(".content").load("/player?lang=" + getCookie('APPLICATION_LOCALE'));
+    history.pushState({data: "/player"}, null, "/player?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
 $('#honours').click(() => {
     $(".content").load("/honours?lang=" + getCookie('APPLICATION_LOCALE'));
+    history.pushState({data: "/honours"}, null, "/honours?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
 $('#news').click(() => {
     $(".content").load("/news?lang=" + getCookie('APPLICATION_LOCALE'));
+    history.pushState({data: "/news"}, null, "/news?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
 $('#football').click(() => {
     $(".content").load("/football?lang=" + getCookie('APPLICATION_LOCALE'));
+    history.pushState({data: "/football"}, null, "/football?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
 $('#freeBoard').click(() => {
-    $(".content").load("/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 1});
+    $.ajax({
+        url: "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'),
+        data: {boardCategoryNo: 1},
+        type: "get",
+        success: (result) => {
+            $(".content").html(result);
+        }
+    });
+    history.pushState({data: "/freeBoard", boardCategoryNo: 1}, null, "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
 $('#multiMedia').click(() => {
-    $(".content").load("/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 2});
+    $.ajax({
+        url: "/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'),
+        data: {boardCategoryNo: 2},
+        type: "get",
+        success: (result) => {
+            $(".content").html(result);
+        }
+    });
+    history.pushState({data: "/multiMedia", boardCategoryNo: 2}, null, "/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
 $('#notice').click(() => {
     $(".content").load("/notice?lang=" + getCookie('APPLICATION_LOCALE'));
+    history.pushState({data: "/notice"}, null, "/notice?lang=" + getCookie('APPLICATION_LOCALE'));
+});
+
+//이벤트 감지해서 뒤로가기 불러오는 ajax
+$(window).on('popstate', function (event) {
+    const data = event.originalEvent.state;
+    $.ajax({
+        url: data.data + "?lang=" + getCookie('APPLICATION_LOCALE'),
+        data: {boardCategoryNo: data.boardCategoryNo, boardNo: data.boardNo},
+        type: "get",
+        success: (result) => {
+            $(".content").html(result);
+        }
+    })
 });

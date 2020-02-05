@@ -1,5 +1,7 @@
 $('#profileReg').click(function () {
     $(".content").load("/profileReg?lang=" + getCookie('APPLICATION_LOCALE'));
+    history.pushState({data: "/profileReg"}, null, "/profileReg?lang=" + getCookie('APPLICATION_LOCALE'));
+
 });
 
 function profileInfoList() {
@@ -38,6 +40,9 @@ $.ajax({
                                 const attachFilter = attachData.filter((element) => {
                                     return element.profileNo === profileFilter[j].profileNo;
                                 });
+                                const date = new Date(profileFilter[j].birthDate);
+                                const month = calendar(date.getMonth() + 1, 2);
+                                const day = calendar(date.getDate(), 2);
                                 //id fk 로 filter 처리를 해서 하나만 남겨 배열 0을 통해 첨부파일 정보 획득
                                 str += "<div class='container-custom'>\n" +
                                     "            <h1 class='bold profile-category'>" + data[i].categoryNm + "</h1>\n" +
@@ -49,7 +54,7 @@ $.ajax({
                                     "                            <div>\n" +
                                     "                                <span class='text-primary'>" + profileFilter[j].profileNm + "</span></div>\n" +
                                     "                            <div>\n" +
-                                    "                                <span>" + profileFilter[j].birthDate + "</span>\n" +
+                                    "                                <span>" + date.getFullYear() + "-" + month + "-" + day + "</span>\n" +
                                     "                            </div>\n" +
                                     "                        </div>\n" +
                                     "                    </div>\n" +
@@ -66,3 +71,8 @@ $.ajax({
         )
     })
 });
+
+function calendar(n, width) {
+    n = n + '';
+    return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+}

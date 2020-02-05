@@ -52,14 +52,19 @@
 
     <div class="mb-10">
         <label class="float-right">
-            <input class="">
-            <button class="">검색</button>
+            <select id="type">
+                <option value="t">제 목</option>
+                <option value="c">내 용</option>
+                <option value="w">작성자</option>
+            </select>
+            <input id="keyword" class="">
+            <button id="searchBtn" class="">검색</button>
         </label>
         <a id="regBtn" class="float-right regBtn" style="clear: both">등록</a>
     </div>
 </div>
 <!-- /.card-body -->
 
-<input type="hidden" id="boardCategoryNo" value='${boardCategoryNo}'/>
+<input type="hidden" id="boardCategoryNo" value='${boardCategoryNo}' readonly="readonly"/>
 
 <script src="js/write/list.js"></script>

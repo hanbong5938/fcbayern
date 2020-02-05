@@ -55,59 +55,59 @@
 
                             <div class="collapse navbar-collapse" id="navbarMenu">
                                 <ul class="navbar-nav ">
-                                    <a class="activeLink font-do mr-2" id="index" href="#"><spring:message
+                                    <a class="activeLink font-do mr-2" id="index"><spring:message
                                             code="Home"/></a>
 
                                     <li class="nav-item active mr-2">
                                         <div class="dropdown">
-                                            <a class="dropdown-toggle font-do" href="#"
+                                            <a class="dropdown-toggle font-do"
                                                id="club" data-toggle="dropdown" aria-haspopup="true"
                                                aria-expanded="false">
                                                 <spring:message code="Club"/>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="club">
-                                                <a id="team" class="dropdown-item" href="#"><spring:message
+                                                <a id="team" class="dropdown-item"><spring:message
                                                         code="Team"/></a>
-                                                <a id="player" class="dropdown-item" href="#"><spring:message
+                                                <a id="player" class="dropdown-item"><spring:message
                                                         code="Player"/></a>
-                                                <a id="honours" class="dropdown-item" href="#"><spring:message
+                                                <a id="honours" class="dropdown-item"><spring:message
                                                         code="Honours"/></a>
                                             </div>
                                         </div>
 
                                     </li>
                                     <li class="nav-item mr-2">
-                                        <a id="news" class="font-do" href="#"><spring:message code="News"/></a>
+                                        <a id="news" class="font-do"><spring:message code="News"/></a>
                                     </li>
                                     <li class="nav-item mr-2">
-                                        <a id="football" class="font-do" href="#"><spring:message
+                                        <a id="football" class="font-do"><spring:message
                                                 code="FootBall"/></a>
                                     </li>
                                     <li class="nav-item mr-2">
                                         <div class="dropdown">
-                                            <a class="dropdown-toggle font-do" href="#"
+                                            <a class="dropdown-toggle font-do"
                                                id="community" data-toggle="dropdown" aria-haspopup="true"
                                                aria-expanded="false">
                                                 <spring:message code="Community"/>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="community">
-                                                <a id="freeBoard" class="dropdown-item" href="#"><spring:message
+                                                <a id="freeBoard" class="dropdown-item"><spring:message
                                                         code="FreeBoard"/></a>
-                                                <a id="multiMedia" class="dropdown-item" href="#"><spring:message
+                                                <a id="multiMedia" class="dropdown-item"><spring:message
                                                         code="MultiMedia"/></a>
-                                                <a id="notice" class="dropdown-item" href="#"><spring:message
+                                                <a id="notice" class="dropdown-item"><spring:message
                                                         code="Notice"/></a>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="nav-item mr-2">
-                                        <a href="#"><i class="material-icons">
+                                        <a><i class="material-icons">
                                             lock
                                         </i></a>
                                     </li>
                                     <li class="nav-item">
                                         <div class="dropdown">
-                                            <a class="dropdown-toggle" href="#"
+                                            <a class="dropdown-toggle"
                                                id="langIcon" data-toggle="dropdown" aria-haspopup="true"
                                                aria-expanded="false">
                                                 <i class="flag-icon flag-icon-kr mr-2"></i>

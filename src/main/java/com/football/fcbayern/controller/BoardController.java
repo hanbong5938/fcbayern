@@ -2,6 +2,7 @@ package com.football.fcbayern.controller;
 
 import com.football.fcbayern.model.BoardCategoryModel;
 import com.football.fcbayern.model.BoardModel;
+import com.football.fcbayern.model.CriteriaModel;
 import com.football.fcbayern.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,21 +30,30 @@ public class BoardController {
     }
 
     @GetMapping(value = "/infoList")
-    public ResponseEntity<List<BoardModel>> infoList(int boardCategoryNo) {
-        return new ResponseEntity<>(boardService.infoList(boardCategoryNo), HttpStatus.OK);
+    public ResponseEntity<List<BoardModel>> infoList(CriteriaModel criteriaModel) {
+        System.out.println(criteriaModel);
+        return new ResponseEntity<>(boardService.infoList(criteriaModel), HttpStatus.OK);
     }
 
     @PostMapping(value = "/insertInfo", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
     public ResponseEntity<String> insertInfo(@RequestBody BoardModel boardModel) {
         int count = boardService.insertInfo(boardModel);
-        System.out.println(boardModel);
         return count == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PostMapping(value = "/info")
-    public ResponseEntity<BoardModel> info(int boardNo) {
-        System.out.println(boardService.info(boardNo));
+    @GetMapping(value = "/info/{boardNo}")
+    public ResponseEntity<BoardModel> info(@PathVariable int boardNo) {
         return new ResponseEntity<>(boardService.info(boardNo), HttpStatus.OK);
+    }
+
+    @PatchMapping(value = "/modify")
+    public ResponseEntity<BoardModel> modify(BoardModel boardModel) {
+        return new ResponseEntity<>(boardService.modify(boardModel), HttpStatus.OK);
+    }
+
+    @PatchMapping(value = "/delete/{boardNo}")
+    public ResponseEntity<BoardModel> delete(@PathVariable int boardNo) {
+        return new ResponseEntity<>(boardService.delete(boardNo), HttpStatus.OK);
     }
 
 }

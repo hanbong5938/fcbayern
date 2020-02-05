@@ -15,12 +15,55 @@
     </insert>
 
     <select id="infoList" resultType="com.football.fcbayern.model.BoardModel">
-        select boardNo, title, createDt, updateDt, hit, userNo, boardCategoryNo
+        select boardNo, title, content, createDt, updateDt, hit, userNo, boardCategoryNo
         from board
         where state = 1
-          and boardCategoryNo = #{boardCategoryNo}
+        and boardCategoryNo = #{boardCategoryNo}
+        <if test="type != null">
+            <if test="type == 't'.toString()">
+                and title like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="type == 'c'.toString()">
+                and content like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="type == 'w'.toString()">
+                and userNo like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="type == 'tc'.toString()">
+                and ( title like CONCAT('%', #{keyword}, '%') OR
+                content
+                like
+                CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="type == 'tw'.toString()">
+                and ( userNo like CONCAT('%', #{keyword}, '%') OR
+                content
+                like
+                CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="type == 'twc'.toString()">
+                and ( title like CONCAT('%', #{keyword}, '%') OR
+                userNo
+                like
+                CONCAT('%', #{keyword}, '%')OR content
+                like
+                CONCAT('%', #{keyword}, '%'))
+            </if>
+        </if>
         order by createDt desc
+        limit 1, 10
     </select>
+
+    <!--    <select id="infoList"-->
+    <!--            resultType="com.football.fcbayern.model.BoardModel">-->
+    <!--        select boardNo, title, content, createDt, updateDt, hit, userNo, boardCategoryNo-->
+    <!--        from board-->
+    <!--        where state = 1-->
+    <!--        and boardCategoryNo = #{boardCategoryNo}-->
+    <!--        <include refid="criteria"/>-->
+    <!--        order by createDt desc-->
+    <!--        limit #{pageStart}, #{amount}-->
+    <!--    </select>-->
 
     <select id="info" resultType="com.football.fcbayern.model.BoardModel">
         select boardNo,
@@ -34,5 +77,69 @@
                boardCategoryNo
         from board
         where boardNo = #{boardNo}
+    </select>
+
+    <update id="hit">
+        update board
+        set hit = hit + 1
+        where boardNo = #{boardNo}
+    </update>
+
+    <update id="replyCnt">
+        update board
+        set replyCnt = replyCnt + 1
+        where boardNo = #{boardNo}
+    </update>
+
+
+    <update id="modify">
+        update board
+        set title = #{title} and content = #{cotent} and updateDt = now() and boardCategoryNo = #{boardCategoryNo}
+        where boardNo = #{boardNo}
+    </update>
+
+    <update id="delete">
+        update board
+        set state = 0
+        where boardNo = #{boardNo}
+    </update>
+
+    <sql id="criteria">
+        <if test="type != null">
+            <if test="type == 't'.toString()">
+                and title like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="type == 'c'.toString()">
+                and content like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="type == 'w'.toString()">
+                and userNo like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="type == 'tc'.toString()">
+                and ( title like CONCAT('%', #{keyword}, '%') OR
+                content
+                like
+                CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="type == 'tw'.toString()">
+                and ( userNo like CONCAT('%', #{keyword}, '%') OR
+                content
+                like
+                CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="type == 'twc'.toString()">
+                and ( title like CONCAT('%', #{keyword}, '%') OR
+                userNo
+                like
+                CONCAT('%', #{keyword}, '%')OR content
+                like
+                CONCAT('%', #{keyword}, '%'))
+            </if>
+        </if>
+    </sql>
+
+    <select id="getTotalCount" resultType="int">
+        select count(*) from board where boardNo > 0
+        <include refid="criteria"/>
     </select>
 </mapper>
