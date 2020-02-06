@@ -38,6 +38,7 @@
 
 <input type="hidden" id="boardCategoryNo" value='${boardCategoryNo}' readonly="readonly"/>
 <input type="hidden" id="totalCnt" value='${totalCnt}' readonly="readonly"/>
+<input type="number" id="hiddenPageNum" value="1" readonly="readonly"/>
 <%--<input type="hidden" id="pageNum" value='${pageNum}' readonly="readonly"/>--%>
 
 <script src="js/write/list.js"></script>

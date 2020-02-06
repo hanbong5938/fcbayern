@@ -99,7 +99,7 @@ $(window).on('popstate', function (event) {
             //검색 처리 위해서
             $("#type").val(data.type || "t");
             $("#keyword").val(data.keyword);
-            $("#pageNumHidden").val(data.keyword);
+            $("#hiddenPageNum").val(data.pageNum);
 
             // $("#searchBtn").trigger("click")
         }

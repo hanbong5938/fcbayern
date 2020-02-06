@@ -1,6 +1,7 @@
 const boardCategoryNo = $("#boardCategoryNo").val();
 const totalCnt = $("#totalCnt").val();
 const searchBtn = $("#searchBtn");
+let hiddenPageNum = $("#hiddenPageNum").val();
 
 let url = "";
 switch (boardCategoryNo) {
@@ -107,6 +108,7 @@ function pageAction(i) {
         pageNum: i
     };
     loadList(criteriaModel);
+
     history.pushState({
         data: url,
         boardCategoryNo: criteriaModel.boardCategoryNo,
@@ -131,10 +133,13 @@ searchBtn.click(function () {
         keyword: criteriaModel.keyword,
     }, null, url + "?lang=" + getCookie('APPLICATION_LOCALE') + "&type=" + criteriaModel.type + "&keyword=" + criteriaModel.keyword);
 });
+
 const criteriaModel = {
     boardCategoryNo: boardCategoryNo,
-    pageNum: 1
+    pageNum: hiddenPageNum
 };
-loadList(criteriaModel);
+alert(criteriaModel.pageNum);
+// alert(JSON.stringify($("#hiddenPageNum").val()))
+pageAction(criteriaModel.pageNum);
 //페이지시 로딩강제로 하기위해서 바로 킬릭하도록 적용
 // searchBtn.trigger("click");
