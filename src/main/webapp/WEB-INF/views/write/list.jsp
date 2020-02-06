@@ -13,41 +13,10 @@
         </tr>
         </thead>
         <tbody id="list">
-        <tr>
-            <td class="text-left">제목</td>
-            <td>작성자</td>
-            <td>2020-01-14</td>
-            <td>0</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td class="text-left">제목</td>
-            <td>작성자</td>
-            <td>2020-01-14</td>
-            <td>0</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td class="text-left">제목</td>
-            <td>작성자</td>
-            <td>2020-01-14</td>
-            <td>0</td>
-            <td>100</td>
-        </tr>
         </tbody>
     </table>
 
-    <div class="page">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link"><</a></li>
-            <li class="page-item active"><a class="page-link">1</a></li>
-            <li class="page-item"><a class="page-link">1</a></li>
-            <li class="page-item"><a class="page-link">2</a></li>
-            <li class="page-item"><a class="page-link">3</a></li>
-            <li class="page-item"><a class="page-link">4</a></li>
-            <li class="page-item"><a class="page-link">5</a></li>
-            <li class="page-item"><a class="page-link">></a></li>
-        </ul>
+    <div id="pageArea" class="page">
     </div>
 
     <div class="mb-10">
@@ -56,6 +25,8 @@
                 <option value="t">제 목</option>
                 <option value="c">내 용</option>
                 <option value="w">작성자</option>
+                <option value="tc">제목 + 내용</option>
+                <option value="tcw">전체</option>
             </select>
             <input id="keyword" class="">
             <button id="searchBtn" class="">검색</button>
@@ -66,5 +37,7 @@
 <!-- /.card-body -->
 
 <input type="hidden" id="boardCategoryNo" value='${boardCategoryNo}' readonly="readonly"/>
+<input type="hidden" id="totalCnt" value='${totalCnt}' readonly="readonly"/>
+<%--<input type="hidden" id="pageNum" value='${pageNum}' readonly="readonly"/>--%>
 
 <script src="js/write/list.js"></script>

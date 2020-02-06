@@ -16,8 +16,8 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 public class AwsS3Util {
-    private static final String accessKey = "accessKey";
-    private static final String secretKey = "secretKey";
+    private static final String accessKey = " AKIAXPAVTY6Z4GLYRAJ3";
+    private static final String secretKey = "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";
 
     private AmazonS3 amazonS3;
 
@@ -55,11 +55,9 @@ public class AwsS3Util {
     public void fileDelete(String bucketName, String fileName) {
         String imgName = (fileName).replace(File.separatorChar, '/');
         amazonS3.deleteObject(bucketName, imgName);
-        System.out.println("삭제 성공");
     }
 
     public String getFileURL(String bucketName, String fileName) {
-        System.out.println("파일 명 : " + fileName);
         String imgName = (fileName).replace(File.separatorChar, '/');
         return amazonS3.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, imgName)).toString();
     }

@@ -22,4 +22,6 @@ public interface BoardMapper {
     BoardModel modify(BoardModel boardModel);
 
     BoardModel delete(int boardNo);
+
+    int totalCnt();
 }

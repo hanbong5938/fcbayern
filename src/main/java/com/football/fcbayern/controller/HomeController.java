@@ -1,11 +1,21 @@
 package com.football.fcbayern.controller;
 
+import com.football.fcbayern.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
+
+    private BoardService boardService;
+
+    @Autowired
+    public void setBoardService(BoardService boardService) {
+        this.boardService = boardService;
+    }
 
     @GetMapping("/index")
     public String index() {
@@ -40,6 +50,7 @@ public class HomeController {
     @GetMapping("/freeBoard")
     public String freeBoard(int boardCategoryNo, Model model) {
         model.addAttribute("boardCategoryNo", boardCategoryNo);
+        model.addAttribute("totalCnt", boardService.totalCnt());
         return "/community/freeBoard";
     }
 

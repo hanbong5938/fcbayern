@@ -6,6 +6,7 @@ import com.football.fcbayern.model.ProfileCategoryModel;
 import com.football.fcbayern.model.ProfileModel;
 import com.football.fcbayern.util.AwsS3Util;
 import com.football.fcbayern.util.UploadFileUtils;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,15 +19,10 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
+@AllArgsConstructor
 public class ProfileServiceImpl implements ProfileService {
 
     private ProfileMapper profileMapper;
-
-    @Autowired
-    public void setProfileMapper(ProfileMapper profileMapper) {
-        this.profileMapper = profileMapper;
-    }
-
 
     @Override
     public int insert(ProfileModel profileModel) {

@@ -19,4 +19,6 @@ public interface BoardService {
     BoardModel modify(BoardModel boardModel);
 
     BoardModel delete(int boardNo);
+
+    int totalCnt();
 }

@@ -31,7 +31,6 @@ public class BoardController {
 
     @GetMapping(value = "/infoList")
     public ResponseEntity<List<BoardModel>> infoList(CriteriaModel criteriaModel) {
-        System.out.println(criteriaModel);
         return new ResponseEntity<>(boardService.infoList(criteriaModel), HttpStatus.OK);
     }
 

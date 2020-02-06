@@ -9,6 +9,7 @@ public class BoardModel {
     private int boardNo;
     private String title;
     private String content;
+    private String writer;
     private Timestamp createDt;
     private Timestamp updateDt;
     private boolean state;

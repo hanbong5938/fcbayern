@@ -15,43 +15,14 @@
     </insert>
 
     <select id="infoList" resultType="com.football.fcbayern.model.BoardModel">
-        select boardNo, title, content, createDt, updateDt, hit, userNo, boardCategoryNo
+        select boardNo, title, content, writer, createDt, updateDt, hit, userNo, boardCategoryNo
         from board
         where state = 1
         and boardCategoryNo = #{boardCategoryNo}
-        <if test="type != null">
-            <if test="type == 't'.toString()">
-                and title like CONCAT('%', #{keyword}, '%')
-            </if>
-            <if test="type == 'c'.toString()">
-                and content like CONCAT('%', #{keyword}, '%')
-            </if>
-            <if test="type == 'w'.toString()">
-                and userNo like CONCAT('%', #{keyword}, '%')
-            </if>
-            <if test="type == 'tc'.toString()">
-                and ( title like CONCAT('%', #{keyword}, '%') OR
-                content
-                like
-                CONCAT('%', #{keyword}, '%'))
-            </if>
-            <if test="type == 'tw'.toString()">
-                and ( userNo like CONCAT('%', #{keyword}, '%') OR
-                content
-                like
-                CONCAT('%', #{keyword}, '%'))
-            </if>
-            <if test="type == 'twc'.toString()">
-                and ( title like CONCAT('%', #{keyword}, '%') OR
-                userNo
-                like
-                CONCAT('%', #{keyword}, '%')OR content
-                like
-                CONCAT('%', #{keyword}, '%'))
-            </if>
-        </if>
+        <include refid="criteria"/>
         order by createDt desc
-        limit 1, 10
+        limit #{pageStart}, #{amount}
+        # amount 10 으로 고정 지정
     </select>
 
     <!--    <select id="infoList"-->
@@ -138,7 +109,7 @@
         </if>
     </sql>
 
-    <select id="getTotalCount" resultType="int">
+    <select id="totalCnt" resultType="int">
         select count(*) from board where boardNo > 0
         <include refid="criteria"/>
     </select>

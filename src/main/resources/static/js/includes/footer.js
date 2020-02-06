@@ -54,7 +54,10 @@ $('#freeBoard').click(() => {
             $(".content").html(result);
         }
     });
-    history.pushState({data: "/freeBoard", boardCategoryNo: 1}, null, "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'));
+    history.pushState({
+        data: "/freeBoard",
+        boardCategoryNo: 1
+    }, null, "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
 $('#multiMedia').click(() => {
@@ -66,7 +69,10 @@ $('#multiMedia').click(() => {
             $(".content").html(result);
         }
     });
-    history.pushState({data: "/multiMedia", boardCategoryNo: 2}, null, "/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'));
+    history.pushState({
+        data: "/multiMedia",
+        boardCategoryNo: 2
+    }, null, "/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
 $('#notice').click(() => {
@@ -79,10 +85,28 @@ $(window).on('popstate', function (event) {
     const data = event.originalEvent.state;
     $.ajax({
         url: data.data + "?lang=" + getCookie('APPLICATION_LOCALE'),
-        data: {boardCategoryNo: data.boardCategoryNo, boardNo: data.boardNo},
+        data: {
+            boardCategoryNo: data.boardCategoryNo,
+            boardNo: data.boardNo,
+            type: data.type,
+            keyword: data.keyword,
+            pageNum: data.pageNum
+        },
         type: "get",
         success: (result) => {
             $(".content").html(result);
+
+            //검색 처리 위해서
+            $("#type").val(data.type || "t");
+            $("#keyword").val(data.keyword);
+            $("#pageNumHidden").val(data.keyword);
+
+            // $("#searchBtn").trigger("click")
         }
     })
 });
+
+function calendar(n, width) {
+    n = n + '';
+    return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+}

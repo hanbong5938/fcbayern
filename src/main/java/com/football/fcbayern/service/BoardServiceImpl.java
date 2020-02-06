@@ -4,20 +4,16 @@ import com.football.fcbayern.mapper.BoardMapper;
 import com.football.fcbayern.model.BoardCategoryModel;
 import com.football.fcbayern.model.BoardModel;
 import com.football.fcbayern.model.CriteriaModel;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class BoardServiceImpl implements BoardService {
 
     private BoardMapper boardMapper;
-
-    @Autowired
-    public void setBoardMaaper(BoardMapper boardMapper) {
-        this.boardMapper = boardMapper;
-    }
 
     @Override
     public int insertInfo(BoardModel boardModel) {
@@ -49,6 +45,11 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public BoardModel delete(int boardNo) {
         return boardMapper.delete(boardNo);
+    }
+
+    @Override
+    public int totalCnt() {
+        return boardMapper.totalCnt();
     }
 
 }

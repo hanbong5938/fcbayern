@@ -8,8 +8,8 @@ $.ajax({
             $('#category').append('<option value="' + data[i].boardCategoryNo + '">' + data[i].categoryNm + '</option>');
         }
         //가져온 값으로 select option 선택하기 위해서
-        const boardCategoryNo =$("#boardCategoryNo").val();
-        $("#category").val(boardCategoryNo+"");
+        const boardCategoryNo = $("#boardCategoryNo").val();
+        $("#category").val(boardCategoryNo + "");
     }
 });
 
@@ -70,6 +70,7 @@ $('#reg').click(() => {
     const boardData = {
         title: $("#title").val(),
         content: $('#summernote').summernote('code'),
+        writer: "admin", //ToDo 로그인 이후 수정
         userNo: 1, //ToDo 로그인 이후 수정
         boardCategoryNo: $('#category option:selected').val()
     };
@@ -81,7 +82,18 @@ $('#reg').click(() => {
         contentType: "application/json; charset=utf-8",
         success: () => {
             alert("성공");
-            $(".content").load("/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 1});
+            $.ajax({
+                url: "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'),
+                data: {boardCategoryNo: 1},
+                type: "get",
+                success: (result) => {
+                    $(".content").html(result);
+                }
+            });
+            history.pushState({
+                data: "/freeBoard",
+                boardCategoryNo: 1
+            }, null, "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'));
         }
     });
 });
