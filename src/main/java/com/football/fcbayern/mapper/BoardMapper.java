@@ -23,5 +23,7 @@ public interface BoardMapper {
 
     BoardModel delete(int boardNo);
 
-    int totalCnt();
+    int totalCnt(CriteriaModel criteriaModel);
+
+    int replyCnt(int boardNo);
 }

@@ -50,7 +50,6 @@ public class HomeController {
     @GetMapping("/freeBoard")
     public String freeBoard(int boardCategoryNo, Model model) {
         model.addAttribute("boardCategoryNo", boardCategoryNo);
-        model.addAttribute("totalCnt", boardService.totalCnt());
         return "/community/freeBoard";
     }
 

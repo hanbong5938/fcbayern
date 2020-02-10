@@ -20,5 +20,5 @@ public interface BoardService {
 
     BoardModel delete(int boardNo);
 
-    int totalCnt();
+    int totalCnt(CriteriaModel criteriaModel);
 }

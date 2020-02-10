@@ -9,6 +9,7 @@ public class CriteriaModel {
     private int pageStart;
     private int amount;
     private int pageNum;
+    private int totalCnt;
 
     private int boardCategoryNo;
 

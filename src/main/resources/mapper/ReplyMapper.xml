@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.football.fcbayern.mapper.ReplyMapper">
+
+    <insert id="insert">
+        insert into reply (reply, writer, createDt, updateDt, boardNo, userNo)
+        VALUES (#{reply}, #{writer}, now(), now(), #{boardNo}, #{userNo})
+    </insert>
+
+    <select id="list" resultType="com.football.fcbayern.model.ReplyModel">
+        select replyNo, reply, writer, createDt, updateDt, boardNo, userNo
+        from reply
+        where boardNo = #{boardNo}
+    </select>
+</mapper>

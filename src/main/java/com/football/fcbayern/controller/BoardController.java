@@ -34,6 +34,11 @@ public class BoardController {
         return new ResponseEntity<>(boardService.infoList(criteriaModel), HttpStatus.OK);
     }
 
+    @GetMapping(value = "totalCnt")
+    public ResponseEntity<Integer> totalCnt(CriteriaModel criteriaModel) {
+        return new ResponseEntity<>(boardService.totalCnt(criteriaModel), HttpStatus.OK);
+    }
+
     @PostMapping(value = "/insertInfo", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
     public ResponseEntity<String> insertInfo(@RequestBody BoardModel boardModel) {
         int count = boardService.insertInfo(boardModel);

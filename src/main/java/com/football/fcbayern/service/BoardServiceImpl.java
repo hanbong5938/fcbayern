@@ -27,7 +27,6 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public List<BoardModel> infoList(CriteriaModel criteriaModel) {
-        System.out.println(criteriaModel);
         return boardMapper.infoList(criteriaModel);
     }
 
@@ -48,8 +47,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public int totalCnt() {
-        return boardMapper.totalCnt();
+    public int totalCnt(CriteriaModel criteriaModel) {
+        return boardMapper.totalCnt(criteriaModel);
     }
 
 }

@@ -1,7 +1,11 @@
 const boardCategoryNo = $("#boardCategoryNo").val();
-const totalCnt = $("#totalCnt").val();
 const searchBtn = $("#searchBtn");
-let hiddenPageNum = $("#hiddenPageNum").val();
+const statePageNum = history.state.pageNum; // 현재 pageNum 상태 확인
+const typeState = history.state.type;
+const keywordState = history.state.keyword;
+//keyword 랑 저장하기 위해서
+$("#type").val(typeState || "t");
+$("#keyword").val(keywordState);
 
 let url = "";
 switch (boardCategoryNo) {
@@ -17,54 +21,64 @@ switch (boardCategoryNo) {
     //ToDo 보드 카테고리 추가시 추가
 }
 
+//정보 가져오는 function
 function loadList(criteriaModel) {
     $.ajax({
-        url: "/board/infoList?boardCategoryNo=" + boardCategoryNo,
+        url: "/board/infoList",
         type: "get",
         data: criteriaModel,
         success: (result) => {
-            let str = "";
-            for (let i = 0; i < result.length; i++) {
-                const timestamp = new Date(result[i].createDt);
-                const month = timestamp.getMonth() + 1;
-                const date = timestamp.getDate();
+            console.log(result)
+            //페이징처리 위해서 갯수 가져오는 ajax
+            $.get("/board/totalCnt", criteriaModel, (totalCnt) => {
+                let str = "";
+                for (let i = 0; i < result.length; i++) {
+                    const timestamp = new Date(result[i].createDt);
+                    const month = timestamp.getMonth() + 1;
+                    const date = timestamp.getDate();
 
-                str += "        <tr>\n" +
-                    "            <td class=\"text-left\"><a class='boardLink' onclick='' id='" + result[i].boardNo + "'>" + result[i].title + "</a></td>\n" +
-                    "            <td>" + result[i].writer + "</td>\n" +
-                    "            <td>" + timestamp.getFullYear() + "-" + calendar(month, 2) + "-" + calendar(date, 2) + "</td>\n" +
-                    "            <td>" + result[i].hit + "</td>\n" +
-                    "            <td>0</td>\n" +//ToDo 좋아요 아직 미적용
-                    "        </tr>"
+                    str += "        <tr>\n" +
+                        "            <td class=\"text-left text-gray\"><a class='boardLink text-primary' onclick='' id='" + result[i].boardNo + "'>" + result[i].title + "</a>" + " [" + result[i].replyCnt + "]" + "</td>\n" +
+                        "            <td>" + result[i].writer + "</td>\n" +
+                        "            <td>" + timestamp.getFullYear() + "-" + calendar(month, 2) + "-" + calendar(date, 2) + "</td>\n" +
+                        "            <td>" + result[i].hit + "</td>\n" +
+                        "            <td>0</td>\n" +//ToDo 좋아요 아직 미적용
+                        "        </tr>"
 
-            }
-            $("#list").html(str);
+                }
+                $("#list").html(str);
 
-            const pageNum = criteriaModel.pageNum;
+                const pageNum = criteriaModel.pageNum;
+                if (pageNum === -1) {
+                    pageMaker(1, totalCnt);
+                } else {
+                    pageMaker(pageNum, totalCnt)
+                }
 
-            pageMaker(pageNum);
+                $(".boardLink").click(function () {
+                    const getBoardId = $(this).closest("a").attr('id');
+                    $.ajax({
+                        url: "/read?lang=" + getCookie('APPLICATION_LOCALE'),
+                        data: {boardNo: getBoardId},
+                        type: "get",
+                        success: (result) => {
+                            $(".boardContent").html(result);
+                            history.pushState({
+                                data: "/read",
+                                boardNo: getBoardId
+                            }, null, '/read?lang=' + getCookie('APPLICATION_LOCALE') + '&boardNo=' + getBoardId);
 
-            $(".boardLink").click(function () {
-                const getBoardId = $(this).closest("a").attr('id');
-                $.ajax({
-                    url: "/read?lang=" + getCookie('APPLICATION_LOCALE'),
-                    data: {boardNo: getBoardId},
-                    type: "get",
-                    success: (result) => {
-                        $(".boardContent").html(result);
-                        history.pushState({
-                            data: "/read",
-                            boardNo: getBoardId
-                        }, null, '/read?lang=' + getCookie('APPLICATION_LOCALE') + '&boardNo=' + getBoardId);
-
-                    }
+                        }
+                    });
                 });
             });
         }
     });
 }
 
-function pageMaker(pageNum) {
+
+//페이징 버튼 만드는 function
+function pageMaker(pageNum, totalCnt) {
     let endNum = Math.ceil(pageNum / 10.0) * 10;
     const startNum = endNum - 9;
 
@@ -87,7 +101,7 @@ function pageMaker(pageNum) {
 
     for (let i = startNum; i <= endNum; i++) {
         const active = pageNum === i ? " active" : "";
-        pageStr += "<li class='page-item" + active + "'><a class='page-link' onclick='pageAction("+i+")'>" + i + "</a></li>\n"
+        pageStr += "<li class='page-item" + active + "'><a class='page-link' onclick='pageAction(" + i + ")'>" + i + "</a></li>\n"
     }
 
     if (next) {
@@ -131,15 +145,16 @@ searchBtn.click(function () {
         boardCategoryNo: criteriaModel.boardCategoryNo,
         type: criteriaModel.type,
         keyword: criteriaModel.keyword,
-    }, null, url + "?lang=" + getCookie('APPLICATION_LOCALE') + "&type=" + criteriaModel.type + "&keyword=" + criteriaModel.keyword);
+        pageNum: criteriaModel.pageNum
+    }, null, url + "?lang=" + getCookie('APPLICATION_LOCALE') + "&type=" + criteriaModel.type + "&keyword=" + criteriaModel.keyword + "&pageNum=" + criteriaModel.pageNum);
 });
 
-const criteriaModel = {
+//페이지 로딩시 초기값 가져오기 위해서
+let criteriaModel = {
+    type: typeState,
+    keyword: keywordState,
     boardCategoryNo: boardCategoryNo,
-    pageNum: hiddenPageNum
+    pageNum: statePageNum || -1
 };
-alert(criteriaModel.pageNum);
-// alert(JSON.stringify($("#hiddenPageNum").val()))
-pageAction(criteriaModel.pageNum);
-//페이지시 로딩강제로 하기위해서 바로 킬릭하도록 적용
-// searchBtn.trigger("click");
+
+loadList(criteriaModel);

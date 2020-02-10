@@ -83,27 +83,27 @@ $('#notice').click(() => {
 //이벤트 감지해서 뒤로가기 불러오는 ajax
 $(window).on('popstate', function (event) {
     const data = event.originalEvent.state;
-    $.ajax({
-        url: data.data + "?lang=" + getCookie('APPLICATION_LOCALE'),
-        data: {
-            boardCategoryNo: data.boardCategoryNo,
-            boardNo: data.boardNo,
-            type: data.type,
-            keyword: data.keyword,
-            pageNum: data.pageNum
-        },
-        type: "get",
-        success: (result) => {
-            $(".content").html(result);
 
-            //검색 처리 위해서
-            $("#type").val(data.type || "t");
-            $("#keyword").val(data.keyword);
-            $("#hiddenPageNum").val(data.pageNum);
+    //push 된 history 없는 경우 처리하기 위하여
+    if (data === null) {
+        location.href = "/index";
+    } else {
+        $.ajax({
+            url: data.data + "?lang=" + getCookie('APPLICATION_LOCALE'),
+            data: {
+                boardCategoryNo: data.boardCategoryNo,
+                boardNo: data.boardNo,
+                type: data.type,
+                keyword: data.keyword,
+                pageNum: data.pageNum
+            },
+            type: "get",
+            success: (result) => {
+                $(".content").html(result);
 
-            // $("#searchBtn").trigger("click")
-        }
-    })
+            }
+        })
+    }
 });
 
 function calendar(n, width) {

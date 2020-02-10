@@ -15,7 +15,7 @@
     </insert>
 
     <select id="infoList" resultType="com.football.fcbayern.model.BoardModel">
-        select boardNo, title, content, writer, createDt, updateDt, hit, userNo, boardCategoryNo
+        select boardNo, title, content, writer, createDt, updateDt, hit, replyCnt, userNo, boardCategoryNo
         from board
         where state = 1
         and boardCategoryNo = #{boardCategoryNo}
@@ -110,7 +110,7 @@
     </sql>
 
     <select id="totalCnt" resultType="int">
-        select count(*) from board where boardNo > 0
+        select count(*) as "totalCnt" from board where boardNo > 0
         <include refid="criteria"/>
     </select>
 </mapper>
