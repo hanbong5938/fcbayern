@@ -16,9 +16,9 @@ public interface BoardService {
 
     BoardModel info(int boardNo);
 
-    BoardModel modify(BoardModel boardModel);
+    int modify(BoardModel boardModel);
 
-    BoardModel delete(int boardNo);
+    int delete(int boardNo);
 
     int totalCnt(CriteriaModel criteriaModel);
 }

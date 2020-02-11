@@ -101,6 +101,14 @@ body {
     height: 100%;
 }
 
+.width100 {
+    width: 100%;
+}
+
+.resizeNone {
+    resize: none;
+}
+
 .mt-10 {
     margin-top: 10%;
 }

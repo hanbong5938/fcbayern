@@ -1,3 +1,12 @@
+const regBtn = $("#reg");
+const modBtn = $("#mod");
+const boardNo = $("#boardNo").val();
+if (boardNo > 0) {
+    regBtn.hide();
+} else {
+    modBtn.hide();
+}
+
 //카테고리 불러오기
 $.ajax({
     url: "/board/category",
@@ -65,8 +74,21 @@ function sendFile(uploadFiles) {
     })
 }
 
+function successRead(boardData){
+    $.get("/read?lang=" + getCookie('APPLICATION_LOCALE'), {
+        boardCategoryNo: boardData.boardCategoryNo,
+        boardNo: boardNo
+    }, (result) => {
+        $(".content").html(result);
+        history.pushState({
+            data: "/read",
+            boardCategoryNo: boardData.boardCategoryNo, boardNo: boardNo
+        }, null, "/read?lang=" + getCookie('APPLICATION_LOCALE') + "&boardNo=" + boardNo);
+    })
+}
+
 //등록 버튼
-$('#reg').click(() => {
+regBtn.click(() => {
     const boardData = {
         title: $("#title").val(),
         content: $('#summernote').summernote('code'),
@@ -82,18 +104,28 @@ $('#reg').click(() => {
         contentType: "application/json; charset=utf-8",
         success: () => {
             alert("성공");
-            $.ajax({
-                url: "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'),
-                data: {boardCategoryNo: 1},
-                type: "get",
-                success: (result) => {
-                    $(".content").html(result);
-                }
-            });
-            history.pushState({
-                data: "/freeBoard",
-                boardCategoryNo: 1
-            }, null, "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'));
+            successRead(boardData);
+        }
+    });
+});
+
+modBtn.click(() => {
+    const boardData = {
+        boardNo: boardNo,
+        title: $("#title").val(),
+        content: $('#summernote').summernote('code'),
+        writer: "admin", //ToDo 로그인 이후 수정
+        userNo: 1, //ToDo 로그인 이후 수정
+        boardCategoryNo: $('#category option:selected').val()
+    };
+
+    $.ajax({
+        url: "/board/modify",
+        type: "patch",
+        data: boardData,
+        success: () => {
+            alert("성공");
+            successRead(boardData);
         }
     });
 });

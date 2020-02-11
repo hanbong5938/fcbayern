@@ -3,7 +3,6 @@ package com.football.fcbayern.mapper;
 import com.football.fcbayern.model.BoardCategoryModel;
 import com.football.fcbayern.model.BoardModel;
 import com.football.fcbayern.model.CriteriaModel;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,11 +18,15 @@ public interface BoardMapper {
 
     int hit(int boardNo);
 
-    BoardModel modify(BoardModel boardModel);
+    void good(int boardNo);
 
-    BoardModel delete(int boardNo);
+    void bad(int boardNo);
+
+    int modify(BoardModel boardModel);
+
+    int delete(int boardNo);
 
     int totalCnt(CriteriaModel criteriaModel);
 
-    int replyCnt(int boardNo);
+    void replyCnt(int boardNo);
 }

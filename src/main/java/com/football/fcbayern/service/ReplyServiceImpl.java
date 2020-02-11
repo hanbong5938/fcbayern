@@ -2,6 +2,7 @@ package com.football.fcbayern.service;
 
 import com.football.fcbayern.mapper.BoardMapper;
 import com.football.fcbayern.mapper.ReplyMapper;
+import com.football.fcbayern.model.CriteriaModel;
 import com.football.fcbayern.model.ReplyModel;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,8 @@ public class ReplyServiceImpl implements ReplyService {
     }
 
     @Override
-    public List<ReplyModel> list(int boardNo) {
-        return replyMapper.list(boardNo);
+    public List<ReplyModel> list(int boardNo, CriteriaModel criteriaModel) {
+        return replyMapper.list(boardNo, criteriaModel);
     }
 
 }

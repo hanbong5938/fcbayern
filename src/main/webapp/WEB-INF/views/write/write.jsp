@@ -28,10 +28,13 @@
                 <div>
                     <button id="reg" class="pull-right btn btn-primary"><spring:message
                             code="reg"/></button>
+                    <button id="mod" class="pull-right btn btn-warning"><spring:message
+                            code="modify"/></button>
                 </div>
             </div>
         </div>
     </div>
-    <input type="hidden" id="boardCategoryNo" value='${boardCategoryNo}' readonly="readonly"/>
+    <input  id="boardNo" value='${boardNo}' readonly="readonly"/>
+    <input  id="boardCategoryNo" value='${boardCategoryNo}' readonly="readonly"/>
 
     <script src="js/write/write.js"></script>

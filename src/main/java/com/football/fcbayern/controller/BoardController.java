@@ -51,12 +51,12 @@ public class BoardController {
     }
 
     @PatchMapping(value = "/modify")
-    public ResponseEntity<BoardModel> modify(BoardModel boardModel) {
+    public ResponseEntity<Integer> modify(BoardModel boardModel) {
         return new ResponseEntity<>(boardService.modify(boardModel), HttpStatus.OK);
     }
 
     @PatchMapping(value = "/delete/{boardNo}")
-    public ResponseEntity<BoardModel> delete(@PathVariable int boardNo) {
+    public ResponseEntity<Integer> delete(@PathVariable int boardNo) {
         return new ResponseEntity<>(boardService.delete(boardNo), HttpStatus.OK);
     }
 

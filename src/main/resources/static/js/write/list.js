@@ -28,7 +28,6 @@ function loadList(criteriaModel) {
         type: "get",
         data: criteriaModel,
         success: (result) => {
-            console.log(result)
             //페이징처리 위해서 갯수 가져오는 ajax
             $.get("/board/totalCnt", criteriaModel, (totalCnt) => {
                 let str = "";
@@ -42,7 +41,7 @@ function loadList(criteriaModel) {
                         "            <td>" + result[i].writer + "</td>\n" +
                         "            <td>" + timestamp.getFullYear() + "-" + calendar(month, 2) + "-" + calendar(date, 2) + "</td>\n" +
                         "            <td>" + result[i].hit + "</td>\n" +
-                        "            <td>0</td>\n" +//ToDo 좋아요 아직 미적용
+                        "            <td>" + result[i].good + "</td>\n" +//ToDo 좋아요 아직 미적용
                         "        </tr>"
 
                 }
@@ -59,13 +58,14 @@ function loadList(criteriaModel) {
                     const getBoardId = $(this).closest("a").attr('id');
                     $.ajax({
                         url: "/read?lang=" + getCookie('APPLICATION_LOCALE'),
-                        data: {boardNo: getBoardId},
+                        data: {boardNo: getBoardId, boardCategoryNo: boardCategoryNo},
                         type: "get",
                         success: (result) => {
                             $(".boardContent").html(result);
                             history.pushState({
                                 data: "/read",
-                                boardNo: getBoardId
+                                boardNo: getBoardId,
+                                boardCategoryNo: boardCategoryNo
                             }, null, '/read?lang=' + getCookie('APPLICATION_LOCALE') + '&boardNo=' + getBoardId);
 
                         }

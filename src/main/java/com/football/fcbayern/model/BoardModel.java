@@ -14,6 +14,7 @@ public class BoardModel {
     private Timestamp updateDt;
     private boolean state;
     private int hit;
+    private int good;
     private int replyCnt;
 
     private int userNo;

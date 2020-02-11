@@ -37,12 +37,12 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardModel modify(BoardModel boardModel) {
+    public int modify(BoardModel boardModel) {
         return boardMapper.modify(boardModel);
     }
 
     @Override
-    public BoardModel delete(int boardNo) {
+    public int delete(int boardNo) {
         return boardMapper.delete(boardNo);
     }
 

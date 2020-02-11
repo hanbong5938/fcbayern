@@ -13,5 +13,7 @@
         select replyNo, reply, writer, createDt, updateDt, boardNo, userNo
         from reply
         where boardNo = #{boardNo}
+        order by createDt
+        limit #{criteriaModel.pageStart}, #{criteriaModel.amount}
     </select>
 </mapper>

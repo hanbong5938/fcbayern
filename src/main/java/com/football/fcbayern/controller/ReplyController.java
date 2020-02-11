@@ -1,5 +1,6 @@
 package com.football.fcbayern.controller;
 
+import com.football.fcbayern.model.CriteriaModel;
 import com.football.fcbayern.model.ReplyModel;
 import com.football.fcbayern.service.BoardService;
 import com.football.fcbayern.service.ReplyService;
@@ -27,8 +28,8 @@ public class ReplyController {
     }
 
     @GetMapping(value = "/list/{boardNo}")
-    ResponseEntity<List<ReplyModel>> list(@PathVariable int boardNo) {
-        return new ResponseEntity<>(replyService.list(boardNo), HttpStatus.OK);
+    ResponseEntity<List<ReplyModel>> list(@PathVariable int boardNo, CriteriaModel criteriaModel) {
+        return new ResponseEntity<>(replyService.list(boardNo, criteriaModel), HttpStatus.OK);
     }
 
 }

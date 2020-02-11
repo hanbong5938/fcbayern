@@ -15,7 +15,7 @@
     </insert>
 
     <select id="infoList" resultType="com.football.fcbayern.model.BoardModel">
-        select boardNo, title, content, writer, createDt, updateDt, hit, replyCnt, userNo, boardCategoryNo
+        select boardNo, title, content, writer, createDt, updateDt, hit,good, replyCnt, userNo, boardCategoryNo
         from board
         where state = 1
         and boardCategoryNo = #{boardCategoryNo}
@@ -25,34 +25,37 @@
         # amount 10 으로 고정 지정
     </select>
 
-    <!--    <select id="infoList"-->
-    <!--            resultType="com.football.fcbayern.model.BoardModel">-->
-    <!--        select boardNo, title, content, createDt, updateDt, hit, userNo, boardCategoryNo-->
-    <!--        from board-->
-    <!--        where state = 1-->
-    <!--        and boardCategoryNo = #{boardCategoryNo}-->
-    <!--        <include refid="criteria"/>-->
-    <!--        order by createDt desc-->
-    <!--        limit #{pageStart}, #{amount}-->
-    <!--    </select>-->
-
     <select id="info" resultType="com.football.fcbayern.model.BoardModel">
         select boardNo,
                title,
                content,
                createDt,
                updateDt,
-               state,
                hit,
+               replyCnt,
+               good,
                userNo,
                boardCategoryNo
         from board
         where boardNo = #{boardNo}
+          and state = 1
     </select>
 
     <update id="hit">
         update board
         set hit = hit + 1
+        where boardNo = #{boardNo}
+    </update>
+
+    <update id="good">
+        update board
+        set good = good + 1
+        where boardNo = #{boardNo}
+    </update>
+
+    <update id="bad">
+        update board
+        set good = good - 1
         where boardNo = #{boardNo}
     </update>
 
@@ -65,7 +68,10 @@
 
     <update id="modify">
         update board
-        set title = #{title} and content = #{cotent} and updateDt = now() and boardCategoryNo = #{boardCategoryNo}
+        set title           = #{title},
+            content         = #{content},
+            updateDt        = now(),
+            boardCategoryNo = #{boardCategoryNo}
         where boardNo = #{boardNo}
     </update>
 
@@ -74,6 +80,12 @@
         set state = 0
         where boardNo = #{boardNo}
     </update>
+
+
+    <select id="totalCnt" resultType="int">
+        select count(*) as "totalCnt" from board where boardNo > 0
+        <include refid="criteria"/>
+    </select>
 
     <sql id="criteria">
         <if test="type != null">
@@ -109,8 +121,4 @@
         </if>
     </sql>
 
-    <select id="totalCnt" resultType="int">
-        select count(*) as "totalCnt" from board where boardNo > 0
-        <include refid="criteria"/>
-    </select>
 </mapper>

@@ -70,9 +70,17 @@ public class HomeController {
         return "/write/write";
     }
 
-    @GetMapping("/read")
-    public String read(int boardNo, Model model) {
+    @GetMapping("/modify")
+    public String modify(int boardCategoryNo, int boardNo, Model model) {
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
         model.addAttribute("boardNo", boardNo);
+        return "/write/write";
+    }
+
+    @GetMapping("/read")
+    public String read(int boardNo, int boardCategoryNo, Model model) {
+        model.addAttribute("boardNo", boardNo);
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
         return "/write/read";
     }
 
