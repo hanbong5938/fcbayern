@@ -13,7 +13,21 @@
         select replyNo, reply, writer, createDt, updateDt, boardNo, userNo
         from reply
         where boardNo = #{boardNo}
+          and state = 1
         order by createDt
         limit #{criteriaModel.pageStart}, #{criteriaModel.amount}
     </select>
+
+    <update id="modify">
+        update reply
+        set reply    = #{reply},
+            updateDt = now()
+        where replyNo = #{replyNo}
+    </update>
+
+    <update id="delete">
+        update reply
+        set state = 0
+        where replyNo = #{replyNo}
+    </update>
 </mapper>

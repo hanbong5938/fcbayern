@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class BoardServiceImpl implements BoardService {
 
-    private BoardMapper boardMapper;
+    private final BoardMapper boardMapper;
 
     @Override
     public int insertInfo(BoardModel boardModel) {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.football.fcbayern.mapper.HonoursMapper">
+
+    <select id="getCategoryList" resultType="com.football.fcbayern.model.HonoursCategoryModel">
+        select honoursCategoryNo, categoryNm, international, createDt, updateDt
+        from honoursCategory;
+    </select>
+
+    <insert id="insertInfo">
+        insert into honours (honoursNm, updateDt, createDt, state, userNo, honoursCategoryNo)
+        VALUES (#{honoursNm}, now(), now(), 1, #{userNo}, #{honoursCategoryNo})
+    </insert>
+
+    <select id="getInfoList" resultType="com.football.fcbayern.model.HonoursModel">
+        select honoursNo, honoursNm, updateDt, createDt, userNo, honoursCategoryNo
+        from honours
+        where state = 1
+        order by createDt
+    </select>
+</mapper>

@@ -2,16 +2,16 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.football.fcbayern.mapper.ProfileAttachMapper">
+<mapper namespace="com.football.fcbayern.mapper.HonoursAttachMapper">
 
-    <insert id="insert">
-        insert into profileAttach (uuid, uploadPath, state, profileNo)
+    <insert id="insertAttachInfo">
+        insert into honoursAttach (uuid, uploadPath, state, honoursNo)
         VALUES (#{uuid}, #{uploadPath}, 1, LAST_INSERT_ID())
     </insert>
 
     <select id="getAttachList" resultType="com.football.fcbayern.model.ProfileAttachModel">
-        select uuid, uploadPath, state, profileNo
-        from profileAttach
+        select uuid, uploadPath, state, honoursNo
+        from honoursAttach
     </select>
 
 </mapper>

@@ -19,12 +19,12 @@ import java.net.URL;
 @RequestMapping(value = "/boardAttach")
 public class BoardAttachController {
 
-    private BoardService boardService;
-
-    @Autowired
-    public void setBoardService(BoardService boardService) {
-        this.boardService = boardService;
-    }
+//    private BoardService boardService;
+//
+//    @Autowired
+//    public void setBoardService(BoardService boardService) {
+//        this.boardService = boardService;
+//    }
 
     @PostMapping(value = "/insertImg", produces = "text/plain;charset=UTF-8")
     public String insertImg(MultipartFile uploadFile) throws Exception {

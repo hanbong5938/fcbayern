@@ -30,4 +30,15 @@ public class ReplyServiceImpl implements ReplyService {
         return replyMapper.list(boardNo, criteriaModel);
     }
 
+    @Override
+    public int modify(ReplyModel replyModel) {
+        return replyMapper.modify(replyModel);
+    }
+
+    @Override
+    public int delete(int boardNo,int replyNo) {
+        boardMapper.replyCntDelete(boardNo);
+        return replyMapper.delete(replyNo);
+    }
+
 }

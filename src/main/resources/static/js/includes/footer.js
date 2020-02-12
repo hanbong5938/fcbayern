@@ -110,3 +110,40 @@ function calendar(n, width) {
     n = n + '';
     return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
 }
+
+//페이징 버튼 만드는 function
+function pageMaker(pageNum, totalCnt) {
+    let endNum = Math.ceil(pageNum / 10.0) * 10;
+    const startNum = endNum - 9;
+
+    const prev = startNum !== 1;
+    let next = false;
+
+    if (endNum * 10 >= totalCnt) {
+        endNum = Math.ceil(totalCnt / 10.0);
+    }
+
+    if (endNum * 10 < totalCnt) {
+        next = true;
+    }
+
+    let pageStr = "<ul class=\"pagination justify-content-center\">\n";
+
+    if (prev) {
+        pageStr += "<li class=\"page-item\"><a class=\"page-link\"><</a></li>\n"
+    }
+
+    for (let i = startNum; i <= endNum; i++) {
+        const active = pageNum === i ? " active" : "";
+        pageStr += "<li class='page-item" + active + "'><a class='page-link' onclick='pageAction(" + i + "," + totalCnt + ")'>" + i + "</a></li>\n"
+    }
+
+    if (next) {
+        pageStr += "<li class=\"page-item\"><a class=\"page-link\">></a></li>\n"
+    }
+
+    pageStr += "</ul>";
+
+    $("#pageArea").html(pageStr);
+
+}

@@ -65,6 +65,12 @@
         where boardNo = #{boardNo}
     </update>
 
+    <update id="replyCntDelete">
+        update board
+        set replyCnt = replyCnt - 1
+        where boardNo = #{boardNo}
+    </update>
+
 
     <update id="modify">
         update board

@@ -10,4 +10,8 @@ public interface ReplyService {
     int inert(ReplyModel replyModel, int boardNo);
 
     List<ReplyModel> list(int boardNo, CriteriaModel criteriaModel);
+
+    int modify(ReplyModel replyModel);
+
+    int delete(int boardNo, int replyNo);
 }

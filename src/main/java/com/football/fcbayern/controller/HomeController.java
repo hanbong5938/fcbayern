@@ -10,13 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 
-    private BoardService boardService;
-
-    @Autowired
-    public void setBoardService(BoardService boardService) {
-        this.boardService = boardService;
-    }
-
     @GetMapping("/index")
     public String index() {
         return "/index";
@@ -87,6 +80,11 @@ public class HomeController {
     @GetMapping("/profileReg")
     public String playerReg() {
         return "/write/profileReg";
+    }
+
+    @GetMapping("/honoursReg")
+    public String honoursReg() {
+        return "/write/honoursReg";
     }
 
 

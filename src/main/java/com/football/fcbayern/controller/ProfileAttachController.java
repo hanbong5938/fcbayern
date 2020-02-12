@@ -23,8 +23,6 @@ import java.util.List;
 public class ProfileAttachController {
 
     private ProfileAttachService profileAttachService;
-//    private AwsS3Util awsS3Util = new AwsS3Util();
-//    private final static String bucketName = "woolution";
 
     @Autowired
     public void setProfileAttachService(ProfileAttachService profileAttachService) {

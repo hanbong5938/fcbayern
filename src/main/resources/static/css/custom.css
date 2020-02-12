@@ -101,6 +101,10 @@ body {
     height: 100%;
 }
 
+.width85 {
+    width: 85%;
+}
+
 .width100 {
     width: 100%;
 }
@@ -305,4 +309,20 @@ body {
     position: absolute;
     background-color: red;
     cursor: pointer;
+}
+
+.text-wine {
+    color: #961432
+}
+
+.carousel-indicators li {
+    background-color: gray;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.carousel-indicators .active {
+    background-color: #961432;
 }
