@@ -9,7 +9,7 @@
         VALUES (#{uuid}, #{uploadPath}, 1, LAST_INSERT_ID())
     </insert>
 
-    <select id="getAttachList" resultType="com.football.fcbayern.model.ProfileAttachModel">
+    <select id="getAttachList" resultType="com.football.fcbayern.model.HonoursAttachModel">
         select uuid, uploadPath, state, honoursNo
         from honoursAttach
     </select>

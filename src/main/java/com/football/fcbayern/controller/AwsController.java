@@ -37,6 +37,7 @@ public class AwsController {
                 httpURLConnection = (HttpURLConnection) url.openConnection();
                 inputStream = httpURLConnection.getInputStream();
             } catch (Exception e) {
+                //에러처리시
 //              url = new URL(awsS3Util.getFileURL(bucketName, inputDirectory + fileName));
 //              httpURLConnection = (HttpURLConnection)url.openConnection();
 //              inputStream =  httpURLConnection.getInputStream();

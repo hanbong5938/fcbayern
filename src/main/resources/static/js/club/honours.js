@@ -14,15 +14,17 @@ function honoursInfoList() {
 $.get("/honours/category", (data) => {
     $.get("/honours/getInfoList", (result) => {
             $.get("/honoursAttach/getAttachList", (attachData) => {
-                    console.log(data);
-                    console.log(result);
-                    console.log(attachData);
 
                     let str = "";
+                    let carouselItemStr = "<div class='carousel-item'><div class='row'>";
+                    let carouselNum = 0;
+                    let carouselIndicator = "";
+
                     for (let i = 0; i < data.length; i++) {
                         const honoursFilter = result.filter((element) => {
                             return element.honoursCategoryNo === data[i].honoursCategoryNo;
                         });
+
                         str += " <div class='card'>" +
                             "                    <div class='card-body'>" +
                             "                        <a class='card-link' data-toggle='collapse' href='#category" + i + "'>" +
@@ -32,7 +34,7 @@ $.get("/honours/category", (data) => {
                             "                                        <img class='img-widthAuto' src='images/honours/germanChampionship.png' alt=''>" +
                             "                                    </td>" +
                             "                                    <td>" +
-                            "                                        <h1 class='text-wine'>X 29<i class='icon-plus'></i></h1>" +//ToDo 숫자
+                            "                                        <h1 class='text-wine'><span class='mr-2'>X</span>" + honoursFilter.length + "<span class='ml-2'>+</span></h1>" +//ToDo 숫자
                             "                                        <small class='text-gray'>" + data[i].categoryNm + "</small>" +
                             "                                    </td>" +
                             "                                </tr>" +
@@ -43,146 +45,91 @@ $.get("/honours/category", (data) => {
                             "                        <div class='card-body pt-0'>" +
                             "                            <div class='row blog'>" +
                             "                                <div class='col-md-12'>" +
-                            "                                    <div id='carousel" + i + "' class='carousel slide' data-ride='carousel'>";
+                            "                                    <div id='carousel" + carouselNum + "' class='carousel slide' data-ride='carousel'>" +
+                            "                                     <!-- Carousel items -->" +
+                            "                                        <div class='carousel-inner'>" +
+                            "                                            <div class='carousel-item active'>" +
+                            "                                                <div class='row'>";
 
+                        //id fk 로 filter 처리를 해서 하나만 남겨 배열 0을 통해 첨부파일 정보 획득
+                        //aws 에서 첨부파일가져오고 honoursFilter 배열에 있는 honoursNm 가져온다.
                         for (let j = 0, list = honoursFilter.length || 0; j < list; j++) {
                             const attachFilter = attachData.filter((element) => {
                                 return element.honoursNo === honoursFilter[j].honoursNo;
                             });
-                            console.log(0%3);
 
-                            //우선 캐러샐 이너 for문 한번 더돌려야하나 아니 j%3
-                            //id fk 로 filter 처리를 해서 하나만 남겨 배열 0을 통해 첨부파일 정보 획득
-                            str += "                                        <!-- Carousel items -->" +
-                                "                                        <div class='carousel-inner'>" +
-                                "                                            <div class='carousel-item active'>" +
-                                "                                                <div class='row'>" +
-                                "                                                    <div class='col-md-4'>" +
-                                "                                                        <a>" +
-                                "                                                            <img src='images/honoursSeason/2019_header.jpg' alt='Image'" +
-                                "                                                                 style='max-width:100%;'>" +
-                                "                                                            <span class='text-gray'>Season 2018/2019</span>" +
-                                "                                                        </a>" +
-                                "                                                    </div>" +
-                                "                                                    <div class='col-md-4'>" +
-                                "                                                        <a>" +
-                                "                                                            <img src='images/honoursSeason/2018_header.jpg' alt='Image'" +
-                                "                                                                 style='max-width:100%;'>" +
-                                "                                                            <span class='text-gray'>Season 2017/2018</span>" +
-                                "                                                        </a>" +
-                                "                                                    </div>" +
-                                "                                                    <div class='col-md-4'>" +
-                                "                                                        <a>" +
-                                "                                                            <img src='images/honoursSeason/2017_header.jpg' alt='Image'" +
-                                "                                                                 style='max-width:100%;'>" +
-                                "                                                            <span class='text-gray'>Season 2016/2017</span>" +
-                                "                                                        </a>" +
-                                "                                                    </div>" +
-                                "                                                </div>" +
-                                "                                                <!--.row-->" +
-                                "                                            </div>" +
-                                "                                            <!--.item-->" +
-                                "                                            <div class='carousel-item'>" +
-                                "                                                <div class='row'>" +
-                                "                                                    <div class='col-md-4'>" +
-                                "                                                        <a>" +
-                                "                                                            <img src='images/honoursSeason/2017_header.jpg' alt='Image'" +
-                                "                                                                 style='max-width:100%;'>" +
-                                "                                                            <span class='text-gray'>Season 2016/2017</span>" +
-                                "                                                        </a>" +
-                                "                                                    </div>" +
-                                "                                                    <div class='col-md-4'>" +
-                                "                                                        <a>" +
-                                "                                                            <img src='images/honoursSeason/2017_header.jpg' alt='Image'" +
-                                "                                                                 style='max-width:100%;'>" +
-                                "                                                            <span class='text-gray'>Season 2016/2017</span>" +
-                                "                                                        </a>" +
-                                "                                                    </div>" +
-                                "                                                    <div class='col-md-4'>" +
-                                "                                                        <a>" +
-                                "                                                            <img src='images/honoursSeason/2013_header.jpg' alt='Image'" +
-                                "                                                                 style='max-width:100%;'>" +
-                                "                                                            <span class='text-gray'>Season 2012/2013</span>" +
-                                "                                                        </a>" +
-                                "                                                    </div>" +
-                                "                                                </div>" +
-                                "                                                <!--.row-->" +
-                                "                                            </div>" +
-                                "                                            <!--.item-->" +
-                                "                                        </div>" +
-                                "                                        <!--.carousel-inner-->" +
-                                "                                    </div>\n" +
-                                "                                    <!--.Carousel-->" +
-                                "                                </div>" +
-                                "                            </div>" +
-                                "                        </div>" +
-                                "                        <div class='mb-2 mt-4'>" +
-                                "                            <ol class='carousel-indicators'>" +
-                                "                                <li data-target='#carousel" + i + "' data-slide-to='0' class='active'></li>" +
-                                "                                <li data-target='#carousel" + i + "' data-slide-to='1'></li>" +
-                                "                            </ol>" +
-                                "                        </div>" +
-                                "                    </div>" +
-                                "                </div>"
+                            //캐러셀 active 와 item 나누기 위해서
+                            if (j <= 2) {
+                                str +=
+                                    "<div class='col-md-4'>" +
+                                    "  <a>" +
+                                    "   <img src='/aws/getImg?fileName=" + attachFilter[0].uuid + "&directory=" + attachFilter[0].uploadPath + "' alt='' style='max-width:100%;'>\n" +
+                                    "   <span class='text-gray'>" + honoursFilter[j].honoursNm + "</span>" +
+                                    "  </a>" +
+                                    "</div>";
+                            }
+
+                            if (j > 2) {
+                                carouselItemStr +=
+                                    "<div class='col-md-4'>" +
+                                    "  <a>" +
+                                    "   <img src='/aws/getImg?fileName=" + attachFilter[0].uuid + "&directory=" + attachFilter[0].uploadPath + "' alt='' style='max-width:100%;'>\n" +
+                                    "   <span class='text-gray'>" + honoursFilter[j].honoursNm + "</span>" +
+                                    "  </a>" +
+                                    "</div>";
+                            }
+
+                            //carousel-item 3개씩 끊기 위해서
+                            if (j > 2 && j % 3 === 2) {
+                                carouselItemStr += "</div>" +
+                                    "</div>" +
+                                    "<div class='carousel-item'><div class='row'>";
+                            }
+
+                            //indicator 갯수
+                            if (j % 3 === 0) {
+                                carouselIndicator += "<li data-target='#carousel" + carouselNum + "' data-slide-to='" + j / 3 + "'></li>";
+                            }
                         }//end for j
+
+                        carouselItemStr += "</div>" +
+                            //row
+                            "</div>";
+                        //carousel-item
+
+                        str +=
+                            "                                                </div>" +
+                            "                                                <!--.row-->" +
+                            "                                            </div>" +
+                            "                                            <!--.item-->" +
+                            carouselItemStr +
+                            "                                        </div>" +
+                            "                                        <!--.carousel-inner-->" +
+                            "                                    </div>" +
+                            "                                    <!--.Carousel-->" +
+                            "                                </div>" +
+                            "                                <!--.col-md-12-->" +
+                            "                            </div>" +
+                            "                             <!--.row-->" +
+                            "                        </div>" +
+                            "                        <!--.card-body pt-0-->" +
+                            "                        <div class='mb-2 mt-4'>" +
+                            "                            <ol class='carousel-indicators'>" +
+                            carouselIndicator +
+                            "                            </ol>" +
+                            "                        </div>" +
+                            "                        <!--.mb-2 mt-4-->" +
+                            "                    </div>" +
+                            "                    <!--.category-->" +
+                            "</div>" +
+                            "<!--.card-->";
+
+                        carouselNum++;
                     }//end for i
-                    $("#nationalHonours").html();
+
+                    $("#nationalHonours").html(str);
                 }
             )
         }
     )
 });
-// $.ajax({
-//     type: 'GET',
-//     url: '/profile/category',
-//     success: ((data) => {
-//         profileInfoList().then(
-//             function profileInfoList(result) {
-//
-//                 $.ajax({
-//                     url: '/profileAttach/getAttachList',
-//                     type: 'GET',
-//                     success: (attachData) => {
-//
-//                         let str = "";
-//                         for (let i = 0; i < data.length; i++) {
-//                             const profileFilter = result.filter((element) => {
-//                                 return element.profileCategoryNo === data[i].profileCategoryNo;
-//                             });
-//                             //반복문 통해 카테고리 별로 필터링
-//
-//                             for (let j = 0, list = profileFilter.length || 0; j < list; j++) {
-//                                 const attachFilter = attachData.filter((element) => {
-//                                     return element.profileNo === profileFilter[j].profileNo;
-//                                 });
-//                                 const date = new Date(profileFilter[j].birthDate);
-//                                 const month = calendar(date.getMonth() + 1, 2);
-//                                 const day = calendar(date.getDate(), 2);
-//                                 //id fk 로 filter 처리를 해서 하나만 남겨 배열 0을 통해 첨부파일 정보 획득
-//                                 str += "<div class='container-custom'>\n" +
-//                                     "            <h1 class='bold profile-category'>" + data[i].categoryNm + "</h1>\n" +
-//                                     "            <div class='col-lg-12'>\n" +
-//                                     "                <div class='row'>\n" +
-//                                     "                    <div class='col-lg-3'>\n" +
-//                                     "                        <div class='profile-img text-center'>\n" +
-//                                     "                            <img src='/aws/getImg?fileName=" + attachFilter[0].uuid + "&directory=" + attachFilter[0].uploadPath + "' alt=''>\n" +
-//                                     "                            <div>\n" +
-//                                     "                                <span class='text-primary'>" + profileFilter[j].profileNm + "</span></div>\n" +
-//                                     "                            <div>\n" +
-//                                     "                                <span>" + date.getFullYear() + "-" + month + "-" + day + "</span>\n" +
-//                                     "                            </div>\n" +
-//                                     "                        </div>\n" +
-//                                     "                    </div>\n" +
-//                                     "                </div>\n" +
-//                                     "            </div>\n" +
-//                                     "        </div>"
-//                             }
-//                         }
-//
-//                         $("#profileList").html(str);
-//                     }
-//                 });
-//             }
-//         )
-//     })
-// });

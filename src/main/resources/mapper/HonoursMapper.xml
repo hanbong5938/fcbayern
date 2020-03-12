@@ -18,6 +18,6 @@
         select honoursNo, honoursNm, updateDt, createDt, userNo, honoursCategoryNo
         from honours
         where state = 1
-        order by createDt
+        order by createDt desc
     </select>
 </mapper>
