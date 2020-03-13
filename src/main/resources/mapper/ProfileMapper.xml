@@ -26,6 +26,7 @@
                profileCategoryNo
         from profile
         where state = true
+        order by backNo
     </select>
 
 </mapper>

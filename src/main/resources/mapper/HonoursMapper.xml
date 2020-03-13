@@ -5,7 +5,7 @@
 <mapper namespace="com.football.fcbayern.mapper.HonoursMapper">
 
     <select id="getCategoryList" resultType="com.football.fcbayern.model.HonoursCategoryModel">
-        select honoursCategoryNo, categoryNm, international, createDt, updateDt
+        select honoursCategoryNo, categoryNm, international, createDt, updateDt, fileNm
         from honoursCategory;
     </select>
 

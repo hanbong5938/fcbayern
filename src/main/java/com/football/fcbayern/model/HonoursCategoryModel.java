@@ -11,4 +11,5 @@ public class HonoursCategoryModel {
     private boolean international;
     private Timestamp createDt;
     private Timestamp updateDt;
+    private String fileNm;
 }
