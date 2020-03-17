@@ -16,6 +16,8 @@ public interface BoardMapper {
 
     BoardModel info(int boardNo);
 
+    BoardModel infoLast(int userNo);
+
     int hit(int boardNo);
 
     void good(int boardNo);

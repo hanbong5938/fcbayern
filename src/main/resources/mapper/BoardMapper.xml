@@ -41,6 +41,16 @@
           and state = 1
     </select>
 
+    <select id="infoLast" resultType="com.football.fcbayern.model.BoardModel">
+        select boardNo
+        from board
+        where userNo = #{userNo}
+          and state = 1
+        order by updateDt desc
+        limit 1
+    </select>
+
+
     <update id="hit">
         update board
         set hit = hit + 1

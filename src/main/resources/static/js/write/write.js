@@ -74,17 +74,28 @@ function sendFile(uploadFiles) {
     })
 }
 
-function successRead(boardData){
-    $.get("/read?lang=" + getCookie('APPLICATION_LOCALE'), {
-        boardCategoryNo: boardData.boardCategoryNo,
-        boardNo: boardNo
-    }, (result) => {
-        $(".content").html(result);
-        history.pushState({
-            data: "/read",
-            boardCategoryNo: boardData.boardCategoryNo, boardNo: boardNo
-        }, null, "/read?lang=" + getCookie('APPLICATION_LOCALE') + "&boardNo=" + boardNo);
-    })
+function successRead(boardData) {
+    const userNo = 1;
+    $.ajax({
+        method: "get",
+        url: "/board/infoLast/" + userNo,
+        success: (lastBoardNo) => {
+            const boardNo = lastBoardNo.boardNo;
+
+            $.get("/read?lang=" + getCookie('APPLICATION_LOCALE'), {
+                boardCategoryNo: boardData.boardCategoryNo,
+                boardNo: boardNo
+            }, (result) => {
+                $(".content").html(result);
+                history.pushState({
+                    data: "/read",
+                    boardCategoryNo: boardData.boardCategoryNo, boardNo: boardNo
+                }, null, "/read?lang=" + getCookie('APPLICATION_LOCALE') + "&boardNo=" + boardNo);
+            })
+        }
+    });
+
+
 }
 
 //등록 버튼

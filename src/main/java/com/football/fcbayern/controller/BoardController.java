@@ -3,7 +3,9 @@ package com.football.fcbayern.controller;
 import com.football.fcbayern.model.BoardCategoryModel;
 import com.football.fcbayern.model.BoardModel;
 import com.football.fcbayern.model.CriteriaModel;
+import com.football.fcbayern.service.BoardAttachService;
 import com.football.fcbayern.service.BoardService;
+import com.football.fcbayern.util.RegularExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,10 +19,17 @@ import java.util.List;
 public class BoardController {
 
     private BoardService boardService;
+    private BoardAttachService boardAttachService;
+    private RegularExpression regularExpression = new RegularExpression();
 
     @Autowired
     public void setBoardService(BoardService boardService) {
         this.boardService = boardService;
+    }
+
+    @Autowired
+    public void setBoardAttachService(BoardAttachService boardAttachService) {
+        this.boardAttachService = boardAttachService;
     }
 
 
@@ -42,12 +51,20 @@ public class BoardController {
     @PostMapping(value = "/insertInfo", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
     public ResponseEntity<String> insertInfo(@RequestBody BoardModel boardModel) {
         int count = boardService.insertInfo(boardModel);
+        boardAttachService.insertInfo(regularExpression.attach(boardModel.getContent()));
+
         return count == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping(value = "/info/{boardNo}")
     public ResponseEntity<BoardModel> info(@PathVariable int boardNo) {
         return new ResponseEntity<>(boardService.info(boardNo), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/infoLast/{userNo}")
+    public ResponseEntity<BoardModel> infoLast(@PathVariable int userNo) {
+        System.out.println(boardService.infoLast(userNo));
+        return new ResponseEntity<>(boardService.infoLast(userNo), HttpStatus.OK);
     }
 
     @PatchMapping(value = "/modify")

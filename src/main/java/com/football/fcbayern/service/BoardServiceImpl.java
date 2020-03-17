@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class BoardServiceImpl implements BoardService {
 
-    private final BoardMapper boardMapper;
+    private BoardMapper boardMapper;
 
     @Override
     public int insertInfo(BoardModel boardModel) {
@@ -34,6 +34,11 @@ public class BoardServiceImpl implements BoardService {
     public BoardModel info(int boardNo) {
         boardMapper.hit(boardNo);
         return boardMapper.info(boardNo);
+    }
+
+    @Override
+    public BoardModel infoLast(int userNo) {
+        return boardMapper.infoLast(userNo);
     }
 
     @Override

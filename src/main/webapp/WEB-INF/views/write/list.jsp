@@ -31,7 +31,7 @@
             <input id="keyword" class="">
             <button id="searchBtn" class="">검색</button>
         </label>
-        <a id="regBtn" class="float-right regBtn" style="clear: both">등록</a>
+        <button id="regBtn" class="float-right regBtn btn btn-default" style="clear: both">등록</button>
     </div>
 </div>
 <!-- /.card-body -->

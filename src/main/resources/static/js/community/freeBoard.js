@@ -11,5 +11,5 @@ $('#regBtn').click(() => {
     history.pushState({
         data: "/write",
         boardCategoryNo: 1
-    }, null, "/write?lang=" + getCookie('APPLICATION_LOCALE') + "&boardCategoryNo=1");
+    }, null, "/write?lang=" + getCookie('APPLICATION_LOCALE') + "&boardCategoryNo=" + boardCategoryNo);
 });

@@ -18,6 +18,9 @@ switch (boardCategoryNo) {
     case 3:
         url = "/football";
         break;
+    case 4:
+        url = "/notice";
+        break;
     //ToDo 보드 카테고리 추가시 추가
 }
 

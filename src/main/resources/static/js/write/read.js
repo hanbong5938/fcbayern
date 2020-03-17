@@ -82,7 +82,6 @@ function modifyArea(replyNo) {
 }
 
 function deleteReply(boardNo, replyNo) {
-    console.log(boardNo)
     $.ajax({
         url: "/reply/delete",
         data: {replyNo: replyNo, boardNo: boardNo},
