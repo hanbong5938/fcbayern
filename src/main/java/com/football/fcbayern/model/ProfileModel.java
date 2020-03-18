@@ -10,7 +10,7 @@ public class ProfileModel {
     private int profileNo;
     private String profileNm;
     private int backNo;
-    private Date birthDate;
+    private Timestamp birthDate;
     private boolean state;
     private Timestamp createDt;
     private Timestamp updateDt;

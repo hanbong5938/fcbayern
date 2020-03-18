@@ -3,7 +3,6 @@ package com.football.fcbayern.controller;
 import com.amazonaws.util.IOUtils;
 import com.football.fcbayern.model.ProfileAttachModel;
 import com.football.fcbayern.service.ProfileAttachService;
-import com.football.fcbayern.service.ProfileService;
 import com.football.fcbayern.util.AwsS3Util;
 import com.football.fcbayern.util.UploadFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +23,6 @@ import java.util.List;
 public class ProfileAttachController {
 
     private ProfileAttachService profileAttachService;
-    private AwsS3Util awsS3Util = new AwsS3Util();
-    private final static String bucketName = "woolution";
 
     @Autowired
     public void setProfileAttachService(ProfileAttachService profileAttachService) {
@@ -34,14 +31,12 @@ public class ProfileAttachController {
 
     @PostMapping(value = "/insertAttachInfo", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
     public ResponseEntity<String> insertInfo(@RequestBody ProfileAttachModel profileAttachModel) {
-        System.out.println(profileAttachModel);
         int count = profileAttachService.insert(profileAttachModel);
         return count == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @PostMapping(value = "/insertImg", produces = "text/plain;charset=UTF-8")
-    public String uploadAjaxCertificate(MultipartFile uploadFile) throws Exception {
-
+    public String insertImg(MultipartFile uploadFile) throws Exception {
         String uploadPath = "profileAttach";
 
         ResponseEntity<String> img_path = new ResponseEntity<>(
@@ -53,43 +48,7 @@ public class ProfileAttachController {
 
     @GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ProfileAttachModel>> getAttachList(){
-        System.out.println(profileAttachService.getAttachList());
         return new ResponseEntity<>(profileAttachService.getAttachList(), HttpStatus.OK);
-    }
-
-    @GetMapping("/getImg")
-    public ResponseEntity<byte[]> getImg(String fileName, String directory) throws Exception {
-        System.out.println(directory);
-
-        InputStream inputStream = null;
-        ResponseEntity<byte[]> responseEntity = null;
-        HttpURLConnection httpURLConnection = null;
-        System.out.println(fileName);
-
-        String inputDirectory = null;
-        inputDirectory = directory;
-        try {
-            HttpHeaders httpHeaders = new HttpHeaders();
-            URL url;
-            try {
-                url = new URL(awsS3Util.getFileURL(bucketName, inputDirectory + fileName));
-                httpURLConnection = (HttpURLConnection) url.openConnection();
-                inputStream = httpURLConnection.getInputStream();
-            } catch (Exception e) {
-//              url = new URL(awsS3Util.getFileURL(bucketName, inputDirectory + fileName));
-//              httpURLConnection = (HttpURLConnection)url.openConnection();
-//              inputStream =  httpURLConnection.getInputStream();
-                e.printStackTrace();
-            }
-            responseEntity = new ResponseEntity<byte[]>(IOUtils.toByteArray(inputStream), httpHeaders, HttpStatus.CREATED);
-        } catch (Exception e) {
-            e.printStackTrace();
-            responseEntity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
-        } finally {
-            assert inputStream != null;
-            inputStream.close();
-        }
-        return responseEntity;
     }
 
 }

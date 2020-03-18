@@ -5,17 +5,12 @@
 <mapper namespace="com.football.fcbayern.mapper.ProfileAttachMapper">
 
     <insert id="insert">
-        insert into profileAttach (uuid, uploadPath, fileNm, state, profileNo)
-        VALUES (#{uuid}, #{uploadPath}, #{fileNm}, 1, LAST_INSERT_ID())
+        insert into profileAttach (uuid, uploadPath, state, profileNo)
+        VALUES (#{uuid}, #{uploadPath}, 1, LAST_INSERT_ID())
     </insert>
 
     <select id="getAttachList" resultType="com.football.fcbayern.model.ProfileAttachModel">
-        select uuid, uploadPath, fileNm, state, profileNo
-        from profileAttach
-    </select>
-
-    <select id="select">
-        select *
+        select uuid, uploadPath, state, profileNo
         from profileAttach
     </select>
 

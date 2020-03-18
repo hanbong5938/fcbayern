@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-
 <div class="container">
     <div class="container-custom">
         <div class="col-lg-12">
@@ -10,28 +9,30 @@
                 <div>
                     <label>
                         <span>게시판</span>
-                        <select class="ml-2 note-color-select">
-                            <option>자유게시판</option>
-                            <option>멀티미디어</option>
-                            <option>축구</option>
+                        <select id="category" class="ml-2 note-color-select">
                         </select>
-                        <span class="ml-2">공지 사항</span>
-                        <select class="ml-2">
-                            <option>공지사항</option>
-                        </select>
+                        <span class="ml-2"><spring:message code="Notice"/> </span>
+                        <input id="noticeCheckBox" class="ml2" type="checkbox" value="checked"/>
                     </label>
                 </div>
                 <div>
                     <label>
-                        <span>제&nbsp;&nbsp;&nbsp;목</span><input class="ml-2" placeholder="게시글 제목을 입력하세요">
+                        <span>제&nbsp;&nbsp;&nbsp;목</span><input id="title" class="ml-2" placeholder="게시글 제목을 입력하세요">
                     </label>
                 </div>
                 <div id="summernote">
 
                 </div>
+                <div>
+                    <button id="reg" class="pull-right btn btn-primary"><spring:message
+                            code="reg"/></button>
+                    <button id="mod" class="pull-right btn btn-warning"><spring:message
+                            code="modify"/></button>
+                </div>
             </div>
         </div>
     </div>
-
+    <input id="boardNo" value='${boardNo}' readonly="readonly"/>
+    <input id="boardCategoryNo" value='${boardCategoryNo}' readonly="readonly"/>
 
     <script src="js/write/write.js"></script>

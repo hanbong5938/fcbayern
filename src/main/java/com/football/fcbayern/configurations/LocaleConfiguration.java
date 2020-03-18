@@ -15,7 +15,7 @@ import java.util.Locale;
 @Configuration
 public class LocaleConfiguration implements WebMvcConfigurer {
 
-    @Bean(name = "lacaleResolver")
+    @Bean(name = "localeResolver")
     public LocaleResolver getLocaleResolver() {
 
         CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();

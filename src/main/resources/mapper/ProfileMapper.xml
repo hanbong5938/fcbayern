@@ -6,7 +6,7 @@
 
     <insert id="insert">
         insert into profile (profileNm, backNo, birthDate, state, createDt, updateDt, userNo, profileCategoryNo)
-        VALUES (#{profileNm}, #{backNo}, #{birthDate}, 1, now(), now(), 1, #{profileCategoryNo})
+        VALUES (#{profileNm}, #{backNo}, #{birthDate}, 1, now(), now(), #{userNo}, #{profileCategoryNo})
     </insert>
 
     <select id="category" resultType="com.football.fcbayern.model.ProfileCategoryModel">
@@ -18,7 +18,7 @@
         select profileNo,
                profileNm,
                backNo,
-               date_format(birthDate, '%Y-%m-%d') as birthDate,
+               birthDate,
                state,
                createDt,
                updateDt,
@@ -26,6 +26,7 @@
                profileCategoryNo
         from profile
         where state = true
+        order by backNo
     </select>
 
 </mapper>

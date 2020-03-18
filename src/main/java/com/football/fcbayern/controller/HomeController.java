@@ -1,7 +1,11 @@
 package com.football.fcbayern.controller;
 
+import com.football.fcbayern.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -37,12 +41,14 @@ public class HomeController {
     }
 
     @GetMapping("/freeBoard")
-    public String freeBoard() {
+    public String freeBoard(int boardCategoryNo, Model model) {
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
         return "/community/freeBoard";
     }
 
     @GetMapping("/multiMedia")
-    public String multiMedia() {
+    public String multiMedia(int boardCategoryNo, Model model) {
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
         return "/community/multiMedia";
     }
 
@@ -52,13 +58,33 @@ public class HomeController {
     }
 
     @GetMapping("/write")
-    public String writer() {
+    public String writer(int boardCategoryNo, Model model) {
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
         return "/write/write";
+    }
+
+    @GetMapping("/modify")
+    public String modify(int boardCategoryNo, int boardNo, Model model) {
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
+        model.addAttribute("boardNo", boardNo);
+        return "/write/write";
+    }
+
+    @GetMapping("/read")
+    public String read(int boardNo, int boardCategoryNo, Model model) {
+        model.addAttribute("boardNo", boardNo);
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
+        return "/write/read";
     }
 
     @GetMapping("/profileReg")
     public String playerReg() {
         return "/write/profileReg";
+    }
+
+    @GetMapping("/honoursReg")
+    public String honoursReg() {
+        return "/write/honoursReg";
     }
 
 

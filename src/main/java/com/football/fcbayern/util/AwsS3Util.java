@@ -16,13 +16,13 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 public class AwsS3Util {
-    private static final String accessKye = " accessKye";
-    private static final String secretKey = " secretKey";
+    private static final String accessKey = " accessKey";
+    private static final String secretKey = "secretKey";
 
     private AmazonS3 amazonS3;
 
     public AwsS3Util() {
-        AWSCredentials awsCredentials = new BasicAWSCredentials(accessKye, secretKey);
+        AWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
         ClientConfiguration clientConfiguration = new ClientConfiguration();
         clientConfiguration.setProtocol(Protocol.HTTP);
         this.amazonS3 = new AmazonS3Client(awsCredentials, clientConfiguration) {
@@ -55,11 +55,9 @@ public class AwsS3Util {
     public void fileDelete(String bucketName, String fileName) {
         String imgName = (fileName).replace(File.separatorChar, '/');
         amazonS3.deleteObject(bucketName, imgName);
-        System.out.println("삭제 성공");
     }
 
     public String getFileURL(String bucketName, String fileName) {
-        System.out.println("파일 명 : " + fileName);
         String imgName = (fileName).replace(File.separatorChar, '/');
         return amazonS3.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, imgName)).toString();
     }
