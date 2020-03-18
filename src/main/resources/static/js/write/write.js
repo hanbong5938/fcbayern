@@ -8,19 +8,27 @@ if (boardNo > 0) {
 }
 
 //카테고리 불러오기
-$.ajax({
-    url: "/board/category",
-    dataType: "JSON",
-    method: "get",
-    success: (data) => {
-        for (let i = 0; i < data.length; i++) {
-            $('#category').append('<option value="' + data[i].boardCategoryNo + '">' + data[i].categoryNm + '</option>');
-        }
-        //가져온 값으로 select option 선택하기 위해서
-        const boardCategoryNo = $("#boardCategoryNo").val();
-        $("#category").val(boardCategoryNo + "");
+$.get("/board/category", (data) => {
+    for (let i = 0; i < data.length; i++) {
+        $('#category').append('<option value="' + data[i].boardCategoryNo + '">' + data[i].categoryNm + '</option>');
     }
+    //가져온 값으로 select option 선택하기 위해서
+    const boardCategoryNo = $("#boardCategoryNo").val();
+    $("#category").val(boardCategoryNo + "");
 });
+// $.ajax({
+//     url: "/board/category",
+//     dataType: "JSON",
+//     method: "get",
+//     success: (data) => {
+//         for (let i = 0; i < data.length; i++) {
+//             $('#category').append('<option value="' + data[i].boardCategoryNo + '">' + data[i].categoryNm + '</option>');
+//         }
+//         //가져온 값으로 select option 선택하기 위해서
+//         const boardCategoryNo = $("#boardCategoryNo").val();
+//         $("#category").val(boardCategoryNo + "");
+//     }
+// });
 
 //이미지가 콜백 형식으로 업로드 되기 때문에 미리 글을 생성해놓은 뒤 state
 $('#summernote').summernote({
@@ -76,35 +84,55 @@ function sendFile(uploadFiles) {
 
 function successRead(boardData) {
     const userNo = 1;
-    $.ajax({
-        method: "get",
-        url: "/board/infoLast/" + userNo,
-        success: (lastBoardNo) => {
-            const boardNo = lastBoardNo.boardNo;
+    $.get("/board/infoLast/" + userNo, (lastBoardNo) => {
+        const boardNo = lastBoardNo.boardNo;
 
-            $.get("/read?lang=" + getCookie('APPLICATION_LOCALE'), {
-                boardCategoryNo: boardData.boardCategoryNo,
-                boardNo: boardNo
-            }, (result) => {
-                $(".content").html(result);
-                history.pushState({
-                    data: "/read",
-                    boardCategoryNo: boardData.boardCategoryNo, boardNo: boardNo
-                }, null, "/read?lang=" + getCookie('APPLICATION_LOCALE') + "&boardNo=" + boardNo);
-            })
-        }
+        $.get("/read?lang=" + getCookie('APPLICATION_LOCALE'), {
+            boardCategoryNo: boardData.boardCategoryNo,
+            boardNo: boardNo
+        }, (result) => {
+            $(".content").html(result);
+            history.pushState({
+                data: "/read",
+                boardCategoryNo: boardData.boardCategoryNo, boardNo: boardNo
+            }, null, "/read?lang=" + getCookie('APPLICATION_LOCALE') + "&boardNo=" + boardNo);
+        })
     });
-
-
+    // $.ajax({
+    //     method: "get",
+    //     url: "/board/infoLast/" + userNo,
+    //     success: (lastBoardNo) => {
+    //         const boardNo = lastBoardNo.boardNo;
+    //
+    //         $.get("/read?lang=" + getCookie('APPLICATION_LOCALE'), {
+    //             boardCategoryNo: boardData.boardCategoryNo,
+    //             boardNo: boardNo
+    //         }, (result) => {
+    //             $(".content").html(result);
+    //             history.pushState({
+    //                 data: "/read",
+    //                 boardCategoryNo: boardData.boardCategoryNo, boardNo: boardNo
+    //             }, null, "/read?lang=" + getCookie('APPLICATION_LOCALE') + "&boardNo=" + boardNo);
+    //         })
+    //     }
+    // });
 }
 
 //등록 버튼
 regBtn.click(() => {
+
+    //체크박스 값 가져오기
+    let notice = false;
+    if ($("#noticeCheckBox").val() === "checked") {
+        notice = true
+    }
+
     const boardData = {
         title: $("#title").val(),
         content: $('#summernote').summernote('code'),
         writer: "admin", //ToDo 로그인 이후 수정
         userNo: 1, //ToDo 로그인 이후 수정
+        notice: notice,
         boardCategoryNo: $('#category option:selected').val()
     };
 
@@ -121,12 +149,20 @@ regBtn.click(() => {
 });
 
 modBtn.click(() => {
+
+    //체크박스 값 가져오기
+    let notice = false;
+    if ($("#noticeCheckBox").val() === "checked") {
+        notice = true
+    }
+
     const boardData = {
         boardNo: boardNo,
         title: $("#title").val(),
         content: $('#summernote').summernote('code'),
         writer: "admin", //ToDo 로그인 이후 수정
         userNo: 1, //ToDo 로그인 이후 수정
+        notice: notice,
         boardCategoryNo: $('#category option:selected').val()
     };
 

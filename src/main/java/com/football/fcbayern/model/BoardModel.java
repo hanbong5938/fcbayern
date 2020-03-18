@@ -16,6 +16,7 @@ public class BoardModel {
     private int hit;
     private int good;
     private int replyCnt;
+    private boolean notice;
 
     private int userNo;
     private int boardCategoryNo;

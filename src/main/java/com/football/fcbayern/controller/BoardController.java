@@ -43,7 +43,7 @@ public class BoardController {
         return new ResponseEntity<>(boardService.infoList(criteriaModel), HttpStatus.OK);
     }
 
-    @GetMapping(value = "totalCnt")
+    @GetMapping(value = "/totalCnt")
     public ResponseEntity<Integer> totalCnt(CriteriaModel criteriaModel) {
         return new ResponseEntity<>(boardService.totalCnt(criteriaModel), HttpStatus.OK);
     }

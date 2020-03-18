@@ -32,7 +32,23 @@
             </div>
         </div>
 
-        <button id="regBtn" class="float-right regBtn btn btn-default" style="clear: both">등록</button>
+        <div id="pageArea" class="page">
+        </div>
+
+        <div class="mb-10">
+            <label class="float-right">
+                <select id="type">
+                    <option value="t">제 목</option>
+                    <option value="c">내 용</option>
+                    <option value="w">작성자</option>
+                    <option value="tc">제목 + 내용</option>
+                    <option value="tcw">전체</option>
+                </select>
+                <input id="keyword" class="">
+                <button id="searchBtn" class="">검색</button>
+            </label>
+            <button id="regBtn" class="float-right regBtn btn btn-default" style="clear: both">등록</button>
+        </div>
 
     </div>
 </div>

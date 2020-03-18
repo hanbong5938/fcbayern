@@ -17,19 +17,28 @@ switch (getCookie('APPLICATION_LOCALE')) {
 }
 
 function getBoardInfo(boardNo) {
-    $.ajax({
-        url: "/board/info/" + boardNo,
-        type: "get",
-        success: (result) => {
-            const totalCnt = result.replyCnt;
+    $.get("/board/info/" + boardNo,(result) => {
+        const totalCnt = result.replyCnt;
 
-            $("#title").val(result.title);
-            $("#content").html(result.content);
-            $("#replyTotalCnt").html(totalCnt);
+        $("#title").val(result.title);
+        $("#content").html(result.content);
+        $("#replyTotalCnt").html(totalCnt);
 
-            getReplyList(1, totalCnt)
-        }
+        getReplyList(1, totalCnt)
     });
+    // $.ajax({
+    //     url: "/board/info/" + boardNo,
+    //     type: "get",
+    //     success: (result) => {
+    //         const totalCnt = result.replyCnt;
+    //
+    //         $("#title").val(result.title);
+    //         $("#content").html(result.content);
+    //         $("#replyTotalCnt").html(totalCnt);
+    //
+    //         getReplyList(1, totalCnt)
+    //     }
+    // });
 }
 
 function getReplyList(pageNum, totalCnt) {

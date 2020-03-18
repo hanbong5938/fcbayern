@@ -11,10 +11,8 @@
                         <span>게시판</span>
                         <select id="category" class="ml-2 note-color-select">
                         </select>
-                        <span class="ml-2">공지 사항</span>
-                        <select class="ml-2">
-                            <option>공지사항</option>
-                        </select>
+                        <span class="ml-2"><spring:message code="Notice"/> </span>
+                        <input id="noticeCheckBox" class="ml2" type="checkbox" value="checked"/>
                     </label>
                 </div>
                 <div>
@@ -34,7 +32,7 @@
             </div>
         </div>
     </div>
-    <input  id="boardNo" value='${boardNo}' readonly="readonly"/>
-    <input  id="boardCategoryNo" value='${boardCategoryNo}' readonly="readonly"/>
+    <input id="boardNo" value='${boardNo}' readonly="readonly"/>
+    <input id="boardCategoryNo" value='${boardCategoryNo}' readonly="readonly"/>
 
     <script src="js/write/write.js"></script>

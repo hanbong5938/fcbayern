@@ -20,62 +20,68 @@ $('.set-language').click(function () {
     window.location.replace("index?lang=" + getLanguage);
 });
 
-$('#team').click(() => {
+$('.teamLink').click(() => {
     $(".content").load("/team?lang=" + getCookie('APPLICATION_LOCALE'));
     history.pushState({data: "/team"}, null, "/team?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
-$('#player').click(() => {
+$('.playerLink').click(() => {
     $(".content").load("/player?lang=" + getCookie('APPLICATION_LOCALE'));
     history.pushState({data: "/player"}, null, "/player?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
-$('#honours').click(() => {
+$('.honoursLink').click(() => {
     $(".content").load("/honours?lang=" + getCookie('APPLICATION_LOCALE'));
     history.pushState({data: "/honours"}, null, "/honours?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
-$('#news').click(() => {
+$('.newsLink').click(() => {
     $(".content").load("/news?lang=" + getCookie('APPLICATION_LOCALE'));
     history.pushState({data: "/news"}, null, "/news?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
-$('#football').click(() => {
+$('.footballLink').click(() => {
     $(".content").load("/football?lang=" + getCookie('APPLICATION_LOCALE'));
     history.pushState({data: "/football"}, null, "/football?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
-$('#freeBoard').click(() => {
-    $.ajax({
-        url: "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'),
-        data: {boardCategoryNo: 1},
-        type: "get",
-        success: (result) => {
-            $(".content").html(result);
-        }
+$('.freeBoardLink').click(() => {
+    $.get("/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 1}, (result) => {
+        $(".content").html(result);
     });
+    // $.ajax({
+    //     url: "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'),
+    //     data: {boardCategoryNo: 1},
+    //     type: "get",
+    //     success: (result) => {
+    //         $(".content").html(result);
+    //     }
+    // });
     history.pushState({
         data: "/freeBoard",
         boardCategoryNo: 1
     }, null, "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
-$('#multiMedia').click(() => {
-    $.ajax({
-        url: "/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'),
-        data: {boardCategoryNo: 2},
-        type: "get",
-        success: (result) => {
-            $(".content").html(result);
-        }
+$('.multiMediaLink').click(() => {
+    $.get("/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 2}, (result) => {
+        $(".content").html(result);
     });
+    // $.ajax({
+    //     url: "/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'),
+    //     data: {boardCategoryNo: 2},
+    //     type: "get",
+    //     success: (result) => {
+    //         $(".content").html(result);
+    //     }
+// });
     history.pushState({
         data: "/multiMedia",
         boardCategoryNo: 2
     }, null, "/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
-$('#notice').click(() => {
+$('.noticeLink').click(() => {
     $(".content").load("/notice?lang=" + getCookie('APPLICATION_LOCALE'));
     history.pushState({data: "/notice"}, null, "/notice?lang=" + getCookie('APPLICATION_LOCALE'));
 });
@@ -88,21 +94,31 @@ $(window).on('popstate', function (event) {
     if (data === null) {
         location.href = "/index";
     } else {
-        $.ajax({
-            url: data.data + "?lang=" + getCookie('APPLICATION_LOCALE'),
-            data: {
-                boardCategoryNo: data.boardCategoryNo,
-                boardNo: data.boardNo,
-                type: data.type,
-                keyword: data.keyword,
-                pageNum: data.pageNum
-            },
-            type: "get",
-            success: (result) => {
-                $(".content").html(result);
+        $.get(data.data + "?lang=" + getCookie('APPLICATION_LOCALE'), {
+            boardCategoryNo: data.boardCategoryNo,
+            boardNo: data.boardNo,
+            type: data.type,
+            keyword: data.keyword,
+            pageNum: data.pageNum
+        }, (result) => {
+            $(".content").html(result);
 
-            }
         })
+        // $.ajax({
+        //     url: data.data + "?lang=" + getCookie('APPLICATION_LOCALE'),
+        //     data: {
+        //         boardCategoryNo: data.boardCategoryNo,
+        //         boardNo: data.boardNo,
+        //         type: data.type,
+        //         keyword: data.keyword,
+        //         pageNum: data.pageNum
+        //     },
+        //     type: "get",
+        //     success: (result) => {
+        //         $(".content").html(result);
+        //
+        //     }
+        // })
     }
 });
 

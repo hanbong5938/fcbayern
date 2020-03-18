@@ -5,8 +5,16 @@
 <mapper namespace="com.football.fcbayern.mapper.BoardAttachMapper">
 
     <insert id="insertInfo">
-        insert into attach(uuid, uploadPath, state, boardNo)
-        VALUES (#{uuid}, #{uploadPath}, 1, LAST_INSERT_ID())
+        insert into attach(uuid, uploadPath, state, boardNo, createDt)
+        VALUES (#{uuid}, #{uploadPath}, 1, LAST_INSERT_ID(), now())
     </insert>
+
+    <select id="getInfo" resultType="com.football.fcbayern.model.BoardAttachModel">
+        select uuid, uploadPath, state, boardNo, createDt
+        from attach
+        where boardNo = #{boardNo}
+        order by createDt
+        limit 1
+    </select>
 
 </mapper>

@@ -26,57 +26,122 @@ switch (boardCategoryNo) {
 
 //정보 가져오는 function
 function loadList(criteriaModel) {
-    $.ajax({
-        url: "/board/infoList",
-        type: "get",
-        data: criteriaModel,
-        success: (result) => {
-            //페이징처리 위해서 갯수 가져오는 ajax
-            $.get("/board/totalCnt", criteriaModel, (totalCnt) => {
-                let str = "";
-                for (let i = 0; i < result.length; i++) {
-                    const timestamp = new Date(result[i].createDt);
-                    const month = timestamp.getMonth() + 1;
-                    const date = timestamp.getDate();
+    $.get("/board/infoList", criteriaModel, (result) => {
+        //페이징처리 위해서 갯수 가져오는 ajax
+        $.get("/board/totalCnt", criteriaModel, (totalCnt) => {
+            let str = "";
+            for (let i = 0; i < result.length; i++) {
+                const timestamp = new Date(result[i].createDt);
+                const month = timestamp.getMonth() + 1;
+                const date = timestamp.getDate();
+                let noticeIcon = "";
 
-                    str += "        <tr>\n" +
-                        "            <td class=\"text-left text-gray\"><a class='boardLink text-primary' onclick='' id='" + result[i].boardNo + "'>" + result[i].title + "</a>" + " [" + result[i].replyCnt + "]" + "</td>\n" +
+                if (result[i].notice === true) {
+                    str += "<tr>\n" +
+                        "            <td class='text-left text-gray text-center bold'><h5><span class='badge badge-danger'>공지</span> <a class='boardLink text-danger' onclick='' id='" + result[i].boardNo + "'>" + result[i].title + "</a>" + "</h5></td>\n" +
                         "            <td>" + result[i].writer + "</td>\n" +
                         "            <td>" + timestamp.getFullYear() + "-" + calendar(month, 2) + "-" + calendar(date, 2) + "</td>\n" +
                         "            <td>" + result[i].hit + "</td>\n" +
                         "            <td>" + result[i].good + "</td>\n" +
                         "        </tr>"
 
-                }
-                $("#list").html(str);
-
-                const pageNum = criteriaModel.pageNum;
-                if (pageNum === -1) {
-                    pageMaker(1, totalCnt);
                 } else {
-                    pageMaker(pageNum, totalCnt)
+                    str += "        <tr>\n" +
+                        "            <td class=\"text-left text-gray\"><a class='boardLink text-dark' onclick='' id='" + result[i].boardNo + "'>" + result[i].title + "</a>" + " [" + result[i].replyCnt + "]" + "</td>\n" +
+                        "            <td>" + result[i].writer + "</td>\n" +
+                        "            <td>" + timestamp.getFullYear() + "-" + calendar(month, 2) + "-" + calendar(date, 2) + "</td>\n" +
+                        "            <td>" + result[i].hit + "</td>\n" +
+                        "            <td>" + result[i].good + "</td>\n" +
+                        "        </tr>"
                 }
+            }
+            $("#list").html(str);
 
-                $(".boardLink").click(function () {
-                    const getBoardId = $(this).closest("a").attr('id');
-                    $.ajax({
-                        url: "/read?lang=" + getCookie('APPLICATION_LOCALE'),
-                        data: {boardNo: getBoardId, boardCategoryNo: boardCategoryNo},
-                        type: "get",
-                        success: (result) => {
-                            $(".boardContent").html(result);
-                            history.pushState({
-                                data: "/read",
-                                boardNo: getBoardId,
-                                boardCategoryNo: boardCategoryNo
-                            }, null, '/read?lang=' + getCookie('APPLICATION_LOCALE') + '&boardNo=' + getBoardId);
+            const pageNum = criteriaModel.pageNum;
+            if (pageNum === -1) {
+                pageMaker(1, totalCnt);
+            } else {
+                pageMaker(pageNum, totalCnt)
+            }
 
-                        }
-                    });
-                });
+            $(".boardLink").click(function () {
+                const getBoardId = $(this).closest("a").attr('id');
+                $.get("/read?lang=" + getCookie('APPLICATION_LOCALE'), {
+                    boardNo: getBoardId,
+                    boardCategoryNo: boardCategoryNo
+                }, (result) => {
+                    $(".boardContent").html(result);
+                    history.pushState({
+                        data: "/read",
+                        boardNo: getBoardId,
+                        boardCategoryNo: boardCategoryNo
+                    }, null, '/read?lang=' + getCookie('APPLICATION_LOCALE') + '&boardNo=' + getBoardId);
+                })
             });
-        }
-    });
+        });
+    })
+    // $.ajax({
+    //     url: "/board/infoList",
+    //     type: "get",
+    //     data: criteriaModel,
+    //     success: (result) => {
+    //         //페이징처리 위해서 갯수 가져오는 ajax
+    //         $.get("/board/totalCnt", criteriaModel, (totalCnt) => {
+    //             let str = "";
+    //             for (let i = 0; i < result.length; i++) {
+    //                 const timestamp = new Date(result[i].createDt);
+    //                 const month = timestamp.getMonth() + 1;
+    //                 const date = timestamp.getDate();
+    //
+    //                 str += "        <tr>\n" +
+    //                     "            <td class=\"text-left text-gray\"><a class='boardLink text-primary' onclick='' id='" + result[i].boardNo + "'>" + result[i].title + "</a>" + " [" + result[i].replyCnt + "]" + "</td>\n" +
+    //                     "            <td>" + result[i].writer + "</td>\n" +
+    //                     "            <td>" + timestamp.getFullYear() + "-" + calendar(month, 2) + "-" + calendar(date, 2) + "</td>\n" +
+    //                     "            <td>" + result[i].hit + "</td>\n" +
+    //                     "            <td>" + result[i].good + "</td>\n" +
+    //                     "        </tr>"
+    //
+    //             }
+    //             $("#list").html(str);
+    //
+    //             const pageNum = criteriaModel.pageNum;
+    //             if (pageNum === -1) {
+    //                 pageMaker(1, totalCnt);
+    //             } else {
+    //                 pageMaker(pageNum, totalCnt)
+    //             }
+    //
+    //             $(".boardLink").click(function () {
+    //                 const getBoardId = $(this).closest("a").attr('id');
+    //                 // $.ajax({
+    //                 //     url: "/read?lang=" + getCookie('APPLICATION_LOCALE'),
+    //                 //     data: {boardNo: getBoardId, boardCategoryNo: boardCategoryNo},
+    //                 //     type: "get",
+    //                 //     success: (result) => {
+    //                 //         $(".boardContent").html(result);
+    //                 //         history.pushState({
+    //                 //             data: "/read",
+    //                 //             boardNo: getBoardId,
+    //                 //             boardCategoryNo: boardCategoryNo
+    //                 //         }, null, '/read?lang=' + getCookie('APPLICATION_LOCALE') + '&boardNo=' + getBoardId);
+    //                 //
+    //                 //     }
+    //                 // });
+    //                 $.gat("/read?lang=" + getCookie('APPLICATION_LOCALE'), {
+    //                     boardNo: getBoardId,
+    //                     boardCategoryNo: boardCategoryNo
+    //                 }, (result) => {
+    //                     $(".boardContent").html(result);
+    //                     history.pushState({
+    //                         data: "/read",
+    //                         boardNo: getBoardId,
+    //                         boardCategoryNo: boardCategoryNo
+    //                     }, null, '/read?lang=' + getCookie('APPLICATION_LOCALE') + '&boardNo=' + getBoardId);
+    //                 })
+    //             });
+    //         });
+    //     }
+    // });
 }
 
 

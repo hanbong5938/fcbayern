@@ -1,6 +1,7 @@
 package com.football.fcbayern.service;
 
 import com.football.fcbayern.mapper.BoardAttachMapper;
+import com.football.fcbayern.model.BoardAttachModel;
 import com.football.fcbayern.util.RegularExpression;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,10 @@ public class BoardAttachServiceImpl implements BoardAttachService {
         for (String s : list) {
             boardAttachMapper.insertInfo(regularExpression.splitFileName(s), regularExpression.splitDirectory(s));
         }
+    }
+
+    @Override
+    public BoardAttachModel getInfo(int boarNo) {
+        return boardAttachMapper.getInfo(boarNo);
     }
 }

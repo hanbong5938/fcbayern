@@ -66,21 +66,21 @@
                                                 <spring:message code="Club"/>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="club">
-                                                <a id="team" class="dropdown-item"><spring:message
+                                                <a id="team" class="dropdown-item teamLink"><spring:message
                                                         code="Team"/></a>
-                                                <a id="player" class="dropdown-item"><spring:message
+                                                <a id="player" class="dropdown-item playerLink"><spring:message
                                                         code="Player"/></a>
-                                                <a id="honours" class="dropdown-item"><spring:message
+                                                <a id="honours" class="dropdown-item honoursLink"><spring:message
                                                         code="Honours"/></a>
                                             </div>
                                         </div>
 
                                     </li>
                                     <li class="nav-item mr-2">
-                                        <a id="news" class="font-do"><spring:message code="News"/></a>
+                                        <a id="news" class="font-do newsLink"><spring:message code="News"/></a>
                                     </li>
                                     <li class="nav-item mr-2">
-                                        <a id="football" class="font-do"><spring:message
+                                        <a id="football" class="font-do footballLink"><spring:message
                                                 code="FootBall"/></a>
                                     </li>
                                     <li class="nav-item mr-2">
@@ -91,11 +91,11 @@
                                                 <spring:message code="Community"/>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="community">
-                                                <a id="freeBoard" class="dropdown-item"><spring:message
+                                                <a id="freeBoard" class="dropdown-item freeBoardLink"><spring:message
                                                         code="FreeBoard"/></a>
-                                                <a id="multiMedia" class="dropdown-item"><spring:message
+                                                <a id="multiMedia" class="dropdown-item multiMediaLink"><spring:message
                                                         code="MultiMedia"/></a>
-                                                <a id="notice" class="dropdown-item"><spring:message
+                                                <a id="notice" class="dropdown-item noticeLink"><spring:message
                                                         code="Notice"/></a>
                                             </div>
                                         </div>

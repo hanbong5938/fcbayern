@@ -43,16 +43,21 @@ function insertImg(formData) {
     })
 }
 
-$.ajax({
-    type: 'GET',
-    url: '/profile/category',
-    dataType: "JSON",
-    success: ((data) => {
-        for (let i = 0; i < data.length; i++) {
-            $('#category').append('<option value="' + data[i].profileCategoryNo + '">' + data[i].categoryNm + '</option>');
-        }
-    })
-})
+$.get("/profile/category", ((data) => {
+    for (let i = 0; i < data.length; i++) {
+        $('#category').append('<option value="' + data[i].profileCategoryNo + '">' + data[i].categoryNm + '</option>');
+    }
+}));
+// $.ajax({
+//     type: 'GET',
+//     url: '/profile/category',
+//     // dataType: "JSON",
+//     success: ((data) => {
+//         for (let i = 0; i < data.length; i++) {
+//             $('#category').append('<option value="' + data[i].profileCategoryNo + '">' + data[i].categoryNm + '</option>');
+//         }
+//     })
+// })
 
 
 $(drop).on("dragenter", (e) => { //드래그 요소가 들어왔을떄

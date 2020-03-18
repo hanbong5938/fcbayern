@@ -4,27 +4,31 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.football.fcbayern.mapper.BoardMapper">
 
+    <!--boardCategory-->
     <select id="category" resultType="com.football.fcbayern.model.BoardCategoryModel">
         select boardCategoryNo, categoryNm, createDt, updateDt, state, notice
         from boardCategory;
     </select>
 
+    <!--게시글 등록-->
     <insert id="insertInfo">
-        insert into board (title, content, createDt, updateDt, state, userNo, boardCategoryNo)
-        VALUES (#{title}, #{content}, now(), now(), 1, #{userNo}, #{boardCategoryNo})
+        insert into board (title, content, writer, createDt, updateDt, state, notice, userNo, boardCategoryNo)
+        VALUES (#{title}, #{content}, #{writer}, now(), now(), 1, #{notice}, #{userNo}, #{boardCategoryNo})
     </insert>
 
+    <!--글 리스트 가져오는것-->
     <select id="infoList" resultType="com.football.fcbayern.model.BoardModel">
-        select boardNo, title, content, writer, createDt, updateDt, hit,good, replyCnt, userNo, boardCategoryNo
+        select boardNo, title, content, writer, createDt, updateDt, hit,good, replyCnt, userNo, notice, boardCategoryNo
         from board
         where state = 1
         and boardCategoryNo = #{boardCategoryNo}
         <include refid="criteria"/>
-        order by createDt desc
+        order by notice desc, createDt desc
         limit #{pageStart}, #{amount}
         # amount 10 으로 고정 지정
     </select>
 
+    <!--조회-->
     <select id="info" resultType="com.football.fcbayern.model.BoardModel">
         select boardNo,
                title,
@@ -41,6 +45,7 @@
           and state = 1
     </select>
 
+    <!--글 작성 후 페이지 보여주기 위해-->
     <select id="infoLast" resultType="com.football.fcbayern.model.BoardModel">
         select boardNo
         from board
@@ -51,46 +56,53 @@
     </select>
 
 
+    <!--조회수-->
     <update id="hit">
         update board
         set hit = hit + 1
         where boardNo = #{boardNo}
     </update>
 
+    <!--좋아요-->
     <update id="good">
         update board
         set good = good + 1
         where boardNo = #{boardNo}
     </update>
 
+    <!--싫어요-->
     <update id="bad">
         update board
         set good = good - 1
         where boardNo = #{boardNo}
     </update>
 
+    <!--댓글 갯수 카운트-->
     <update id="replyCnt">
         update board
         set replyCnt = replyCnt + 1
         where boardNo = #{boardNo}
     </update>
 
+    <!--댓글 삭제시 카운트 빼기-->
     <update id="replyCntDelete">
         update board
         set replyCnt = replyCnt - 1
         where boardNo = #{boardNo}
     </update>
 
-
+    <!--글 수정-->
     <update id="modify">
         update board
         set title           = #{title},
             content         = #{content},
             updateDt        = now(),
-            boardCategoryNo = #{boardCategoryNo}
+            boardCategoryNo = #{boardCategoryNo},
+            notice          = #{notice}
         where boardNo = #{boardNo}
     </update>
 
+    <!--삭제 디비에서 직접 삭제하지 않고 보여지지 않도록 수정-->
     <update id="delete">
         update board
         set state = 0
@@ -98,11 +110,13 @@
     </update>
 
 
+    <!--카테고리에 따른 총 갯수와 검색-->
     <select id="totalCnt" resultType="int">
-        select count(*) as "totalCnt" from board where boardNo > 0
+        select count(*) as "totalCnt" from board where boardCategoryNo = #{boardCategoryNo} and state = 1
         <include refid="criteria"/>
     </select>
 
+    <!--검색시 필터링-->
     <sql id="criteria">
         <if test="type != null">
             <if test="type == 't'.toString()">
