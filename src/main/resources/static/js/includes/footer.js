@@ -54,14 +54,6 @@ $('.freeBoardLink').click(() => {
     $.get("/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 1}, (result) => {
         $(".content").html(result);
     });
-    // $.ajax({
-    //     url: "/freeBoard?lang=" + getCookie('APPLICATION_LOCALE'),
-    //     data: {boardCategoryNo: 1},
-    //     type: "get",
-    //     success: (result) => {
-    //         $(".content").html(result);
-    //     }
-    // });
     history.pushState({
         data: "/freeBoard",
         boardCategoryNo: 1
@@ -88,6 +80,12 @@ $('.noticeLink').click(() => {
     }, null, "/notice?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
+//load 사용해서 모달 외부에서 불러온다.
+$('#login').click(() => {
+    $(".modal-content").load("/loginModal");
+    console.log("modal")
+});
+
 //이벤트 감지해서 뒤로가기 불러오는 ajax
 $(window).on('popstate', function (event) {
     const data = event.originalEvent.state;
@@ -106,21 +104,6 @@ $(window).on('popstate', function (event) {
             $(".content").html(result);
 
         })
-        // $.ajax({
-        //     url: data.data + "?lang=" + getCookie('APPLICATION_LOCALE'),
-        //     data: {
-        //         boardCategoryNo: data.boardCategoryNo,
-        //         boardNo: data.boardNo,
-        //         type: data.type,
-        //         keyword: data.keyword,
-        //         pageNum: data.pageNum
-        //     },
-        //     type: "get",
-        //     success: (result) => {
-        //         $(".content").html(result);
-        //
-        //     }
-        // })
     }
 });
 
