@@ -91,9 +91,11 @@
                                                 <spring:message code="Community"/>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="community">
-                                                <a id="freeBoard" class="dropdown-item freeBoardLink href"><spring:message
+                                                <a id="freeBoard"
+                                                   class="dropdown-item freeBoardLink href"><spring:message
                                                         code="FreeBoard"/></a>
-                                                <a id="multiMedia" class="dropdown-item multiMediaLink href"><spring:message
+                                                <a id="multiMedia"
+                                                   class="dropdown-item multiMediaLink href"><spring:message
                                                         code="MultiMedia"/></a>
                                                 <a id="notice" class="dropdown-item noticeLink href"><spring:message
                                                         code="Notice"/></a>
@@ -101,9 +103,8 @@
                                         </div>
                                     </li>
                                     <li class="nav-item mr-2">
-                                        <a><i class="material-icons">
-                                            lock
-                                        </i></a>
+                                        <a id="login" data-toggle="modal" data-target="#modal" role="button">
+                                            <i class="material-icons">lock</i></a>
                                     </li>
                                     <li class="nav-item">
                                         <div class="dropdown">

@@ -1,4 +1,13 @@
 </div>
+
+<div id="modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog mt-10" style="width:20rem; border-radius:20px;">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+
 <footer>
     <div class="footer">
         <div class="container">
