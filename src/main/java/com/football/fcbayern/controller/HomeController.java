@@ -36,7 +36,8 @@ public class HomeController {
     }
 
     @GetMapping("/football")
-    public String football() {
+    public String football(int boardCategoryNo, Model model) {
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
         return "/football/football";
     }
 
@@ -53,7 +54,8 @@ public class HomeController {
     }
 
     @GetMapping("/notice")
-    public String notice() {
+    public String notice(int boardCategoryNo, Model model) {
+        model.addAttribute("boardCategoryNo", boardCategoryNo);
         return "/community/notice";
     }
 

@@ -60,42 +60,42 @@
 
                                     <li class="nav-item active mr-2">
                                         <div class="dropdown">
-                                            <a class="dropdown-toggle font-do"
+                                            <a class="dropdown-toggle font-do href"
                                                id="club" data-toggle="dropdown" aria-haspopup="true"
                                                aria-expanded="false">
                                                 <spring:message code="Club"/>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="club">
-                                                <a id="team" class="dropdown-item teamLink"><spring:message
+                                                <a id="team" class="dropdown-item teamLink href"><spring:message
                                                         code="Team"/></a>
-                                                <a id="player" class="dropdown-item playerLink"><spring:message
+                                                <a id="player" class="dropdown-item playerLink href"><spring:message
                                                         code="Player"/></a>
-                                                <a id="honours" class="dropdown-item honoursLink"><spring:message
+                                                <a id="honours" class="dropdown-item honoursLink href"><spring:message
                                                         code="Honours"/></a>
                                             </div>
                                         </div>
 
                                     </li>
                                     <li class="nav-item mr-2">
-                                        <a id="news" class="font-do newsLink"><spring:message code="News"/></a>
+                                        <a id="news" class="font-do newsLink href"><spring:message code="News"/></a>
                                     </li>
                                     <li class="nav-item mr-2">
-                                        <a id="football" class="font-do footballLink"><spring:message
+                                        <a id="football" class="font-do footballLink href"><spring:message
                                                 code="FootBall"/></a>
                                     </li>
                                     <li class="nav-item mr-2">
                                         <div class="dropdown">
-                                            <a class="dropdown-toggle font-do"
+                                            <a class="dropdown-toggle font-do href"
                                                id="community" data-toggle="dropdown" aria-haspopup="true"
                                                aria-expanded="false">
                                                 <spring:message code="Community"/>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="community">
-                                                <a id="freeBoard" class="dropdown-item freeBoardLink"><spring:message
+                                                <a id="freeBoard" class="dropdown-item freeBoardLink href"><spring:message
                                                         code="FreeBoard"/></a>
-                                                <a id="multiMedia" class="dropdown-item multiMediaLink"><spring:message
+                                                <a id="multiMedia" class="dropdown-item multiMediaLink href"><spring:message
                                                         code="MultiMedia"/></a>
-                                                <a id="notice" class="dropdown-item noticeLink"><spring:message
+                                                <a id="notice" class="dropdown-item noticeLink href"><spring:message
                                                         code="Notice"/></a>
                                             </div>
                                         </div>

@@ -41,8 +41,13 @@ $('.newsLink').click(() => {
 });
 
 $('.footballLink').click(() => {
-    $(".content").load("/football?lang=" + getCookie('APPLICATION_LOCALE'));
-    history.pushState({data: "/football"}, null, "/football?lang=" + getCookie('APPLICATION_LOCALE'));
+    $.get("/football?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 3}, (result) => {
+        $(".content").html(result);
+    });
+    history.pushState({
+        data: "/football",
+        boardCategoryNo: 3
+    }, null, "/football?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
 $('.freeBoardLink').click(() => {
@@ -67,14 +72,6 @@ $('.multiMediaLink').click(() => {
     $.get("/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 2}, (result) => {
         $(".content").html(result);
     });
-    // $.ajax({
-    //     url: "/multiMedia?lang=" + getCookie('APPLICATION_LOCALE'),
-    //     data: {boardCategoryNo: 2},
-    //     type: "get",
-    //     success: (result) => {
-    //         $(".content").html(result);
-    //     }
-// });
     history.pushState({
         data: "/multiMedia",
         boardCategoryNo: 2
@@ -82,8 +79,13 @@ $('.multiMediaLink').click(() => {
 });
 
 $('.noticeLink').click(() => {
-    $(".content").load("/notice?lang=" + getCookie('APPLICATION_LOCALE'));
-    history.pushState({data: "/notice"}, null, "/notice?lang=" + getCookie('APPLICATION_LOCALE'));
+    $.get("/notice?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 4}, (result) => {
+        $(".content").html(result);
+    });
+    history.pushState({
+        data: "/notice",
+        boardCategoryNo: 4
+    }, null, "/notice?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
 //이벤트 감지해서 뒤로가기 불러오는 ajax
