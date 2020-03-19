@@ -11,29 +11,29 @@
                 <div class="col-md-2 col-sm-2 col-xs-12 footer-link">
                     <h3><spring:message code="Club"/></h3>
                     <ul>
-                        <li><a class="teamLink"><spring:message code="Team"/></a></li>
-                        <li><a class="playerLink"><spring:message code="Player"/></a></li>
-                        <li><a class="honoursLink"><spring:message code="Honours"/></a></li>
+                        <li><a class="teamLink href"><spring:message code="Team"/></a></li>
+                        <li><a class="playerLink href"><spring:message code="Player"/></a></li>
+                        <li><a class="honoursLink href"><spring:message code="Honours"/></a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 footer-link">
                     <h3><spring:message code="News"/></h3>
                     <ul>
-                        <li><a class="newsLink"><spring:message code="News"/></a></li>
+                        <li><a class="newsLink href"><spring:message code="News"/></a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 footer-link">
                     <h3><spring:message code="FootBall"/></h3>
                     <ul>
-                        <li><a class="footballLink"><spring:message code="FootBall"/></a></li>
+                        <li><a class="footballLink href"><spring:message code="FootBall"/></a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 footer-link">
                     <h3><spring:message code="Community"/></h3>
                     <ul>
-                        <li><a class="freeBoardLink"><spring:message code="FreeBoard"/></a></li>
-                        <li><a class="multiMediaLink"><spring:message code="MultiMedia"/></a></li>
-                        <li><a class="noticeLink"><spring:message code="Notice"/></a></li>
+                        <li><a class="freeBoardLink href"><spring:message code="FreeBoard"/></a></li>
+                        <li><a class="multiMediaLink href"><spring:message code="MultiMedia"/></a></li>
+                        <li><a class="noticeLink href"><spring:message code="Notice"/></a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 footer-link">

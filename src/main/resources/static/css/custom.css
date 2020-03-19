@@ -326,3 +326,18 @@ body {
 .carousel-indicators .active {
     background-color: #961432;
 }
+
+.href:hover {
+    background: linear-gradient(to right, #DC052D, #0066B2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: url("../images/cursor/logoCursor.cur"), auto;
+}
+
+a:hover {
+    cursor: url("../images/cursor/logoCursor.cur"), auto;
+}
+
+button {
+    cursor: url("../images/cursor/logoCursor.cur"), auto;
+}

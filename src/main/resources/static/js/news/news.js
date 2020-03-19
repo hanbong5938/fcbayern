@@ -77,20 +77,6 @@ function loadList(criteriaModel) {
 
             $(".boardLink").click(function () {
                 const getBoardId = $(this).closest("a").attr('id');
-                // $.ajax({
-                //     url: "/read?lang=" + getCookie('APPLICATION_LOCALE'),
-                //     data: {boardNo: getBoardId, boardCategoryNo: 5},
-                //     type: "get",
-                //     success: (result) => {
-                //         $(".boardContent").html(result);
-                //         history.pushState({
-                //             data: "/read",
-                //             boardNo: getBoardId,
-                //             boardCategoryNo: 5
-                //         }, null, '/read?lang=' + getCookie('APPLICATION_LOCALE') + '&boardNo=' + getBoardId);
-                //
-                //     }
-                // });
 
                 $.get("/read?lang=" + getCookie('APPLICATION_LOCALE'), {
                     boardNo: getBoardId,
@@ -160,14 +146,6 @@ $('#regBtn').click(() => {
     $.get("/write?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: 5}, (result) => {
         $(".content").html(result);
     });
-    // $.ajax({
-    //     url: "/write?lang=" + getCookie('APPLICATION_LOCALE'),
-    //     data: {boardCategoryNo: 5},
-    //     type: "get",
-    //     success: (result) => {
-    //         $(".content").html(result);
-    //     }
-    // });
 
     history.pushState({
         data: "/write",
