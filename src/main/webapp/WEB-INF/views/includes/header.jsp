@@ -103,7 +103,7 @@
                                         </div>
                                     </li>
                                     <li class="nav-item mr-2">
-                                        <a id="login" data-toggle="modal" data-target="#modal" role="button">
+                                        <a id="signIn" data-toggle="modal" data-target="#modal" role="button">
                                             <i class="material-icons">lock</i></a>
                                     </li>
                                     <li class="nav-item">

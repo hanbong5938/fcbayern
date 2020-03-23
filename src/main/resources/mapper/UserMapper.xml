@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.football.fcbayern.mapper.UserMapper">
+    <select id="signIn" resultType="com.football.fcbayern.model.UserModel">
+        select auth.authNo,
+               auth.authNm,
+               user.userNo,
+               user.userId,
+               user.userPw,
+               user.userNm
+        from auth,
+             user
+        where userId = #{userId}
+#           and userPw = #{userPw}
+          and user.state = 1
+          and user.authNo = auth.authNo
+    </select>
+
+    <insert id="signUp">
+        insert into user (userId, userPw, userNm, email, createDt, updateDt, state, authNo)
+        # 기본적으로 일반회원 3으로 하고 추가적으로 정보수정하도록 하기 위해서
+        values (#{userId}, #{userPw}, #{userNm}, #{email}, now(), now(), 1, 3)
+    </insert>
+
+    <select id="findById" resultType="com.football.fcbayern.model.UserModel">
+        select userNo,
+               userId,
+               userPw,
+               userNm,
+               email,
+               createDt,
+               updateDt,
+               state,
+               authNo
+        from user
+    </select>
+</mapper>

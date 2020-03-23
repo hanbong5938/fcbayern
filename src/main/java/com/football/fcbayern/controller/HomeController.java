@@ -94,9 +94,14 @@ public class HomeController {
         return "/write/honoursReg";
     }
 
-    @GetMapping("/loginModal")
-    public String loginModal() {
-        return "/member/loginModal";
+    @GetMapping("/signInModal")
+    public String signInModal() {
+        return "/user/signInModal";
+    }
+
+    @GetMapping("/signUpModal")
+    public String signUpModal() {
+        return "/user/signUpModal";
     }
 
 }

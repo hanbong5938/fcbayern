@@ -81,9 +81,8 @@ $('.noticeLink').click(() => {
 });
 
 //load 사용해서 모달 외부에서 불러온다.
-$('#login').click(() => {
-    $(".modal-content").load("/loginModal");
-    console.log("modal")
+$('#signIn').click(() => {
+    $(".modal-content").load("/signInModal");
 });
 
 //이벤트 감지해서 뒤로가기 불러오는 ajax
