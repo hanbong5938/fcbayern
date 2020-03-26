@@ -84,7 +84,7 @@
                             <div class="feature-copy">
                                 <h3><spring:message code="IconShop"/></h3>
                                 <p>아이콘을 구매 할 수 있도록 만들어 놓은 곳</p>
-                                <p><a href="#">Learn More</a></p>
+                                <p><a class="iconShopLink href">Learn More</a></p>
                             </div>
                         </div>
                     </div>

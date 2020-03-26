@@ -11,7 +11,6 @@
     <div class="card-body">
         <div class="">
             <h5 class="form-signIn-heading">Sign in</h5>
-            <input type="hidden" id="_csrfToken" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <label class="sr-only">Your ID</label>
             <input type="text" id="userId" class="form-control" placeholder="ID" required autofocus><BR>
             <label class="sr-only">Password</label>

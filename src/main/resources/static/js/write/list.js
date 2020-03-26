@@ -34,12 +34,12 @@ function loadList(criteriaModel) {
                 const timestamp = new Date(result[i].createDt);
                 const month = timestamp.getMonth() + 1;
                 const date = timestamp.getDate();
-                let noticeIcon = "";
+                let inputIcon = getUserIcon(result[i].userNo);
 
                 if (result[i].notice === true) {
                     str += "<tr>\n" +
                         "            <td class='text-left text-gray text-center bold'><h5><span class='badge badge-danger'>공지</span> <a class='boardLink text-danger' onclick='' id='" + result[i].boardNo + "'>" + result[i].title + "</a>" + "</h5></td>\n" +
-                        "            <td>" + result[i].writer + "</td>\n" +
+                        "            <td class='row'><div style='display: block; margin-right: auto; margin-left: auto'>" + inputIcon + result[i].writer + "</div></td>\n" +
                         "            <td>" + timestamp.getFullYear() + "-" + calendar(month, 2) + "-" + calendar(date, 2) + "</td>\n" +
                         "            <td>" + result[i].hit + "</td>\n" +
                         "            <td>" + result[i].good + "</td>\n" +
@@ -48,7 +48,7 @@ function loadList(criteriaModel) {
                 } else {
                     str += "        <tr>\n" +
                         "            <td class=\"text-left text-gray\"><a class='boardLink text-dark' onclick='' id='" + result[i].boardNo + "'>" + result[i].title + "</a>" + " [" + result[i].replyCnt + "]" + "</td>\n" +
-                        "            <td>" + result[i].writer + "</td>\n" +
+                        "            <td class='row'><div style='display: block; margin-right: auto; margin-left: auto'>" + inputIcon + result[i].writer + "</div></td>\n" +
                         "            <td>" + timestamp.getFullYear() + "-" + calendar(month, 2) + "-" + calendar(date, 2) + "</td>\n" +
                         "            <td>" + result[i].hit + "</td>\n" +
                         "            <td>" + result[i].good + "</td>\n" +
@@ -127,3 +127,4 @@ let criteriaModel = {
 };
 //페이지 로딩시 작동
 loadList(criteriaModel);
+

@@ -24,6 +24,9 @@ function insertImg(formData) {
             contentType: false,
             data: formData,
             type: 'POST',
+            beforeSend: (xhr) => {
+                xhr.setRequestHeader(header, token);
+            },
             success: (result) => {
                 //uuid 와 folderPath 분리하기 위해
                 const path = result.split("/");
@@ -79,18 +82,35 @@ $("#btnSubmit").click(() => {
 
     const data = {
         honoursNm: $('#honoursNm').val(),
-        userNo: 1, // ToDo 수정예정
+        userNo: sessionUserNo,
         honoursCategoryNo: $('#category option:selected').val(),
     };
 
-    $.post("/honours/insertInfo", data, ()=>{
-        insertImg(formData).then(
-            function insertAttachInfo(honours) {
-                $.post("/honoursAttach/insertAttachInfo", honours, ()=>{
-                    alert("성공");
-                })
-            }
-        )
+    $.ajax({
+        url: "/honours/insertInfo",
+        data: data,
+        type: "post",
+        beforeSend: (xhr) => {
+            xhr.setRequestHeader(header, token);
+        },
+        success: () => {
+            insertImg(formData).then(
+                function insertAttachInfo(honours) {
+                    $.ajax({
+                        type: "post",
+                        url: "/honoursAttach/insertAttachInfo",
+                        data: honours,
+                        beforeSend: (xhr) => {
+                            xhr.setRequestHeader(header, token);
+                        },
+                        success: () => {
+                            alert("성공");
+
+                        }
+                    })
+                }
+            )
+        }
     })
 });
 

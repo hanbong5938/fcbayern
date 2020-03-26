@@ -117,6 +117,10 @@ body {
     margin-top: 10%;
 }
 
+.mt-20 {
+    margin-top: 20%;
+}
+
 .mt-30 {
     margin-top: 30%;
 }
@@ -344,4 +348,9 @@ a:hover {
 
 button {
     cursor: url("../images/cursor/logoCursor.cur"), auto;
+}
+
+div .iconItemBox {
+    border: 1px solid;
+    padding: 10px;
 }

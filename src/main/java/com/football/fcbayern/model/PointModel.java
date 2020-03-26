@@ -4,19 +4,12 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 
-
 @Data
-public class UserModel {
-    private int userNo;
-    private String userId;
-    private String userPw;
-    private String userNm;
-    private String email;
+public class PointModel {
+    private int pointNo;
     private int point;
+    private int userNo;
     private Timestamp createDt;
     private Timestamp updateDt;
     private boolean state;
-
-    private int authNo;
-    private String authNm;
 }

@@ -6,5 +6,7 @@ public interface UserMapper {
 
     int signUp(UserModel userModel);
 
-    UserModel findById(String userId);
+    UserModel findByUserId(String userId);
+
+    int getPoint(int userNo);
 }

@@ -48,8 +48,8 @@
                 <div class="col-md-2 col-sm-2 col-xs-12 footer-link">
                     <h3><spring:message code="IconShop"/></h3>
                     <ul>
-                        <li><a href="#"><spring:message code="IconShop"/></a></li>
-                        <li><a href="#"><spring:message code="IconStorage"/></a></li>
+                        <li><a class="iconShopLink href"><spring:message code="IconShop"/></a></li>
+                        <li><a class="iconStorageLink href"><spring:message code="IconStorage"/></a></li>
                     </ul>
                 </div>
             </div>

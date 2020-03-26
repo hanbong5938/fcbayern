@@ -1,11 +1,8 @@
 package com.football.fcbayern.controller;
 
-import com.football.fcbayern.service.BoardService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -84,6 +81,11 @@ public class HomeController {
         return "/write/read";
     }
 
+    @GetMapping("/iconShop")
+    public String iconShop() {
+        return "/iconShop/iconShop";
+    }
+
     @GetMapping("/profileReg")
     public String playerReg() {
         return "/write/profileReg";
@@ -92,6 +94,11 @@ public class HomeController {
     @GetMapping("/honoursReg")
     public String honoursReg() {
         return "/write/honoursReg";
+    }
+
+    @GetMapping("/iconShopReg")
+    public String iconShopReg() {
+        return "/iconShop/iconShopReg";
     }
 
     @GetMapping("/signInModal")

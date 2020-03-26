@@ -52,7 +52,6 @@ public class BoardController {
     public ResponseEntity<String> insertInfo(@RequestBody BoardModel boardModel) {
         int count = boardService.insertInfo(boardModel);
         boardAttachService.insertInfo(regularExpression.attach(boardModel.getContent()));
-
         return count == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -63,7 +62,6 @@ public class BoardController {
 
     @GetMapping(value = "/infoLast/{userNo}")
     public ResponseEntity<BoardModel> infoLast(@PathVariable int userNo) {
-        System.out.println(boardService.infoLast(userNo));
         return new ResponseEntity<>(boardService.infoLast(userNo), HttpStatus.OK);
     }
 

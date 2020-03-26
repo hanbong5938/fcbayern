@@ -57,7 +57,7 @@
             </div>
         </div>
     </div>
-    <input id="boardNo" value='${boardNo}' readonly="readonly"/>
-    <input id="boardCategoryNo" value='${boardCategoryNo}' readonly="readonly"/>
+    <input id="boardNo" type="hidden" value='${boardNo}' readonly="readonly"/>
+    <input id="boardCategoryNo" type="hidden" value='${boardCategoryNo}' readonly="readonly"/>
 
     <script src="js/write/read.js"></script>

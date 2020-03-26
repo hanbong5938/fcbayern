@@ -15,8 +15,11 @@ public class BoardServiceImpl implements BoardService {
 
     private BoardMapper boardMapper;
 
+    private PointService pointService;
+
     @Override
     public int insertInfo(BoardModel boardModel) {
+        pointService.insertPointInfo(3, boardModel.getUserNo());
         return boardMapper.insertInfo(boardModel);
     }
 
@@ -54,6 +57,16 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public int totalCnt(CriteriaModel criteriaModel) {
         return boardMapper.totalCnt(criteriaModel);
+    }
+
+    @Override
+    public void replyCnt(int boardNo) {
+        boardMapper.replyCnt(boardNo);
+    }
+
+    @Override
+    public void replyCntDelete(int boardNo) {
+        boardMapper.replyCntDelete(boardNo);
     }
 
 }

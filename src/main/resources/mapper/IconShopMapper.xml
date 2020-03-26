@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.football.fcbayern.mapper.IconShopMapper">
+
+    <update id="beforeRepresent">
+        update iconRetain
+        set represent = 0
+        where userNo = #{userNo}
+    </update>
+
+    <insert id="insertIcon">
+        insert into icon(iconNm, iconPrice, iconCnt, createDt, state)
+        VALUES (#{iconNm}, #{iconPrice}, #{iconCnt}, now(), 1)
+    </insert>
+
+    <select id="getInfoList" resultType="com.football.fcbayern.model.IconModel">
+        select iconNo, iconNm, iconPrice, iconCnt, createDt
+        from icon
+        where state = 1
+        limit #{pageStart}, #{amount}
+    </select>
+
+    <select id="getTotalCnt" resultType="int">
+        select count(*) as totalCnt
+        from icon
+        where state = 1
+    </select>
+
+    <insert id="buyIcon">
+        insert into iconRetain(userNo, iconNo, state, represent, createDt)
+        values (#{userNo}, #{iconNo}, 1, 1, now())
+    </insert>
+
+    <select id="getPrice" resultType="int">
+        select iconPrice
+        from icon
+        where state = 1
+          and iconNo = #{iconNo}
+    </select>
+
+    <select id="checkRetain" resultType="int">
+        select count(*)
+        from iconRetain
+        where userNo = #{userNo}
+          and iconNo = #{iconNo}
+    </select>
+
+    <select id="checkNull" resultType="int">
+        select count(*)
+        from iconRetain
+        where userNo = #{userNo}
+          and iconNo = #{iconNo}
+    </select>
+
+    <select id="checkRepresent" resultType="int">
+        select iconNo
+        from iconRetain
+        where userNo = #{userNo}
+          and represent = 1
+        union all
+        select 0 as iconNo
+        limit 1
+    </select>
+</mapper>

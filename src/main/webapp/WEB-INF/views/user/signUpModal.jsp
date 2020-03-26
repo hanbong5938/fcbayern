@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<meta name="_csrf" content="${_csrf.token}"/>
-<meta name="_csrf_header" content="${_csrf.headerName}"/>
-
 
 <div class="card align-middle">
     <div class="card-title" style="margin-top:10%;">
@@ -11,7 +8,6 @@
     <div class="card-body">
         <div class="">
             <h5 class="form-signUp-heading">Sign Up</h5>
-            <%--            <input type="hidden" id="_csrfToken" name="${_csrf.parameterName}" value="${_csrf.token}" />--%>
             <label class="sr-only">Your ID</label>
             <input type="text" id="userId" class="form-control" placeholder="ID" required autofocus><BR>
             <label class="sr-only">Password</label>
@@ -23,11 +19,6 @@
             <label class="sr-only">EMAIL</label>
             <input type="email" id="email" class="form-control" placeholder="이메일을 입력하세요" required><br>
 
-            <%--            <div class="checkbox">--%>
-            <%--                <label>--%>
-            <%--                    <input type="checkbox" value="remember-me"> 기억하기--%>
-            <%--                </label>--%>
-            <%--            </div>--%>
             <button id="signUpBtn" class="btn btn-lg btn-primary btn-block">회원가입</button>
         </div>
 

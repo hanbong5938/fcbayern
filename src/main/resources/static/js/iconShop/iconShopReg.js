@@ -17,9 +17,9 @@ function preview(file, idx) {
 
 //promise 사용위해 이미지 삽입시
 function insertImg(formData) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         $.ajax({
-            url: '/profileAttach/insertImg',
+            url: '/iconShopAttach/insertImg',
             processData: false,
             contentType: false,
             data: formData,
@@ -35,23 +35,15 @@ function insertImg(formData) {
                     temp += path[i] + "/";
                 }
 
-                const profile = {
-                    uploadPath: 'profileAttach' + temp,
+                const iconShop = {
+                    uploadPath: 'iconShopAttach' + temp,
                     uuid: path[path.length - 1]
                 };
-
-                resolve(profile);
+                resolve(iconShop);
             }
         })
     })
 }
-
-$.get("/profile/category", ((data) => {
-    for (let i = 0; i < data.length; i++) {
-        $('#category').append('<option value="' + data[i].profileCategoryNo + '">' + data[i].categoryNm + '</option>');
-    }
-}));
-
 
 $(drop).on("dragenter", (e) => { //드래그 요소가 들어왔을떄
     $(this).addClass('drag-over');
@@ -83,40 +75,37 @@ $("#btnSubmit").click(() => {
     });
 
     const data = {
-        profileCategoryNo: $('#category option:selected').val(),
-        profileNm: $('#profileNm').val(),
-        backNo: $('#backNo').val(),
-        birthDate: $('#birthDate').val(),
-        userNo: sessionUserNo
+        iconNm: $("#iconNm").val(),
+        iconPrice: $("#iconPrice").val(),
+        iconCnt: $("#iconCnt").val()
     };
 
     $.ajax({
-        url: '/profile/insertInfo',
-        data: JSON.stringify(data),
-        contentType: "application/json; charset=utf-8",
-        type: 'POST',
+        url: '/iconShop/insertIcon',
+        data: data,
+        type: "post",
         beforeSend: (xhr) => {
             xhr.setRequestHeader(header, token);
         },
         success: () => {
             insertImg(formData).then(
-                function insertAttachInfo(profile) {
+                function insertAttachInfo(iconShop) {
                     $.ajax({
-                        url: '/profileAttach/insertAttachInfo',
-                        data: JSON.stringify(profile),
-                        contentType: "application/json; charset=utf-8",
-                        type: 'POST',
+                        type: "post",
+                        url: "/iconShopAttach/insertAttachInfo",
+                        data: iconShop,
                         beforeSend: (xhr) => {
                             xhr.setRequestHeader(header, token);
                         },
-                        success: (profile) => {
+                        success: () => {
                             alert("성공");
+
                         }
                     })
                 }
             )
         }
-    });
+    })
 });
 
 $("#thumbnails").click(".close", (e) => {

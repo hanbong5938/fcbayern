@@ -22,7 +22,7 @@ public class UserController {
 
     @PostMapping("/signUp")
     public ResponseEntity<Integer> signUp(UserModel userModel) {
-        System.out.println("?????");
         return new ResponseEntity<>(userService.signUp(userModel), HttpStatus.OK);
     }
+
 }
