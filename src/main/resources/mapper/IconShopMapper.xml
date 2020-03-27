@@ -19,6 +19,7 @@
         select iconNo, iconNm, iconPrice, iconCnt, createDt
         from icon
         where state = 1
+        order by createDt desc
         limit #{pageStart}, #{amount}
     </select>
 
@@ -63,4 +64,6 @@
         select 0 as iconNo
         limit 1
     </select>
+
+
 </mapper>

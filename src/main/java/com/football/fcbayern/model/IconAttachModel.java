@@ -8,4 +8,6 @@ public class IconAttachModel {
     private String uploadPath;
     private boolean state;
     private int iconNo;
+
+    private String iconNm;
 }

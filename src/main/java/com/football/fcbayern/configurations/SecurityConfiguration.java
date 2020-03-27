@@ -45,6 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //페이지 권한 설정
 //                .antMatchers("/write/**").hasRole("MEMBER")
                 .antMatchers("/write/**").authenticated()
+                .antMatchers("/iconStorage/**").authenticated()
                 .antMatchers("/read/**").authenticated()
                 .antMatchers("/iconShop").authenticated()
                 .antMatchers("/**").permitAll()

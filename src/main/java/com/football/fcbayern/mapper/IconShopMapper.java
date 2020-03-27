@@ -2,7 +2,6 @@ package com.football.fcbayern.mapper;
 
 import com.football.fcbayern.model.CriteriaModel;
 import com.football.fcbayern.model.IconModel;
-import com.football.fcbayern.model.UserModel;
 
 import java.util.List;
 

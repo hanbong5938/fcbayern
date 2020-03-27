@@ -6,7 +6,7 @@
 
 <div class="card align-middle">
     <div class="card-title" style="margin-top:10%;">
-        <h2 class="card-title text-center" style="color:#113366;">로그인 폼</h2>
+        <h2 class="card-title text-center" style="color:#113366;">Sign In</h2>
     </div>
     <div class="card-body">
         <div class="">
@@ -19,15 +19,15 @@
                 <div class="col-sm-12 pr-0 row">
                     <div class="col-sm-8">
                         <label>
-                            <input type="checkbox" value="remember-me"> 기억하기
+                            <input type="checkbox" value="remember-me"> <spring:message code="RememberMe"/>
                         </label>
                     </div>
                     <div class="col-sm-4 pl-4 pr-0">
-                        <a id="signUpLink" class="small href">회원가입</a>
+                        <a id="signUpLink" class="small href"><spring:message code="SignUp"/></a>
                     </div>
                 </div>
             </div>
-            <button id="signInBtn" class="btn btn-lg btn-primary btn-block">로 그 인</button>
+            <button id="signInBtn" class="btn btn-lg btn-primary btn-block"><spring:message code="SignIn"/></button>
         </div>
 
     </div>

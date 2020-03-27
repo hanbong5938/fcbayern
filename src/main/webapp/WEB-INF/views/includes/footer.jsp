@@ -14,8 +14,7 @@
             <div class="row row-bottom-padded-md">
                 <div class="col-md-2 col-sm-2 col-xs-12">
                     <h3>About FCB</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                        there live the blind texts.</p>
+                    <p><spring:message code="footerInfo"/></p>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 footer-link">
                     <h3><spring:message code="Club"/></h3>

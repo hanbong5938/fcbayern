@@ -16,6 +16,7 @@ switch (getCookie('APPLICATION_LOCALE')) {
         break;
 }
 
+
 function getBoardInfo(boardNo) {
     $.get("/board/info/" + boardNo, (result) => {
         const totalCnt = result.replyCnt;
@@ -31,19 +32,6 @@ function getBoardInfo(boardNo) {
             $("#del").hide();
         }
     });
-    // $.ajax({
-    //     url: "/board/info/" + boardNo,
-    //     type: "get",
-    //     success: (result) => {
-    //         const totalCnt = result.replyCnt;
-    //
-    //         $("#title").val(result.title);
-    //         $("#content").html(result.content);
-    //         $("#replyTotalCnt").html(totalCnt);
-    //
-    //         getReplyList(1, totalCnt)
-    //     }
-    // });
 }
 
 function getReplyList(pageNum, totalCnt) {
@@ -54,13 +42,13 @@ function getReplyList(pageNum, totalCnt) {
         data: {pageNum: pageNum},
         async: false,
         success: (result) => {
+            console.log(result)
             let str = "";
             for (let i = 0; i < result.length; i++) {
                 const timestamp = new Date(result[i].createDt);
                 const month = timestamp.getMonth() + 1;
                 const date = timestamp.getDate();
                 let inputIcon = getUserIcon(result[i].userNo);
-                // <div style='display: block; margin-right: auto; margin-left: auto'>" + inputIcon + result[i].writer + "</div>
                 str += "<li class= ''><div class='header row'>" +
                     "<strong class='text-dark bold mr-3'><div style='display: block; margin-right: auto; margin-left: auto'>" + inputIcon + result[i].writer + "</div></strong>" +
                     "<small class='pull-right text-muted mr-3'>" + timestamp.getFullYear() + "-" + calendar(month, 2) + "-" + calendar(date, 2) + "</small>" +
@@ -136,17 +124,49 @@ $("#replyReg").click(() => {
             type: "post",
             url: "/reply/insert",
             data: data,
+            async: false,
             beforeSend: (xhr) => {
                 xhr.setRequestHeader(header, token);
             },
             success: getBoardInfo(boardNo)
         })
-        // $.post("/reply/insert", data, getBoardInfo(boardNo))
     }
 });
 
 $("#list").click(() => {
-    history.back()
+
+    let url = '';
+
+    switch (boardCategoryNo) {
+        case 1:
+            url = '/freeBoard';
+            break;
+        case 2:
+            url = '/multiMedia';
+            break;
+        case 3:
+            url = '/football';
+            break;
+        case 4:
+            url = '/notice';
+            break;
+        case 5:
+            url = '/news';
+            break;
+    }
+
+    if (url === '/news') {
+        $(".content").load(url + "?lang=" + getCookie('APPLICATION_LOCALE'));
+        history.pushState({data: url}, null, url + "?lang=" + getCookie('APPLICATION_LOCALE'));
+    } else {
+        $.get(url + "?lang=" + getCookie('APPLICATION_LOCALE'), {boardCategoryNo: boardCategoryNo}, (result) => {
+            $(".content").html(result);
+        });
+        history.pushState({
+            data: url,
+            boardCategoryNo: boardCategoryNo
+        }, null, url + "?lang=" + getCookie('APPLICATION_LOCALE'));
+    }
 });
 
 $("#modify").click(() => {
@@ -195,17 +215,15 @@ $("#good").click(() => {
         if (result === 0) {
             $.ajax({
                 url: "/good/good",
+                type: "post",
                 data: data,
                 beforeSend: (xhr) => {
                     xhr.setRequestHeader(header, token);
                 },
                 success: () => {
-                    alert("성공");
+                    alert("추천되었습니다.");
                 }
             })
-            // $.post("/good/good", data, () => {
-            //     alert("성공")
-            // })
         } else {
             alert("추천할 수 없습니다.")
         }
@@ -222,16 +240,14 @@ $("#badBtn").click(() => {
             $.ajax({
                 url: "/good/bad",
                 data: data,
+                type: "post",
                 beforeSend: (xhr) => {
                     xhr.setRequestHeader(header, token);
                 },
                 success: () => {
-                    alert("성공");
+                    alert("비추천 되었습니다.");
                 }
             })
-            // $.post("/good/bad", data, () => {
-            //     alert("성공")
-            // })
         } else {
             alert("추천할 수 없습니다.")
         }

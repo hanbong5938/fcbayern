@@ -86,6 +86,11 @@ public class HomeController {
         return "/iconShop/iconShop";
     }
 
+    @GetMapping("/iconStorage")
+    public String iconStorage() {
+        return "/iconShop/iconStorage";
+    }
+
     @GetMapping("/profileReg")
     public String playerReg() {
         return "/write/profileReg";

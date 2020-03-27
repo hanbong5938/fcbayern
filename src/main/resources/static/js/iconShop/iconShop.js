@@ -79,20 +79,9 @@ function loadList(criteriaModel) {
                             alert("구입하였습니다.")
                         },
                         error: () => {
-                            alert("포인트가 부족하거나 보유중 입니다..")
+                            alert("구매할 수 없는 상품입니다.")
                         }
                     })
-                    // $.get("/read?lang=" + getCookie('APPLICATION_LOCALE'), {
-                    //     boardNo: getBoardId,
-                    //     boardCategoryNo: boardCategoryNo
-                    // }, (result) => {
-                    //     $(".boardContent").html(result);
-                    //     history.pushState({
-                    //         data: "/read",
-                    //         boardNo: getBoardId,
-                    //         boardCategoryNo: boardCategoryNo
-                    //     }, null, '/read?lang=' + getCookie('APPLICATION_LOCALE') + '&boardNo=' + getBoardId);
-                    // })
                 });
 
             }

@@ -3,7 +3,7 @@
 
 <div class="card align-middle">
     <div class="card-title" style="margin-top:10%;">
-        <h2 class="card-title text-center" style="color:#113366;">가입 폼</h2>
+        <h2 class="card-title text-center" style="color:#113366;">Sign Up</h2>
     </div>
     <div class="card-body">
         <div class="">
@@ -19,7 +19,7 @@
             <label class="sr-only">EMAIL</label>
             <input type="email" id="email" class="form-control" placeholder="이메일을 입력하세요" required><br>
 
-            <button id="signUpBtn" class="btn btn-lg btn-primary btn-block">회원가입</button>
+            <button id="signUpBtn" class="btn btn-lg btn-primary btn-block"><spring:message code="SignUp"></button>
         </div>
 
     </div>

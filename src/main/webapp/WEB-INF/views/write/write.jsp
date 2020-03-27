@@ -25,7 +25,7 @@
                 <div id="summernote">
 
                 </div>
-                <div>
+                <div class="mt-5">
                     <button id="reg" class="pull-right btn btn-primary"><spring:message
                             code="reg"/></button>
                     <button id="mod" class="pull-right btn btn-warning"><spring:message
