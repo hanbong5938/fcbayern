@@ -7,7 +7,8 @@
             <div class="card">
                 <div class="card-header">
                     <label>
-                        <span>제&nbsp;&nbsp;&nbsp;목</span><input id="title" class="ml-4 input" readonly="readonly">
+                        <span><spring:message code="Title"/></span>
+                        <input id="title" class="ml-4 input" readonly="readonly">
                     </label>
                 </div>
 
@@ -20,8 +21,9 @@
                     <div class="row justify-content-center">
                         <button id="good" class="btn btn-outline-primary"><i class="icon-point-up"></i> <spring:message
                                 code="Good"/></button>
-                        <button id="badBtn" class="btn btn-outline-danger ml-1"><i class="icon-point-down"></i> <spring:message
-                                code="Bad"/></button>
+                        <button id="badBtn" class="btn btn-outline-danger ml-1"><i class="icon-point-down"></i>
+                            <spring:message
+                                    code="Bad"/></button>
                     </div>
                 </div>
             </div>
@@ -47,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-5">
+            <div class="mt-5 mb-3">
                 <button id="list" class="pull-right btn btn-primary"><spring:message
                         code="list"/></button>
                 <button id="modify" class="pull-right btn btn-warning"><spring:message
@@ -57,7 +59,7 @@
             </div>
         </div>
     </div>
-    <input id="boardNo" value='${boardNo}' readonly="readonly"/>
-    <input id="boardCategoryNo" value='${boardCategoryNo}' readonly="readonly"/>
+    <input id="boardNo" type="hidden" value='${boardNo}' readonly="readonly"/>
+    <input id="boardCategoryNo" type="hidden" value='${boardCategoryNo}' readonly="readonly"/>
 
     <script src="js/write/read.js"></script>

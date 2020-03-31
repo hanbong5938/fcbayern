@@ -1,6 +1,19 @@
+//세션에 있는 값 가져오기 위해서 사용
+const sessionUserNo = $("#sessionUserNo").val();
+const sessionUserId = $("#sessionUserId").val();
+const sessionUserNm = $("#sessionUserNm").val();
+const sessionEmail = $("#sessionEmail").val();
+const sessionAuthNo = $("#sessionAuthNo").val();
+const sessionAuthNm = $("#sessionAuthNm").val();
+
+//토큰과 같이 전송하지 않으면 405에러 발생
+const token = $("meta[name='_csrf']").attr("content");
+const header = $("meta[name='_csrf_header']").attr("content");
+
 const getCookie = (name) => {
     const value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-    return value ? value[2] : null;
+    //쿠키 기본값 설정
+    return value ? value[2] : 'ko';
 };
 
 const cookies = (getCookie("APPLICATION_LOCALE"));
@@ -80,10 +93,19 @@ $('.noticeLink').click(() => {
     }, null, "/notice?lang=" + getCookie('APPLICATION_LOCALE'));
 });
 
+$('.iconShopLink').click(() => {
+    $(".content").load("/iconShop?lang=" + getCookie('APPLICATION_LOCALE'));
+    history.pushState({data: "/iconShop"}, null, "/iconShop?lang=" + getCookie('APPLICATION_LOCALE'));
+});
+
+$('.iconStorageLink').click(() => {
+    $(".content").load("/iconStorage?lang=" + getCookie('APPLICATION_LOCALE'));
+    history.pushState({data: "/iconStorage"}, null, "/iconStorage?lang=" + getCookie('APPLICATION_LOCALE'));
+});
+
 //load 사용해서 모달 외부에서 불러온다.
-$('#login').click(() => {
-    $(".modal-content").load("/loginModal");
-    console.log("modal")
+$('#signIn').click(() => {
+    $(".modal-content").load("/signInModal");
 });
 
 //이벤트 감지해서 뒤로가기 불러오는 ajax
@@ -106,6 +128,65 @@ $(window).on('popstate', function (event) {
         })
     }
 });
+
+replaceLockIcon(sessionUserNo);
+
+//아이콘 교체
+function replaceLockIcon(sessionUserNo) {
+    if (!isNaN(sessionUserNo) || sessionUserNo === 0) {
+        $("#lockIcon").html(' <a id="signOut" onclick="signOut()">' +
+            '<i class="material-icons">lock_open</i></a>');
+    }
+}
+
+function signOut() {
+    $.ajax({
+        url: "/signOut",
+        type: "post",
+        beforeSend: (xhr) => {
+            xhr.setRequestHeader(header, token);
+        },
+        // success: () => {
+        //     alert("로그아웃 되었습니다.");
+        //     location.href = '/';
+        // }
+
+        success: () => {
+            $('#modal').modal("hide");
+            iziToast.success({
+                // theme: 'dark',
+                icon: 'icon-person',
+                title: 'Success,',
+                message: 'SignOut!',
+                pauseOnHover: false,
+                progressBarColor: 'rgb(0, 255, 184)',
+                close: false,
+                titleColor: 'black',
+                messageColor: 'black',
+                timeout: 2000,
+                position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                buttons: [
+                    ['<button class="text-dark">Close</button>', function (instance, toast) {
+                        // location.href = "/";
+                        iziToast.hide({
+                            transitionOut: 'fadeOutUp'
+                        }, toast);
+                    }, true]
+                ],
+                onClosing: function () {
+                    location.href = "/";
+                }
+            });
+        },
+        error: () => {
+            iziToast.error({
+                title: 'Fail',
+                message: 'Please, try again.',
+            });
+
+        }
+    })
+}
 
 function calendar(n, width) {
     n = n + '';
@@ -147,4 +228,36 @@ function pageMaker(pageNum, totalCnt) {
 
     $("#pageArea").html(pageStr);
 
+}
+
+
+//유저 아이콘 불러오기
+
+
+function getUserIcon(userNo) {
+    let getIconImg = '';
+
+    const getIconNo = $.ajax({
+        url: "/iconShop/checkRepresent/" + userNo,
+        type: "get",
+        async: false
+    });
+    if (Number(getIconNo.responseText) !== 0) {
+        $.ajax({
+            url: "/iconShopAttach/getAttachImg/" + getIconNo.responseText,
+            type: "get",
+            async: false,
+            success: (result) => {
+                getIconImg = userIcon(result)
+            }
+        });
+    } else {
+        getIconImg = ""
+    }
+
+    return getIconImg;
+}
+
+function userIcon(result) {
+    return "<img class='' src='/aws/getImg?fileName=" + result.uuid + "&directory=" + result.uploadPath + "' alt='아이콘 이미지'> ";
 }

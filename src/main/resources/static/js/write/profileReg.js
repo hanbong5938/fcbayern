@@ -24,6 +24,9 @@ function insertImg(formData) {
             contentType: false,
             data: formData,
             type: 'POST',
+            beforeSend: (xhr) => {
+                xhr.setRequestHeader(header, token);
+            },
             success: (result) => {
                 //uuid 와 folderPath 분리하기 위해
                 const path = result.split("/");
@@ -84,7 +87,7 @@ $("#btnSubmit").click(() => {
         profileNm: $('#profileNm').val(),
         backNo: $('#backNo').val(),
         birthDate: $('#birthDate').val(),
-        userNo: 1 // ToDo 수정예정
+        userNo: sessionUserNo
     };
 
     $.ajax({
@@ -92,6 +95,9 @@ $("#btnSubmit").click(() => {
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         type: 'POST',
+        beforeSend: (xhr) => {
+            xhr.setRequestHeader(header, token);
+        },
         success: () => {
             insertImg(formData).then(
                 function insertAttachInfo(profile) {
@@ -100,9 +106,27 @@ $("#btnSubmit").click(() => {
                         data: JSON.stringify(profile),
                         contentType: "application/json; charset=utf-8",
                         type: 'POST',
-                        success: (profile) => {
-                            alert("성공");
-                        }
+                        beforeSend: (xhr) => {
+                            xhr.setRequestHeader(header, token);
+                        }, success: () => {
+                            iziToast.success({
+                                icon: 'icon-person',
+                                title: 'Success,',
+                                message: 'insert Attach!',
+                                pauseOnHover: false,
+                                progressBarColor: 'rgb(0, 255, 184)',
+                                close: false,
+                                titleColor: 'black',
+                                messageColor: 'black',
+                                timeout: 2000,
+                                position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                                onClosing: function () {
+                                    $(".content").load("/player?lang=" + getCookie('APPLICATION_LOCALE'));
+                                    history.pushState({data: "/player"}, null, "/player?lang=" + getCookie('APPLICATION_LOCALE'));
+                                }
+                            });
+                        },
+
                     })
                 }
             )

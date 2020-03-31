@@ -11,8 +11,10 @@
                         <span>게시판</span>
                         <select id="category" class="ml-2 note-color-select">
                         </select>
-                        <span class="ml-2"><spring:message code="Notice"/> </span>
-                        <input id="noticeCheckBox" class="ml2" type="checkbox" value="checked"/>
+                        <div id="noticeCheckBoxAndText">
+                            <span class="ml-2"><spring:message code="Notice"/> </span>
+                            <input id="noticeCheckBox" class="ml2" type="checkbox"/>
+                        </div>
                     </label>
                 </div>
                 <div>
@@ -23,7 +25,7 @@
                 <div id="summernote">
 
                 </div>
-                <div>
+                <div class="mt-5">
                     <button id="reg" class="pull-right btn btn-primary"><spring:message
                             code="reg"/></button>
                     <button id="mod" class="pull-right btn btn-warning"><spring:message
@@ -32,7 +34,7 @@
             </div>
         </div>
     </div>
-    <input id="boardNo" value='${boardNo}' readonly="readonly"/>
-    <input id="boardCategoryNo" value='${boardCategoryNo}' readonly="readonly"/>
+    <input id="boardNo" type="hidden" value='${boardNo}' readonly="readonly"/>
+    <input id="boardCategoryNo" type="hidden" value='${boardCategoryNo}' readonly="readonly"/>
 
     <script src="js/write/write.js"></script>

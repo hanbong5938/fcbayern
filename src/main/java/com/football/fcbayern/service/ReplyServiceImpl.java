@@ -16,12 +16,15 @@ public class ReplyServiceImpl implements ReplyService {
 
     private ReplyMapper replyMapper;
 
-    private BoardMapper boardMapper;
+    private BoardService boardService;
+
+    private PointService pointService;
 
     @Transactional
     @Override
     public int inert(ReplyModel replyModel, int boardNo) {
-        boardMapper.replyCnt(boardNo);
+        boardService.replyCnt(boardNo);
+        pointService.insertPointInfo(1, replyModel.getUserNo());
         return replyMapper.insert(replyModel);
     }
 
@@ -36,8 +39,8 @@ public class ReplyServiceImpl implements ReplyService {
     }
 
     @Override
-    public int delete(int boardNo,int replyNo) {
-        boardMapper.replyCntDelete(boardNo);
+    public int delete(int boardNo, int replyNo) {
+        boardService.replyCntDelete(boardNo);
         return replyMapper.delete(replyNo);
     }
 

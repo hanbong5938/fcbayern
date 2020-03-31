@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.football.fcbayern.mapper.IconStorageMapper">
+    <select id="getUerIconList" resultType="com.football.fcbayern.model.IconAttachModel">
+        select uuid, uploadPath, iconRetain.iconNo, represent as state, icon.iconNm
+        from iconRetain,
+             iconAttach,
+             icon
+        where iconRetain.state = 1
+          and iconAttach.state = 1
+          and iconRetain.iconNo = iconAttach.iconNo
+          and iconRetain.iconNo = icon.iconNo
+          and iconAttach.iconNo = icon.iconNo
+          and userNo = #{userNo}
+        order by iconRetain.createDt desc
+        limit #{pageStart}, #{amount}
+    </select>
+
+    <select id="getTotalCnt" resultType="int">
+        select count(*)
+        from iconRetain
+        where userNo = #{userNo}
+    </select>
+
+    <update id="represent">
+        update iconRetain
+        set represent = 1
+        where userNo = #{userNo}
+          and iconNo = #{iconNo}
+    </update>
+
+</mapper>

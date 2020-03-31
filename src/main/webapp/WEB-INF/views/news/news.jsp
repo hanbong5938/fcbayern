@@ -7,27 +7,7 @@
         <div class="mb-5">
             <div class="boardContent">
                 <div id="list">
-                    <%--                        <div class="col-lg-4"><img class="img-heightAuto" src="images/news/news.webp" alt="">--%>
-                    <%--                            <h4 class="text-primary mt-2 mb-1">Robert Lewandowski named in UEFA Team of the Year</h4>--%>
-                    <%--                            <p class="mb-1">--%>
-                    <%--                                A survey of fans by UEFA put the FC Bayern striker in the top eleven for the first time.--%>
-                    <%--                            </p>--%>
-                    <%--                            <span class="text-sm">15/01/2020 오후 10:25</span>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="col-lg-4"><img class="img-heightAuto" src="images/news/news.webp" alt="">--%>
-                    <%--                            <h4 class="text-primary mt-2 mb-1">Robert Lewandowski named in UEFA Team of the Year</h4>--%>
-                    <%--                            <p class="mb-1">--%>
-                    <%--                                A survey of fans by UEFA put the FC Bayern striker in the top eleven for the first time.--%>
-                    <%--                            </p>--%>
-                    <%--                            <span class="text-sm">15/01/2020 오후 10:25</span>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="col-lg-4"><img class="img-heightAuto" src="images/news/news.webp" alt="">--%>
-                    <%--                            <h4 class="text-primary mt-2 mb-1">Robert Lewandowski named in UEFA Team of the Year</h4>--%>
-                    <%--                            <p class="mb-1">--%>
-                    <%--                                A survey of fans by UEFA put the FC Bayern striker in the top eleven for the first time.--%>
-                    <%--                            </p>--%>
-                    <%--                            <span class="text-sm">15/01/2020 오후 10:25</span>--%>
-                    <%--                        </div>--%>
+
                 </div>
             </div>
         </div>
@@ -38,16 +18,16 @@
         <div class="mb-10">
             <label class="float-right">
                 <select id="type">
-                    <option value="t">제 목</option>
-                    <option value="c">내 용</option>
-                    <option value="w">작성자</option>
-                    <option value="tc">제목 + 내용</option>
-                    <option value="tcw">전체</option>
+                    <option value="t"><spring:message code="Title"/></option>
+                    <option value="c"><spring:message code="Content"/></option>
+                    <option value="w"><spring:message code="Writer"/></option>
+                    <option value="tc"><spring:message code="Title"/> + <spring:message code="Content"/></option>
+                    <option value="tcw"><spring:message code="All"/></option>
                 </select>
                 <input id="keyword" class="">
-                <button id="searchBtn" class="">검색</button>
+                <button id="searchBtn" class=""><spring:message code="Search"/></button>
             </label>
-            <button id="regBtn" class="float-right regBtn btn btn-default" style="clear: both">등록</button>
+            <button id="regBtn" class="float-right regBtn btn btn-default" style="clear: both"><spring:message code="reg"/></button>
         </div>
 
     </div>

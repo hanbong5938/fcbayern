@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -12,6 +13,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>FC Bayern Korea</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%--스프링 시큐리티 토큰--%>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
 
     <link rel="shortcut icon" href="images/favicon.ico">
 
@@ -33,11 +37,31 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-bs4.min.css" rel="stylesheet">
     <%--Flag--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.min.css">
+    <%--iziToast--%>
+    <link rel="stylesheet" href="css/iziToast.min.css">
 
     <%--custom css--%>
     <link rel="stylesheet" href="css/custom.css">
 
 </head>
+
+<%--세션에 있는 값들 가져 오기 위해서--%>
+<%--사용하지 않는 것에 대해 수정 예정--%>
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal.userNo" var="userNo"/>
+    <sec:authentication property="principal.userId" var="userId"/>
+    <sec:authentication property="principal.userNm" var="userNm"/>
+    <sec:authentication property="principal.email" var="email"/>
+    <sec:authentication property="principal.authNo" var="authNo"/>
+    <sec:authentication property="principal.authNm" var="authNm"/>
+<input id="sessionUserNo" type="hidden" value="${userNo }">
+<input id="sessionUserId" type="hidden" value="${userId }">
+<input id="sessionUserNm" type="hidden" value="${userNm }">
+<input id="sessionEmail" type="hidden" value="${email }">
+<input id="sessionAuthNo" type="hidden" value="${authNo }">
+<input id="sessionAuthNm" type="hidden" value="${authNm}">
+</sec:authorize>
+
 <body>
 <div class="wrapper">
     <div class="page">
@@ -102,8 +126,8 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="nav-item mr-2">
-                                        <a id="login" data-toggle="modal" data-target="#modal" role="button">
+                                    <li id="lockIcon" class="nav-item mr-2">
+                                        <a id="signIn" data-toggle="modal" data-target="#modal" role="button">
                                             <i class="material-icons">lock</i></a>
                                     </li>
                                     <li class="nav-item">

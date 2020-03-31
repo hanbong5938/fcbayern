@@ -1,10 +1,16 @@
 const regBtn = $("#reg");
 const modBtn = $("#mod");
 const boardNo = $("#boardNo").val();
+
 if (boardNo > 0) {
     regBtn.hide();
 } else {
     modBtn.hide();
+}
+
+//공지 체크박스 숨기기
+if (Number(sessionAuthNo) >= 3) {
+    $("#noticeCheckBoxAndText").hide();
 }
 
 //카테고리 불러오기
@@ -48,6 +54,9 @@ function sendFile(uploadFiles) {
         contentType: false,
         data: formData,
         type: 'POST',
+        beforeSend: (xhr) => {
+            xhr.setRequestHeader(header, token);
+        },
         success: (result) => {
             //uuid 와 folderPath 분리하기 위해
             const path = result.split("/");
@@ -70,8 +79,7 @@ function sendFile(uploadFiles) {
 }
 
 function successRead(boardData) {
-    const userNo = 1;
-    $.get("/board/infoLast/" + userNo, (lastBoardNo) => {
+    $.get("/board/infoLast/" + sessionUserNo, (lastBoardNo) => {
         const boardNo = lastBoardNo.boardNo;
 
         $.get("/read?lang=" + getCookie('APPLICATION_LOCALE'), {
@@ -92,15 +100,15 @@ regBtn.click(() => {
 
     //체크박스 값 가져오기
     let notice = false;
-    if ($("#noticeCheckBox").val() === "checked") {
+    if ($("#noticeCheckBox").is(":checked") === true) {
         notice = true
     }
 
     const boardData = {
         title: $("#title").val(),
         content: $('#summernote').summernote('code'),
-        writer: "admin", //ToDo 로그인 이후 수정
-        userNo: 1, //ToDo 로그인 이후 수정
+        writer: sessionUserNm,
+        userNo: Number(sessionUserNo),
         notice: notice,
         boardCategoryNo: $('#category option:selected').val()
     };
@@ -110,9 +118,18 @@ regBtn.click(() => {
         type: "post",
         data: JSON.stringify(boardData),
         contentType: "application/json; charset=utf-8",
+        beforeSend: (xhr) => {
+            xhr.setRequestHeader(header, token);
+        },
         success: () => {
-            alert("성공");
+            alert("작성된 글이 등록되었습니다.");
             successRead(boardData);
+        },
+        error: () => {
+            iziToast.error({
+                title: 'Fail',
+                message: 'Please, Try again.',
+            });
         }
     });
 });
@@ -121,7 +138,7 @@ modBtn.click(() => {
 
     //체크박스 값 가져오기
     let notice = false;
-    if ($("#noticeCheckBox").val() === "checked") {
+    if ($("#noticeCheckBox").is(":checked") === true) {
         notice = true
     }
 
@@ -129,8 +146,8 @@ modBtn.click(() => {
         boardNo: boardNo,
         title: $("#title").val(),
         content: $('#summernote').summernote('code'),
-        writer: "admin", //ToDo 로그인 이후 수정
-        userNo: 1, //ToDo 로그인 이후 수정
+        writer: sessionUserNm,
+        userNo: sessionUserNo,
         notice: notice,
         boardCategoryNo: $('#category option:selected').val()
     };
@@ -139,9 +156,18 @@ modBtn.click(() => {
         url: "/board/modify",
         type: "patch",
         data: boardData,
+        beforeSend: (xhr) => {
+            xhr.setRequestHeader(header, token);
+        },
         success: () => {
-            alert("성공");
+            alert("성공적으로 수정되었습니다.");
             successRead(boardData);
+        },
+        error: () => {
+            iziToast.error({
+                title: 'Fail',
+                message: 'Please, Try again.',
+            });
         }
     });
 });

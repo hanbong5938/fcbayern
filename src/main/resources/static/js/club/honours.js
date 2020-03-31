@@ -1,7 +1,15 @@
-$('#honoursReg').click(function () {
+const honoursReg = $('#honoursReg');
+
+honoursReg.click(function () {
     $(".content").load("/honoursReg?lang=" + getCookie('APPLICATION_LOCALE'));
     history.pushState({data: "/honoursReg"}, null, "/honoursReg?lang=" + getCookie('APPLICATION_LOCALE'));
 });
+
+//권한 낮으면 등록버튼 숨기게
+if (Number(sessionAuthNo) >= 3 || isNaN(Number(sessionAuthNo))) {
+    honoursReg.hide();
+}
+
 
 function makeHonoursList(data, result, attachData, checkInternational) {
     let str = "";

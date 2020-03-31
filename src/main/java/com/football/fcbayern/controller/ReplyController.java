@@ -40,7 +40,6 @@ public class ReplyController {
 
     @PatchMapping(value = "/delete")
     public ResponseEntity<Integer> delete(int boardNo, int replyNo) {
-        System.out.println(replyNo);
         return new ResponseEntity<>(replyService.delete(boardNo, replyNo), HttpStatus.OK);
     }
 

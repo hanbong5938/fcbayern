@@ -9,13 +9,12 @@
 
 
 <footer>
-    <div class="footer">
+    <div class="footer mt-5">
         <div class="container">
             <div class="row row-bottom-padded-md">
                 <div class="col-md-2 col-sm-2 col-xs-12">
                     <h3>About FCB</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                        there live the blind texts.</p>
+                    <p><spring:message code="footerInfo"/></p>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 footer-link">
                     <h3><spring:message code="Club"/></h3>
@@ -48,8 +47,8 @@
                 <div class="col-md-2 col-sm-2 col-xs-12 footer-link">
                     <h3><spring:message code="IconShop"/></h3>
                     <ul>
-                        <li><a href="#"><spring:message code="IconShop"/></a></li>
-                        <li><a href="#"><spring:message code="IconStorage"/></a></li>
+                        <li><a class="iconShopLink href"><spring:message code="IconShop"/></a></li>
+                        <li><a class="iconStorageLink href"><spring:message code="IconStorage"/></a></li>
                     </ul>
                 </div>
             </div>
@@ -102,6 +101,8 @@
 <!-- include summernote-ko-KR -->
 <%--<script src="lang/summernote-ko-KR.js"></script>--%>
 
+<%--iziToast--%>
+<script src="plugin/iziToast.min.js"></script>
 
 <%--Footer--%>
 <script src="js/includes/footer.js"></script>
