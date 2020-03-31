@@ -146,9 +146,44 @@ function signOut() {
         beforeSend: (xhr) => {
             xhr.setRequestHeader(header, token);
         },
+        // success: () => {
+        //     alert("로그아웃 되었습니다.");
+        //     location.href = '/';
+        // }
+
         success: () => {
-            alert("로그아웃 되었습니다.");
-            location.href = '/';
+            $('#modal').modal("hide");
+            iziToast.success({
+                // theme: 'dark',
+                icon: 'icon-person',
+                title: 'Success,',
+                message: 'SignOut!',
+                pauseOnHover: false,
+                progressBarColor: 'rgb(0, 255, 184)',
+                close: false,
+                titleColor: 'black',
+                messageColor: 'black',
+                timeout: 2000,
+                position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                buttons: [
+                    ['<button class="text-dark">Close</button>', function (instance, toast) {
+                        // location.href = "/";
+                        iziToast.hide({
+                            transitionOut: 'fadeOutUp'
+                        }, toast);
+                    }, true]
+                ],
+                onClosing: function () {
+                    location.href = "/";
+                }
+            });
+        },
+        error: () => {
+            iziToast.error({
+                title: 'Fail',
+                message: 'Please, try again.',
+            });
+
         }
     })
 }

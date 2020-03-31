@@ -42,7 +42,6 @@ function getReplyList(pageNum, totalCnt) {
         data: {pageNum: pageNum},
         async: false,
         success: (result) => {
-            console.log(result)
             let str = "";
             for (let i = 0; i < result.length; i++) {
                 const timestamp = new Date(result[i].createDt);
@@ -85,8 +84,14 @@ function modifyArea(replyNo) {
                 xhr.setRequestHeader(header, token);
             },
             success: () => {
-                alert('성공');
+                alert('Reply modify!');
                 getReplyList(1, $("#replyTotalCnt").val())
+            },
+            error: () => {
+                iziToast.error({
+                    title: 'Fail',
+                    message: 'Please, try again.',
+                });
             }
         })
     });
@@ -101,8 +106,14 @@ function deleteReply(boardNo, replyNo) {
             xhr.setRequestHeader(header, token);
         },
         success: () => {
-            alert('성공');
+            alert('Success, Delete!');
             getReplyList(1, $("#replyTotalCnt").val())
+        },
+        error: () => {
+            iziToast.error({
+                title: 'Fail',
+                message: 'Please, You do not have permission.',
+            });
         }
     })
 }
@@ -118,7 +129,10 @@ $("#replyReg").click(() => {
     };
 
     if (data.reply === "") {
-        alert("내용 입력하세요.")
+        iziToast.error({
+            title: 'Fail',
+            message: 'Please, Insert Content.',
+        })
     } else {
         $.ajax({
             type: "post",
@@ -130,6 +144,7 @@ $("#replyReg").click(() => {
             },
             success: getBoardInfo(boardNo)
         })
+        $("#reply").val('');
     }
 });
 
@@ -178,7 +193,6 @@ $("#modify").click(() => {
         boardNo: boardNo,
         boardCategoryNo: boardCategoryNo
     }, (result) => {
-        console.log(result)
         $(".content").html(result);
         $("#title").val(data.title);
         $('#summernote').summernote('code', data.content);
@@ -200,8 +214,14 @@ $("#del").click(() => {
             xhr.setRequestHeader(header, token);
         },
         success: () => {
-            alert("성공");
-            history.back();
+            alert("성공적으로 삭제되었습니다.");
+            $("#list").trigger("click")
+        },
+        error: () => {
+            iziToast.error({
+                title: 'Fail',
+                message: 'Please, You do not have permission.',
+            });
         }
     });
 });
@@ -221,11 +241,31 @@ $("#good").click(() => {
                     xhr.setRequestHeader(header, token);
                 },
                 success: () => {
-                    alert("추천되었습니다.");
+                    iziToast.success({
+                        icon: 'icon-person',
+                        title: 'Success,',
+                        message: 'Like!',
+                        pauseOnHover: false,
+                        progressBarColor: 'rgb(0, 255, 184)',
+                        close: false,
+                        titleColor: 'black',
+                        messageColor: 'black',
+                        timeout: 2000,
+                        position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                    });
+                },
+                error: () => {
+                    iziToast.error({
+                        title: 'Fail',
+                        message: 'Please, You do not have permission.',
+                    });
                 }
             })
         } else {
-            alert("추천할 수 없습니다.")
+            iziToast.error({
+                title: 'Fail',
+                message: 'Already it.',
+            });
         }
     })
 });
@@ -245,11 +285,31 @@ $("#badBtn").click(() => {
                     xhr.setRequestHeader(header, token);
                 },
                 success: () => {
-                    alert("비추천 되었습니다.");
+                    iziToast.success({
+                        icon: 'icon-person',
+                        title: 'Success,',
+                        message: 'Unlike!',
+                        pauseOnHover: false,
+                        progressBarColor: 'rgb(0, 255, 184)',
+                        close: false,
+                        titleColor: 'black',
+                        messageColor: 'black',
+                        timeout: 2000,
+                        position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                    });
+                },
+                error: () => {
+                    iziToast.error({
+                        title: 'Fail',
+                        message: 'Please, You do not have permission.',
+                    });
                 }
             })
         } else {
-            alert("추천할 수 없습니다.")
+            iziToast.error({
+                title: 'Fail',
+                message: 'Already it.',
+            });
         }
     })
 });

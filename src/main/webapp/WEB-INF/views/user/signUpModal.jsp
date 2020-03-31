@@ -13,13 +13,14 @@
             <label class="sr-only">Password</label>
             <input type="password" id="userPw" class="form-control" placeholder="Password" required><br>
             <label class="sr-only">Password Check</label>
-            <input type="password" class="form-control" placeholder="PasswordCheck" required><br>
+            <div id="wrong" class="text-danger font-weight-light mt-0"></div>
+            <input type="password" id="userPwCheck" class="form-control" placeholder="PasswordCheck" required><br>
             <label class="sr-only">Name</label>
             <input type="text" id="userNm" class="form-control" placeholder="이름을 입력하세요" required><br>
             <label class="sr-only">EMAIL</label>
             <input type="email" id="email" class="form-control" placeholder="이메일을 입력하세요" required><br>
 
-            <button id="signUpBtn" class="btn btn-lg btn-primary btn-block"><spring:message code="SignUp"></button>
+            <button id="signUpBtn" class="btn btn-lg btn-primary btn-block"><spring:message code="SignUp"/></button>
         </div>
 
     </div>

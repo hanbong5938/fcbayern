@@ -108,10 +108,25 @@ $("#btnSubmit").click(() => {
                         type: 'POST',
                         beforeSend: (xhr) => {
                             xhr.setRequestHeader(header, token);
+                        }, success: () => {
+                            iziToast.success({
+                                icon: 'icon-person',
+                                title: 'Success,',
+                                message: 'insert Attach!',
+                                pauseOnHover: false,
+                                progressBarColor: 'rgb(0, 255, 184)',
+                                close: false,
+                                titleColor: 'black',
+                                messageColor: 'black',
+                                timeout: 2000,
+                                position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                                onClosing: function () {
+                                    $(".content").load("/player?lang=" + getCookie('APPLICATION_LOCALE'));
+                                    history.pushState({data: "/player"}, null, "/player?lang=" + getCookie('APPLICATION_LOCALE'));
+                                }
+                            });
                         },
-                        success: (profile) => {
-                            alert("성공");
-                        }
+
                     })
                 }
             )

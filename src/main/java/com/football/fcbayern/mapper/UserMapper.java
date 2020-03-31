@@ -9,4 +9,6 @@ public interface UserMapper {
     UserModel findByUserId(String userId);
 
     int getPoint(int userNo);
+
+    int checkNull(String userId);
 }

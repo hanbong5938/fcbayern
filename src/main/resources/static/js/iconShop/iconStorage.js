@@ -66,7 +66,24 @@ function loadList(criteriaModel) {
                     xhr.setRequestHeader(header, token);
                 },
                 success: () => {
-                    alert("대표아이콘으로 설정 되었습니다.")
+                    iziToast.success({
+                        icon: 'icon-person',
+                        title: 'Success,',
+                        message: 'Set represent!',
+                        pauseOnHover: false,
+                        progressBarColor: 'rgb(0, 255, 184)',
+                        close: false,
+                        titleColor: 'black',
+                        messageColor: 'black',
+                        timeout: 2000,
+                        position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                    });
+                },
+                error: () => {
+                    iziToast.error({
+                        title: 'Fail',
+                        message: 'Please, Try again.',
+                    });
                 }
             })
         });

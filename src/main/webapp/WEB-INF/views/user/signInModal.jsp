@@ -19,7 +19,7 @@
                 <div class="col-sm-12 pr-0 row">
                     <div class="col-sm-8">
                         <label>
-                            <input type="checkbox" value="remember-me"> <spring:message code="RememberMe"/>
+                            <input type="checkbox" name="rem"> <spring:message code="RememberMe"/>
                         </label>
                     </div>
                     <div class="col-sm-4 pl-4 pr-0">

@@ -10,6 +10,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 //@Configuration 클래스에 Spring Security 설정할 클래스라고 정의
@@ -77,9 +81,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 //403예외 권하닝 없는 경우 이동하도록
                 .exceptionHandling()
-                .accessDeniedPage("/");
+                .accessDeniedPage("/")
+                .and()
+                .rememberMe().key("rem").rememberMeParameter("rem").tokenValiditySeconds(86400);
     }
-//
+
 //    @Override
 ////    모든 인증은 AuthenticationManager를 통해 이루어지며 생성하기 위해 AuthenticationManagerBuilder 사용
 //    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {

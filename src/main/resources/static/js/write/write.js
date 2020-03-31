@@ -122,8 +122,14 @@ regBtn.click(() => {
             xhr.setRequestHeader(header, token);
         },
         success: () => {
-            alert("성공");
+            alert("작성된 글이 등록되었습니다.");
             successRead(boardData);
+        },
+        error: () => {
+            iziToast.error({
+                title: 'Fail',
+                message: 'Please, Try again.',
+            });
         }
     });
 });
@@ -154,8 +160,14 @@ modBtn.click(() => {
             xhr.setRequestHeader(header, token);
         },
         success: () => {
-            alert("성공");
+            alert("성공적으로 수정되었습니다.");
             successRead(boardData);
+        },
+        error: () => {
+            iziToast.error({
+                title: 'Fail',
+                message: 'Please, Try again.',
+            });
         }
     });
 });

@@ -37,6 +37,8 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-bs4.min.css" rel="stylesheet">
     <%--Flag--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.min.css">
+    <%--iziToast--%>
+    <link rel="stylesheet" href="css/iziToast.min.css">
 
     <%--custom css--%>
     <link rel="stylesheet" href="css/custom.css">

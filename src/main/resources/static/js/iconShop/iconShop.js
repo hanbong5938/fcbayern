@@ -76,10 +76,27 @@ function loadList(criteriaModel) {
                             xhr.setRequestHeader(header, token);
                         },
                         success: () => {
-                            alert("구입하였습니다.")
+                            iziToast.success({
+                                icon: 'icon-person',
+                                title: 'Success!,',
+                                message: 'Buy icon!',
+                                pauseOnHover: false,
+                                progressBarColor: 'rgb(0, 255, 184)',
+                                close: false,
+                                titleColor: 'black',
+                                messageColor: 'black',
+                                timeout: 2000,
+                                position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                                onClosing: function () {
+                                    $(".modal-content").load("/signInModal");
+                                }
+                            });
                         },
                         error: () => {
-                            alert("구매할 수 없는 상품입니다.")
+                            iziToast.error({
+                                title: 'Fail',
+                                message: 'Already have this or not enough point.',
+                            });
                         }
                     })
                 });

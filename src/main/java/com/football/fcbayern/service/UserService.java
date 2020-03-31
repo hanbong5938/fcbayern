@@ -10,4 +10,5 @@ public interface UserService {
 
     int getPoint(int userNo);
 
+    int checkNull(String userId);
 }

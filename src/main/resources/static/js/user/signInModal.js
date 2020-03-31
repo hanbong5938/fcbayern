@@ -4,6 +4,7 @@ $("#signInBtn").click(() => {
         const signInData = {
             userId: $("#userId").val(),
             userPw: $("#userPw").val(),
+            rem: $("#rem").val(),
         };
 
         $.ajax({
@@ -14,11 +15,39 @@ $("#signInBtn").click(() => {
                 xhr.setRequestHeader(header, token);
             },
             success: () => {
-                alert("성공");
+                // alert("로그인 되었습니다.");
+                $('#modal').modal("hide");
+                iziToast.success({
+                    // theme: 'dark',
+                    icon: 'icon-person',
+                    title: 'Hello,',
+                    message: 'Welcome!',
+                    pauseOnHover: false,
+                    progressBarColor: 'rgb(0, 255, 184)',
+                    close: false,
+                    titleColor: 'black',
+                    messageColor: 'black',
+                    timeout: 2000,
+                    position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                    buttons: [
+                        ['<button class="text-dark">Close</button>', function (instance, toast) {
+                            location.href = "/";
+                        }, true]
+                    ],
+                    onClosing: function () {
+                        location.href = "/";
+                    }
+                });
                 // $("#modal").modal('hide');
                 // replaceLockIcon(0);
                 //ajax로 세션값 하나하나 받아오는 것은 비효율적이기에 location 사용해서 새로고침
-                location.href = "/";
+            },
+            error: () => {
+                iziToast.error({
+                    title: 'Fail',
+                    message: 'Please, try again.',
+                });
+
             }
         })
     }
@@ -27,4 +56,10 @@ $("#signInBtn").click(() => {
 //가입모달
 $("#signUpLink").click(() => {
     $(".modal-content").load("/signUpModal");
+});
+
+document.addEventListener('iziToast-closing', function (data) {
+    if (data.detail.class == 'test') {
+        location.href = "/";
+    }
 });

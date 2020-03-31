@@ -101,6 +101,8 @@
 <!-- include summernote-ko-KR -->
 <%--<script src="lang/summernote-ko-KR.js"></script>--%>
 
+<%--iziToast--%>
+<script src="plugin/iziToast.min.js"></script>
 
 <%--Footer--%>
 <script src="js/includes/footer.js"></script>

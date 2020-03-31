@@ -21,8 +21,9 @@ public class UserController {
     }
 
     @PostMapping("/signUp")
-    public ResponseEntity<Integer> signUp(UserModel userModel) {
-        return new ResponseEntity<>(userService.signUp(userModel), HttpStatus.OK);
+    public ResponseEntity<String> signUp(UserModel userModel) {
+        int count = userService.signUp(userModel);
+        return count == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

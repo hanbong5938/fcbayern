@@ -98,8 +98,28 @@ $("#btnSubmit").click(() => {
                             xhr.setRequestHeader(header, token);
                         },
                         success: () => {
-                            alert("성공");
-
+                            iziToast.success({
+                                icon: 'icon-person',
+                                title: 'Success!,',
+                                message: 'Buy icon!',
+                                pauseOnHover: false,
+                                progressBarColor: 'rgb(0, 255, 184)',
+                                close: false,
+                                titleColor: 'black',
+                                messageColor: 'black',
+                                timeout: 2000,
+                                position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                                onClosing: function () {
+                                    $(".content").load("/iconShop?lang=" + getCookie('APPLICATION_LOCALE'));
+                                    history.pushState({data: "/iconShop"}, null, "/iconShop?lang=" + getCookie('APPLICATION_LOCALE'));
+                                }
+                            });
+                        },
+                        error: () => {
+                            iziToast.error({
+                                title: 'Fail',
+                                message: 'Please, Try again.',
+                            });
                         }
                     })
                 }

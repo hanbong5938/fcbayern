@@ -26,4 +26,10 @@
           and userNo = #{userNo}
     </select>
 
+    <select id="checkNull" resultType="int">
+        select count(*)
+        from user
+        where userId = #{userId}
+          and state = 1
+    </select>
 </mapper>

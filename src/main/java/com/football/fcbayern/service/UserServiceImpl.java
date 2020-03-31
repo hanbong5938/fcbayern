@@ -29,6 +29,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Transactional
     @Override
     public int signUp(UserModel userModel) {
+        //중복아이디 체
+        if (checkNull(userModel.getUserId()) > 0) {
+            return 0;
+        }
         //암호화
         userModel.setUserPw(passwordEncoder.encode(userModel.getUserPw()));
         return userMapper.signUp(userModel);
@@ -42,6 +46,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public int getPoint(int userNo) {
         return userMapper.getPoint(userNo);
+    }
+
+    @Override
+    public int checkNull(String userId) {
+        return userMapper.checkNull(userId);
     }
 
     @Override
