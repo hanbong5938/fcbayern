@@ -6,7 +6,7 @@ honoursReg.click(function () {
 });
 
 //권한 낮으면 등록버튼 숨기게
-if (Number(sessionAuthNo) >= 3) {
+if (Number(sessionAuthNo) >= 3 || isNaN(Number(sessionAuthNo))) {
     honoursReg.hide();
 }
 

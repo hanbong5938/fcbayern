@@ -7,7 +7,7 @@ profileReg.click(function () {
 });
 
 //권한 낮으면 등록버튼 숨기게
-if (Number(sessionAuthNo) >= 3) {
+if (Number(sessionAuthNo) >= 3 || isNaN(Number(sessionAuthNo))) {
     profileReg.hide();
 }
 
@@ -45,12 +45,13 @@ $.get("/profile/category", ((data) => {
 
                         //id fk 로 filter 처리를 해서 하나만 남겨 배열 0을 통해 첨부파일 정보 획득
                         str += "                    <div class='col-lg-3'>\n" +
-                            "                        <div class='profile-img text-center'>\n" +
-                            "                            <img src='/aws/getImg?fileName=" + attachFilter[0].uuid + "&directory=" + attachFilter[0].uploadPath + "' alt=''>\n" +
+                            "                        <div class='profile-img text-center' style='overflow: hidden;'>\n" +
+                            "                            <img src='/aws/getImg?fileName=" + attachFilter[0].uuid + "&directory=" + attachFilter[0].uploadPath + "' alt='' style='margin-left: -23%; margin-bottom: -200" +
+                            "%; '>\n" +
+                            "                            <div class=''>\n" +
+                            "                                <span class='text-primary'  style='background-color: white'>" + profileFilter[j].profileNm + "</span></div>\n" +
                             "                            <div>\n" +
-                            "                                <span class='text-primary'>" + profileFilter[j].profileNm + "</span></div>\n" +
-                            "                            <div>\n" +
-                            "                                <span>" + date.getFullYear() + "-" + month + "-" + day + "</span>\n" +
+                            "                                <span style='background-color: white'>" + date.getFullYear() + "-" + month + "-" + day + "</span>\n" +
                             "                            </div>\n" +
                             "                        </div>\n" +
                             "                    </div>\n";

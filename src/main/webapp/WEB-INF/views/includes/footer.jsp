@@ -9,7 +9,7 @@
 
 
 <footer>
-    <div class="footer">
+    <div class="footer mt-5">
         <div class="container">
             <div class="row row-bottom-padded-md">
                 <div class="col-md-2 col-sm-2 col-xs-12">
