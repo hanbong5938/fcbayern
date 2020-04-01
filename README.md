@@ -6,7 +6,4 @@ AWS S3, Aws ec2, Spring boot, Spring security, javascript, jquery, HTML5, Css3, 
 
 [문서.pdf](https://github.com/hanbong5938/fcbayern/blob/master/%EB%AC%B8%EC%84%9C.pdf).
 
-<object data="https://github.com/hanbong5938/fcbayern/blob/master/%EB%AC%B8%EC%84%9C.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://github.com/hanbong5938/fcbayern/blob/master/%EB%AC%B8%EC%84%9C.pdf">
-    </embed>
-</object>
+[embed]https://github.com/hanbong5938/fcbayern/blob/master/%EB%AC%B8%EC%84%9C.pdf[/embed]
