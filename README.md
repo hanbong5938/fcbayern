@@ -25,7 +25,7 @@
 
 - 사용 D/B : MariaDB
 
-- 사용(개발)  툴 : IntelliJ
+- 사용(개발)  툴 : IntelliJ, Aws ec2, Aws S3
 
 - 웹 표준 기술 : HTML, CSS, JavaScript, jQuery
 
