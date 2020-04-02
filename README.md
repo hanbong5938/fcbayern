@@ -11,4 +11,4 @@
  
  게시글, 댓글 작성을 통해 포인트를 획득 할 수 있으며, 이를 이용해 프로필에 설정할 수 있는 아이콘 구매 가능
  
-[포트폴리오 문서.pdf](https://github.com/hanbong5938/fcbayern/blob/master/%EB%AC%B8%EC%84%9C.pdf)
+[포트폴리오 문서.pdf](https://github.com/hanbong5938/fcbayern/blob/master/Fc bayern.pdf)
