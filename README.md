@@ -29,9 +29,9 @@
 
 - 웹 표준 기술 : HTML, CSS, JavaScript, jQuery
 
-- 프레임워크 : Spring Boot
+- 프레임워크 : Spring Boot, myBatis
 
-- 사용 라이브러리 : summernote js,iziToast.js
+- 사용 라이브러리 : summernote js,iziToast.js, bootstrap4
 ```
 
 ### 3. 주요기능
