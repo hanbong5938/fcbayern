@@ -1,9 +1,9 @@
 # Fcbayern
 
-## [포트폴리오 문서](https://github.com/hanbong5938/fcbayern/blob/master/Fc%20Bayern.pdf)
+[포트폴리오 문서](https://github.com/hanbong5938/fcbayern/blob/master/Fc%20Bayern.pdf)
 
 
-## 1. 프로젝트 요약
+### 1. 프로젝트 요약
 ```
 - 프로젝트 명 : Fc Bayern 팬 사이트
 
@@ -16,7 +16,7 @@
 - 개발목표 : 스프링 프레임워크, 스프링 시큐리티 등을 사용하여 실제 사용해본 온라인 커뮤니티와 같게 구축
 ```
 
-## 2. 개발환경
+### 2. 개발환경
 ```
 
 - 사용(개발) 언어 : JAVA
@@ -34,7 +34,7 @@
 - 사용 라이브러리 : summernote js,iziToast.js
 ```
 
-## 3. 주요기능
+### 3. 주요기능
 ```
 
 - ajax를 이용한 화면 전환 없는 페이지 이동
@@ -54,7 +54,7 @@
 - 게시글, 댓글 작성을 통해 포인트를 획득 할 수 있으며, 이를 이용해 프로필에 설정할 수 있는 아이콘 구매 가능
 ```
 
-## 4.ERD
+### 4.ERD
 
 
  
