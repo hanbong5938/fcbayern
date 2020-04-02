@@ -1,4 +1,4 @@
-# fcbayern
+# Fcbayern
 
 ## [포트폴리오 문서](https://github.com/hanbong5938/fcbayern/blob/master/Fc%20Bayern.pdf)
 
