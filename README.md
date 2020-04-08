@@ -2,7 +2,7 @@
 
 [포트폴리오 문서](https://github.com/hanbong5938/fcbayern/blob/master/Fc%20Bayern_compressed.pdf)
 
-[포트폴리오 문서 원본](https://github.com/hanbong5938/fcbayern/blob/master/Fc%20Bayern.pdf)
+[포트폴리오 문서 원본](https://docs.google.com/gview?url=https://github.com/hanbong5938/fcbayern/blob/master/Fc%20Bayern.pdf)
 
 ### 1. 프로젝트 요약
 ```
