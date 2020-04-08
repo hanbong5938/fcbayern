@@ -59,4 +59,3 @@
 
 ![ERD](https://user-images.githubusercontent.com/51283645/78204343-4653b080-74d4-11ea-95da-9e2e0b80b858.png)
 
-<iframe src="https://docs.google.com/gview?url=https://github.com/hanbong5938/fcbayern/blob/master/Fc%20Bayern.pdf&embedded=true" style="width:100%; height:100%;" frameborder="0"></iframe>
